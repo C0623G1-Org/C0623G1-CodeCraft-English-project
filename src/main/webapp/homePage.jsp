@@ -59,30 +59,30 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="overlay-image" style="background-image:url(./2.jpg);"></div>
-                <div class="container" id="carouselCont">
-                    <h1>Ảnh 1</h1>
-                    <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                        voluptas, sunt corporis
-                        excepturi
-                        tempora eaque consequuntur cumque hic voluptate quia explicabo placeat sint laborum
-                        praesentium
-                        quibusdam adipisci, totam architecto sequi.</p>
-                    <a href="reg.jsp" role="button" class="btn btn-lg btn-primary">Đăng ký ngay</a>
+                    <div class="container" id="carouselCont">
+                        <h1>Ảnh 1</h1>
+                        <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+                            voluptas, sunt corporis
+                            excepturi
+                            tempora eaque consequuntur cumque hic voluptate quia explicabo placeat sint laborum
+                            praesentium
+                            quibusdam adipisci, totam architecto sequi.</p>
+                        <a href="reg.jsp" role="button" class="btn btn-lg btn-primary">Đăng ký ngay</a>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="overlay-image" style="background-image:url(./1.jpg);"></div>
-                <div class="container" id="carouselCont">
-                    <h1>Ảnh 2</h1>
-                    <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                        voluptas, sunt corporis
-                        excepturi
-                        tempora eaque consequuntur cumque hic voluptate quia explicabo placeat sint laborum
-                        praesentium
-                        quibusdam adipisci, totam architecto sequi.</p>
-                    <a href="reg.jsp" role="button" class="btn btn-lg btn-primary">Đăng ký ngay</a>
+                <div class="carousel-item">
+                    <div class="overlay-image" style="background-image:url(./1.jpg);"></div>
+                    <div class="container" id="carouselCont1">
+                        <h1>Ảnh 2</h1>
+                        <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+                            voluptas, sunt corporis
+                            excepturi
+                            tempora eaque consequuntur cumque hic voluptate quia explicabo placeat sint laborum
+                            praesentium
+                            quibusdam adipisci, totam architecto sequi.</p>
+                        <a href="reg.jsp" role="button" class="btn btn-lg btn-primary">Đăng ký ngay</a>
+                    </div>
                 </div>
-            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"
                 style="width: 50px;">
