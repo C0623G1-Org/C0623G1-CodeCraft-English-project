@@ -17,6 +17,7 @@
 <body>
 <form action="/?action=signup" method="post">
     <h2>TẠO TÀI KHOẢN</h2>
+    <p style="color: red">${error}</p><br>
     <div class="inputBox">
         <input type="text" name="name" placeholder="Username" required>
     </div>
@@ -27,7 +28,7 @@
         <input type="password" name="pswd" placeholder="Password" required>
     </div>
     <div class="inputBox">
-        <input type="password" name="cfrm pswd" value="${error}" placeholder="Confirm Password" required>
+        <input type="password" name="cfrm pswd" placeholder="Confirm Password" required>
     </div>
     <div class="inputBox">
         <input type="submit" name="reg" value="Đăng ký">

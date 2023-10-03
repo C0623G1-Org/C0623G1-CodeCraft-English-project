@@ -3,16 +3,18 @@
 
 CREATE TABLE users(
                       user_id INT PRIMARY KEY AUTO_INCREMENT,
-                      user_name VARCHAR(45),
+                      display_name VARCHAR(45),
                       email VARCHAR(45),
                       dob DATE,
-                      login_id VARCHAR(45) UNIQUE NOT NULL,
-                      login_password VARCHAR(45) NOT NULL
+                      username VARCHAR(45) UNIQUE NOT NULL,
+                      login_password VARCHAR(45) NOT NULL,
+                      role_name VARCHAR(120) NOT NULL,
+                      CHECK (role_name IN ('ADMIN', 'SIMPLE_USER'))
 );
 
 CREATE TABLE difficulty (
                             diff_id INT PRIMARY KEY AUTO_INCREMENT,
-                            diff_name VARCHAR(10) NOT NULL
+                            diff_name VARCHAR(10) UNIQUE NOT NULL
 );
 
 CREATE TABLE questions (
@@ -30,13 +32,13 @@ CREATE TABLE questions (
 CREATE TABLE test_history(
                              history_id INT PRIMARY KEY AUTO_INCREMENT,
                              user_id INT NOT NULL,
-                             total_score INT NOT NULL,
+                             test_date DATETIME DEFAULT NOW(),
                              FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 CREATE TABLE results (
                          question_id INT NOT NULL,
                          history_id INT NOT NULL,
-                         choosen_answer VARCHAR(30) NOT NULL,
+                         choosen_answer VARCHAR(100) NOT NULL,
                          score INT NOT NULL,
                          FOREIGN KEY(question_id) REFERENCES questions(question_id),
                          FOREIGN KEY(history_id) REFERENCES test_history(history_id)
