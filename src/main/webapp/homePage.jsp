@@ -38,9 +38,9 @@
                         LUYỆN ĐỀ
                     </a>
                     <ul class="dropdown-menu" style="padding-right: 40px;">
-                        <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=easy" style="color: #000000;">Làm đề dễ</a></li>
-                        <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=medium" style="color: #000000;">Làm đề trung bình</a></li>
-                        <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=hard" style="color: #000000;">Làm đề khó</a></li>
+                        <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=easy" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
+                        <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=medium" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
+                        <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=hard" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
                     </ul>
                 </li>
             </ul>
