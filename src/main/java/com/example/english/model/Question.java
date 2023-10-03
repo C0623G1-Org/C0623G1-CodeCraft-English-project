@@ -1,7 +1,7 @@
 package com.example.english.model;
 
 public class Question {
-    //    question_id INT PRIMARY KEY AUTO_INCREMENT,
+//    question_id INT PRIMARY KEY AUTO_INCREMENT,
 //    diff_id INT NOT NULL,
 //    question_content VARCHAR(255) NOT NULL,
 //    answer_a VARCHAR(100) NOT NULL,
@@ -18,6 +18,22 @@ public class Question {
     private String answerC;
     private String answerD;
     private String rightAnswer;
+
+
+
+    public Question(int id, int levelId, String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer, Difficulty difficulty) {
+        this.id = id;
+        this.levelId = levelId;
+        this.question = question;
+        this.answerA = answerA;
+        this.answerB = answerB;
+        this.answerC = answerC;
+        this.answerD = answerD;
+        this.rightAnswer = rightAnswer;
+        this.difficulty = difficulty;
+    }
+
+    private Difficulty difficulty;
 
     public Question() {
 
@@ -106,5 +122,12 @@ public class Question {
 
     public void setRightAnswer(String rightAnswer) {
         this.rightAnswer = rightAnswer;
+    }
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }

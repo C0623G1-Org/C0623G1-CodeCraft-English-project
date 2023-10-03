@@ -12,7 +12,7 @@
     <title>Question List</title>
 </head>
 <body>
-<a href="/?action=creat_practice_list">Tạo đề</a>
+<a href="/?action=create-test">Tạo đề</a>
 <h1>Question List</h1>
 <%--private int id;--%>
 <%--private int levelId;--%>
