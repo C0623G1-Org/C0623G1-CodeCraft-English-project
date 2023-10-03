@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700;800&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    margin-top: 20px;
+    background-color: black;
+}
+
+.main {
+    padding: 15px;
+}
+
+.topbar {
+    /*background-color: #1c2630;*/
+    overflow: hidden;
+}
+
+.topbar a {
+    float: right;
+    color: #999999;
+    text-align: center;
+    padding: 20px 26px;
+    text-decoration: none;
+    font-size: 26px;
+}
+
+.sidebar {
+    background-color: #d63384;
+    color: #999;
+    height: 100%;
+}
+
+.sidebar a {
+    margin-left: 10px;
+    display: block;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+.m-3{
+    color: white;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /*background-color: #25cff2;*/
+}
+
+.content {
+    background-color: #29313c !important;
+}
+
+.card-body {
+    padding: 50px !important;
+}
+
+.card-body-custom-left {
+    background-color: #29313c;
+}
+
+.card-body-custom-right {
+    background-color: #29313c;
+}
+
+.card-right {
+    background-color: #29313c !important;
+}
+
+.card-left {
+    background-color: #29313c;
+}
+
+.row {
+    /*background-color: #29313c;*/
+    /*padding: 0;*/
+}
+
+.text-secondary {
+    color: #999;
+}
+
+.col-md-3 {
+    color: #999;
+}
+.row {
+    margin: 0 !important;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+#navbarMain {
+    padding: 35px;
+    background-color: #1c2630;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.col-md-4 {
+    padding: 0 !important;
+}
+
+#navbarMain a {
+    color: white;
+    border-radius: 20px;
+}
+
+.nav-item a:hover {
+    background: #0ab3ff;
+    /*color: white;*/
+}
+
+.nav-item a {
+    margin: 0 12px;
+}
+
+#navbarSupportedContent #user  {
+    background: #0ab3ff;
+    border: none;
+    padding: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#navbarSupportedContent #user:hover {
+    letter-spacing: 0.2em;
+    font-size: 0.8em
+}
+
+.footer {
+    background-color: #1c2630;
+    height: 200px;
+    display: grid;
+    place-items: center;
+}
+.footer table {
+    color: white;
+    width: 70%;
+
+}
+.container-fluid {
+    padding: 0;
+    background-color: #1c2630;
+    /*color: white;*/
+    margin: 0 !important;
+}
+.table{
+    background-color: #999;
+}

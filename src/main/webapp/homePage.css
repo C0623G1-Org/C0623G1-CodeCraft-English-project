@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700;800&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+#navbarMain {
+    padding: 30px;
+    background: #29313c;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+#navbarMain a {
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.nav-item a:hover {
+    letter-spacing: 0.1em;
+}
+
+.nav-item a {
+    margin: 10px 12px;
+}
+
+.dropdown-menu {
+    padding-right: 90px;
+}
+
+#navbarSupportedContent #user {
+    background: #0ab3ff;
+    border: none;
+    padding: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#navbarSupportedContent #user:hover {
+    letter-spacing: 0.2em;
+    font-size: 0.8em
+}
+
+.navbar-toggler {
+    border: #0ab3ff solid;
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.carousel-item {
+    height: 38.5rem;
+    background-color: #000000;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+#carouselCont {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 50px;
+}
+
+.overlay-image {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.container {
+    display: grid;
+    place-items: center;
+}
+
+#myCarousel .btn {
+    margin: 0 auto;
+    background: #0ab3ff;
+    border: none;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 1.15em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#myCarousel .btn:hover {
+    letter-spacing: 0.1em;
+    font-size: 1.3em
+}
+
+.footer {
+    background: #1c2630;
+    height: 200px;
+    display: grid;
+    place-items: center;
+}
+
+.footer table {
+    color: white;
+    width: 70%;
+
+}
