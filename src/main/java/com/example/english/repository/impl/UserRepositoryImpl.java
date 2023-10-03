@@ -32,7 +32,7 @@ public class UserRepositoryImpl implements IUserRepository {
     public void signup(User user) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_SQL)) {
-            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(1, user.getLoginId());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getDob());
             preparedStatement.setString(4, user.getLoginId());
