@@ -8,7 +8,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="my_page/css_my_page.css">
+    <link rel="stylesheet" href="css_my_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <%--    <script src="../../bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>--%>
@@ -28,10 +28,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Trang chủ </a>
+                            <a class="nav-link active" aria-current="page" href="homePage.jsp">Trang chủ </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Giới thiệu </a>
+                            <a class="nav-link" href="homePage.jsp">Giới thiệu </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -53,12 +53,12 @@
             <div class="col-md-4 mt-0">
                 <div class="card-left text-center sidebar">
                     <div class="card-body">
-                        <img src="my_page/assets/img.jpg" class="rounded-circle" width="150" alt="">
+                        <img src="img.jpg" class="rounded-circle" width="150" alt="">
                         <div class="mt-3">
                             <h3 style="color: white">Khoa</h3>
                             <a href="">History</a>
-                            <a href="">Setting</a>
-                            <a href="">Sign Out</a>
+                            <a href="edit_my_page.jsp">Setting</a>
+                            <a href="homePage.jsp">Sign Out</a>
                         </div>
                     </div>
                 </div>
