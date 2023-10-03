@@ -56,7 +56,7 @@ public class UserServlet extends HttpServlet {
         String confirm = request.getParameter("cfrm pswd");
         String error = "Xác nhận mật khẩu không chính xác";
         if (password.equals(confirm)) {
-            User user = new User(name, email, password);
+            User user = new User(email, name,  password);
             userService.signup(user);
             request.setAttribute("name", name);
             request.setAttribute("password", password);
