@@ -16,7 +16,19 @@ public class QuestionServiceImpl implements IQuestionService {
     }
 
     @Override
-    public List<Question> createPracticeList() {
-        return questionRepository.createPracticeList();
+    public List<Question> createEasyTest() {
+        return questionRepository.createEasyTest();
     }
+
+    @Override
+    public List<Question> createMediumTest() {
+        return questionRepository.createMediumTest();
+    }
+
+    @Override
+    public List<Question> createHardTest() {
+        return questionRepository.createHardTest();
+    }
+
+
 }

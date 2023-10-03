@@ -32,10 +32,10 @@
             </ul>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Trang chủ </a>
+                    <a class="nav-link active" aria-current="page" href="/homePage.jsp">Trang chủ </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Giới thiệu </a>
+                    <a class="nav-link" href="/homePage.jsp">Giới thiệu </a>
                 </li>
                 <li class="nav-item" id="slogan">
                     <a class="nav-link active" aria-current="page" href="#">
@@ -50,7 +50,7 @@
                 </a>
                 <i class="fa-regular fa-user"></i>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" style="color: black">Trang của tôi</a></li>
+                    <li><a class="dropdown-item" href=" /my_page.jsp" style="color: black">Trang của tôi</a></li>
                     <li><a class="dropdown-item" href="#" style="color: black">Đăng xuất</a></li>
                     <li>
                         <hr class="dropdown-divider">
