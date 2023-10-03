@@ -6,7 +6,7 @@ CREATE TABLE users(
                       user_name VARCHAR(45),
                       email VARCHAR(45),
                       dob DATE,
-                      login_id VARCHAR(45) NOT NULL,
+                      login_id VARCHAR(45) UNIQUE NOT NULL,
                       login_password VARCHAR(45) NOT NULL
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE results (
 );
 
 INSERT INTO difficulty (diff_name)
-VALUES ('dễ'),('trung bình'),('khó');
+VALUES ('easy'),('medium'),('hard');
 
 INSERT INTO questions ( diff_id ,question_content ,answer_a ,answer_b ,answer_c,answer_d ,correct_answer)
 VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
