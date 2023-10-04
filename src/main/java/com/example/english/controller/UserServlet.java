@@ -41,7 +41,7 @@ public class UserServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
             request.setAttribute("getIdUser",getIdUser);
             requestDispatcher.forward(request,response);
-        } catch (SQLException | ServletException | IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -54,8 +54,6 @@ public class UserServlet extends HttpServlet {
             request.setAttribute("user",user);
             requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
             requestDispatcher.forward(request,response);
-        } catch (SQLException e) {
-            e.printStackTrace();
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

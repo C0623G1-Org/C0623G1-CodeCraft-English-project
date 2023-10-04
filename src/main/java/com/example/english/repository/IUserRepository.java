@@ -12,5 +12,5 @@ public interface IUserRepository {
     void editUser(User user);
 
     void deleteUser(int userId);
-    User getByIdUser(int id) throws SQLException;
+    User getByIdUser(int id);
 }
