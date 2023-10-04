@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-
 <body>
 
 <!-- NAVBAR -->
@@ -37,19 +35,19 @@
                        aria-expanded="false">
                         LUYỆN ĐỀ
                     </a>
-                    <ul class="dropdown-menu" style="padding-right: 40px;">
+                    <ul class="dropdown-menu" style="padding-right: 40px; list-style: none">
                         <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=easy" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
                         <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=medium" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
                         <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=hard" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
                     </ul>
                 </li>
             </ul>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" style="list-style: none; margin-right: 30px">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                    aria-expanded="false"><i class="fa-regular fa-user"></i>
                     ${user.userName}
                 </a>
-                <ul class="dropdown-menu" style="padding-right: 40px; list-style: none">
+                <ul class="dropdown-menu" style="padding-right: 40px; overflow: hidden">
                     <li><a class="dropdown-item" href="#" style="color: #000000;">Hồ sơ</a></li>
                     <li><a class="dropdown-item" href="#" style="color: #000000;">Đăng xuất</a></li>
                 </ul>
