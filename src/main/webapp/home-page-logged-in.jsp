@@ -44,8 +44,16 @@
                     </ul>
                 </li>
             </ul>
-            <a href="login.jsp" role="button" class="btn btn-lg btn-primary" id="user"><i
-                    class="fa-regular fa-user"></i> ĐĂNG NHẬP</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false"><i class="fa-regular fa-user"></i>
+                    ${user.userName}
+                </a>
+                <ul class="dropdown-menu" style="padding-right: 40px; list-style: none">
+                    <li><a class="dropdown-item" href="#" style="color: #000000;">Hồ sơ</a></li>
+                    <li><a class="dropdown-item" href="#" style="color: #000000;">Đăng xuất</a></li>
+                </ul>
+            </li>
         </div>
     </div>
 </nav>

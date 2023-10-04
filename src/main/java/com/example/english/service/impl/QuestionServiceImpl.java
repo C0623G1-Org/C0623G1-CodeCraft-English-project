@@ -10,13 +10,21 @@ import java.util.List;
 public class QuestionServiceImpl implements IQuestionService {
     private final IQuestionRepository questionRepository = new QuestionRepositoryImpl();
 
+
     @Override
-    public List<Question> findAllQuestion() {
-        return questionRepository.findAllQuestion();
+    public List<Question> createEasyTest() {
+        return questionRepository.createEasyTest();
     }
 
     @Override
-    public List<Question> createPracticeList() {
-        return questionRepository.createPracticeList();
+    public List<Question> createMediumTest() {
+        return questionRepository.createMediumTest();
     }
+
+    @Override
+    public List<Question> createHardTest() {
+        return questionRepository.createHardTest();
+    }
+
+
 }

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public interface IUserRepository {
     void signup(User user);
 
-    boolean login(String loginId, String password);
+    User login(String loginId, String password);
 
     void editUser(User user);
 

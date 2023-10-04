@@ -14,6 +14,7 @@ public class UserRepositoryImpl implements IUserRepository {
             "where user_id = ?";
     private static final String UPDATE_USER = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
 
+    private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";
     public UserRepositoryImpl() {
     }
 
@@ -31,7 +32,7 @@ public class UserRepositoryImpl implements IUserRepository {
     @Override
     public void signup(User user) {
         try (Connection connection = getConnection();
-                 PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_SQL)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_SQL)) {
             preparedStatement.setString(1, user.getUserName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getDob());
@@ -45,8 +46,25 @@ public class UserRepositoryImpl implements IUserRepository {
     }
 
     @Override
-    public boolean login(String loginId, String password) {
-        return false;
+    public User login(String loginId, String password) {
+        try (Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(LOGIN_SQL)) {
+            preparedStatement.setString(1, loginId);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("user_id");
+                String displayName = resultSet.getString("display_name");
+                String email = resultSet.getString("email");
+                String dob = resultSet.getString("dob");
+                String role = resultSet.getString("role_name");
+                User user = new User(id, displayName, email, dob, loginId, password, role);
+                return user;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public interface IUserService {
     void signup(User user);
 
-    Boolean login(String loginId, String password);
+    User login(String loginId, String password);
 
     void editUser(User user);
 

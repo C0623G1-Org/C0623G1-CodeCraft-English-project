@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ketQuaServlet", value = "/ket-qua")
+@WebServlet(name = "resultServlet", value = "/result")
 public class ResultServlet extends HttpServlet {
     private IResultService resultService = new ResultServiceImpl();
 
@@ -24,9 +24,9 @@ public class ResultServlet extends HttpServlet {
 
     private void formResult(HttpServletRequest request, HttpServletResponse response) {
         List<Result> resultList = resultService.getAll();
-        request.setAttribute("tongDiem", resultService.score());
-        request.setAttribute("ketQua", resultList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ket-qua.jsp");
+        request.setAttribute("totalScore", resultService.score());
+        request.setAttribute("result", resultList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/result.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -43,7 +43,7 @@ public class ResultServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "ketqua":
+            case "result":
                 result(request, response);
             default:
 
@@ -51,12 +51,12 @@ public class ResultServlet extends HttpServlet {
     }
 
     private void result(HttpServletRequest request, HttpServletResponse response) {
-        String question = request.getParameter("tenCauHoi");
-        String seletectedAnswer = request.getParameter("tenCauHoi");
-        String correctAnswer = request.getParameter("tenCauHoi");
-        int score = Integer.parseInt(request.getParameter("diem"));
-        Result result = new Result(question, seletectedAnswer, correctAnswer, score);
-        resultService.create(result);
+//        String question = request.getParameter("question");
+//        String seletectedAnswer = request.getParameter("seletectedAnswer");
+//        String correctAnswer = request.getParameter("correctAnswer");
+//        int score = Integer.parseInt(request.getParameter("score"));
+//        Result result = new Result(question, seletectedAnswer, correctAnswer, score);
+//        resultService.create(result);
     }
 
 }

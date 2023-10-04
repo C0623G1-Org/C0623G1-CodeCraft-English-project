@@ -13,13 +13,14 @@ import java.util.List;
 
 public class ResultRepositoryImpl implements IResultRepository {
     private static final String SELECT = "SELECT \n" +
-            "ch.ten_cau_hoi,\n" +
-            "kq.dap_an_chon,\n" +
-            "kq.dap_an_dung,\n" +
-            "kq.diem\n" +
-            "FROM ket_qua kq\n" +
-            "JOIN cau_hoi ch ON kq.ma_cau_hoi=ch.ma_cau_hoi\n" +
-            "WHERE kq.ma_lich_su=1;";
+            "q.question_id,\n" +
+            "q.question_content,\n" +
+            "r.choosen_answer,\n" +
+            "q.correct_answer,\n" +
+            "r.score\n" +
+            "FROM results r\n" +
+            "JOIN questions q ON r.question_id=q.question_id\n" +
+            "WHERE r.history_id=?;";
 
     @Override
     public List<Result> getAll() {
@@ -30,11 +31,12 @@ public class ResultRepositoryImpl implements IResultRepository {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SELECT);
             while (resultSet.next()) {
-                String tenCauHoi = resultSet.getNString("ten_cau_hoi");
-                String dapAnChon = resultSet.getNString("dap_an_chon");
-                String dapAnDung = resultSet.getNString("dap_an_dung");
-                int diem = resultSet.getInt("diem");
-                result = new Result(tenCauHoi, dapAnChon, dapAnDung, diem);
+                int questionId = resultSet.getInt("question_id");
+                String question = resultSet.getNString("question_content");
+                String seletectedAnswer = resultSet.getNString("choosen_answer");
+                String rightAnswer = resultSet.getNString("correct_answer");
+                int score = resultSet.getInt("score");
+                result = new Result(questionId, question, seletectedAnswer, rightAnswer,score);
                 resultList.add(result);
             }
         } catch (SQLException e) {
