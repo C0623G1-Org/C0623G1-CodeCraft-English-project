@@ -5,12 +5,16 @@ import com.example.english.model.User;
 import java.sql.SQLException;
 
 public interface IUserRepository {
-    void signup(User user);
+    boolean signup(User user);
 
     User login(String loginId, String password);
 
     void editUser(User user);
 
     void deleteUser(int userId);
+
+    boolean forgetPassword(String email, String newPassword, String confirmPassword);
+
     User getByIdUser(int id);
+
 }
