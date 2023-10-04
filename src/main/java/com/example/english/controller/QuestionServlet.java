@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "QuestionServlet", value = "/question-servlet")
@@ -21,7 +22,9 @@ public class QuestionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-
+//        if(action==null){
+//            action="";
+//        }
         action = action == null ? "" : action;
         switch (action) {
             case "create-test":
@@ -52,13 +55,13 @@ public class QuestionServlet extends HttpServlet {
         String level = request.getParameter("level");
         List<Question> questionList = null;
         switch (level) {
-            case "easy" :
+            case "easy":
                 questionList = questionService.createEasyTest();
                 break;
-            case "medium" :
+            case "medium":
                 questionList = questionService.createMediumTest();
                 break;
-            case "hard" :
+            case "hard":
                 questionList = questionService.createHardTest();
                 break;
             default:
@@ -78,6 +81,20 @@ public class QuestionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        action = action == null ? "" : action;
+        switch (action) {
+            case "submit":
+                submit(request, response);
+                break;
+            default:
+                showQuestionList(request, response);
+                break;
+
+        }
+    }
+
+    private void submit(HttpServletRequest request, HttpServletResponse response) {
 
     }
 }
