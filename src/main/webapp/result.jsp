@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="/?action=ketqua" method="post">
+<form action="/?action=submit" method="post">
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid" id="navbarMain">
@@ -74,12 +74,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${result}" var="result" varStatus="look">
+                <c:forEach items="${resultList}" var="result" varStatus="look">
                     <tr class="table-warning">
                         <th scope="row">Câu ${look.count}</th>
                         <td>${result.question}</td>
-                        <td>${result.seletectedAnswer}</td>
-                        <td>${result.correctAnswer}</td>
+                        <td>${result.selectedAnswer}</td>
+                        <td>${result.rightAnswer}</td>
                         <td>${result.score}</td>
                     </tr>
                 </c:forEach>
