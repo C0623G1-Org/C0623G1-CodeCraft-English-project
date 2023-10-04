@@ -30,17 +30,35 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">GIỚI THIỆU </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        LUYỆN ĐỀ
-                    </a>
-                    <ul class="dropdown-menu" style="padding-right: 40px;">
-                        <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
-                        <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
-                        <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
-                    </ul>
-                </li>
+                <c:choose>
+                    <c:when test="${user == null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                LUYỆN ĐỀ
+                            </a>
+                            <ul class="dropdown-menu" style="padding-right: 40px;">
+                                <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
+                                <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
+                                <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
+                            </ul>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                LUYỆN ĐỀ
+                            </a>
+                            <ul class="dropdown-menu" style="padding-right: 40px;">
+                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=easy" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
+                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=medium" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
+                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=hard" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
+                            </ul>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
             </ul>
             <c:choose>
                 <c:when test="${user == null}">
