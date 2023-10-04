@@ -22,38 +22,39 @@
 <%--private String answerC;--%>
 <%--private String answerD;--%>
 <%--private String rightAnswer;--%>
-<table border="1px">
-    <thead>
-    <tr>
-        <th>STT</th>
-        <th>Mức độ câu hỏi</th>
-        <th>Câu hỏi</th>
-        <th>Đáp án A</th>
-        <th>Đáp án B</th>
-        <th>Đáp án C</th>
-        <th>Đáp án D</th>
-        <th>Đáp án đúng</th>
+<%--<table border="1px">--%>
+<%--    <thead>--%>
+<%--    <tr>--%>
+<%--        <th>STT</th>--%>
+<%--        <th>Mức độ câu hỏi</th>--%>
+<%--        <th>Câu hỏi</th>--%>
+<%--        <th>Đáp án A</th>--%>
+<%--        <th>Đáp án B</th>--%>
+<%--        <th>Đáp án C</th>--%>
+<%--        <th>Đáp án D</th>--%>
+<%--        <th>Đáp án đúng</th>--%>
 
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="qs" items="${questionList}" varStatus="loop">
-        <tr>
-            <td>${loop.count}</td>
-            <td>${qs.levelId}</td>
-            <td>${qs.question}</td>
-            <td>${qs.answerA}</td>
-            <td>${qs.answerB}</td>
-            <td>${qs.answerC}</td>
-            <td>${qs.answerD}</td>
-            <td>${qs.rightAnswer}</td>
-                <%--            <td><a href="/?action=select&id=${qs.id}">User detail</a></td>--%>
-                <%--            <td><a href="/?action=delete&id=${qs.id}">Delete</a></td>--%>
-                <%--            <td><a href="/?action=edit&id=${qs.id}">Update</a></td>--%>
-        </tr>
-    </c:forEach>
-    </tbody>
+<%--    </tr>--%>
+<%--    </thead>--%>
+<%--    <tbody>--%>
+<%--    <c:forEach var="qs" items="${questionList}" varStatus="loop">--%>
+<%--        <tr>--%>
+<%--            <td>${loop.count}</td>--%>
+<%--            <td>${qs.levelId}</td>--%>
+<%--            <td>${qs.question}</td>--%>
+<%--            <td>${qs.answerA}</td>--%>
+<%--            <td>${qs.answerB}</td>--%>
+<%--            <td>${qs.answerC}</td>--%>
+<%--            <td>${qs.answerD}</td>--%>
+<%--            <td>${qs.rightAnswer}</td>--%>
+<%--                &lt;%&ndash;            <td><a href="/?action=select&id=${qs.id}">User detail</a></td>&ndash;%&gt;--%>
+<%--                &lt;%&ndash;            <td><a href="/?action=delete&id=${qs.id}">Delete</a></td>&ndash;%&gt;--%>
+<%--                &lt;%&ndash;            <td><a href="/?action=edit&id=${qs.id}">Update</a></td>&ndash;%&gt;--%>
+<%--        </tr>--%>
+<%--    </c:forEach>--%>
+<%--    </tbody>--%>
 </table>
+
 
 </body>
 </html>
