@@ -21,14 +21,14 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
             ResultSet resultSet = statement.executeQuery(SELECT_ALL_QUESTIONS);
             while (resultSet.next()) {
                 int id = resultSet.getInt("ma_cau_hoi");
-                int levelId = resultSet.getInt("ma_do_kho");
+//                int levelId = resultSet.getInt("ma_do_kho");
                 String question = resultSet.getString("ten_cau_hoi");
                 String answerA = resultSet.getString("dap_an_a");
                 String answerB = resultSet.getString("dap_an_b");
                 String answerC = resultSet.getString("dap_an_c");
                 String answerD = resultSet.getString("dap_an_d");
                 String rightAnswer = resultSet.getString("dap_an_dung");
-                questionList.add(new Question(id, levelId, question, answerA, answerB, answerC, answerD, rightAnswer));
+                questionList.add(new Question(id, question, answerA, answerB, answerC, answerD, rightAnswer));
             }
 
         } catch (SQLException e) {
@@ -56,14 +56,14 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
             ResultSet resultSet = call.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("question_id");
-                int levelId = resultSet.getInt("diff_id");
+//                int levelId = resultSet.getInt("diff_id");
                 String question = resultSet.getString("question_content");
                 String answerA = resultSet.getString("answer_a");
                 String answerB = resultSet.getString("answer_b");
                 String answerC = resultSet.getString("answer_c");
                 String answerD = resultSet.getString("answer_d");
                 String rightAnswer = resultSet.getString("correct_answer");
-                questionList.add(new Question(id, levelId, question, answerA, answerB, answerC, answerD, rightAnswer));
+                questionList.add(new Question(id, question, answerA, answerB, answerC, answerD, rightAnswer));
             }
 
         } catch (SQLException e) {
@@ -84,14 +84,14 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("question_id");
-                int levelId = resultSet.getInt("diff_id");
+//                int levelId = resultSet.getInt("diff_id");
                 String question = resultSet.getString("question_content");
                 String answerA = resultSet.getString("answer_a");
                 String answerB = resultSet.getString("answer_b");
                 String answerC = resultSet.getString("answer_c");
                 String answerD = resultSet.getString("answer_d");
                 String rightAnswer = resultSet.getString("correct_answer");
-                questionList.add(new Question(id, levelId, question, answerA, answerB, answerC, answerD, rightAnswer));
+                questionList.add(new Question(id, question, answerA, answerB, answerC, answerD, rightAnswer));
             }
 
         } catch (SQLException e) {
@@ -112,14 +112,14 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("question_id");
-                int levelId = resultSet.getInt("diff_id");
+//                int levelId = resultSet.getInt("diff_id");
                 String question = resultSet.getString("question_content");
                 String answerA = resultSet.getString("answer_a");
                 String answerB = resultSet.getString("answer_b");
                 String answerC = resultSet.getString("answer_c");
                 String answerD = resultSet.getString("answer_d");
                 String rightAnswer = resultSet.getString("correct_answer");
-                questionList.add(new Question(id, levelId, question, answerA, answerB, answerC, answerD, rightAnswer));
+                questionList.add(new Question(id, question, answerA, answerB, answerC, answerD, rightAnswer));
             }
 
         } catch (SQLException e) {

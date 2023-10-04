@@ -67,39 +67,40 @@
             <c:forEach var="qs" items="${questionList}" varStatus="loop">
                 <div class="form-group">
                     <label for="${qs.question}"
-                           class="font-weight-bold text-capitalize">${loop.count}) ${qs.question}</label>
+                           class="font-weight-bold text">${loop.count}) ${qs.question}</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="question_group_1" id="question_1_1"
+                        <input class="form-check-input" type="radio" name="${loop.count}" id=" ${loop.count}"
                                value="option1">
-                        <label class="form-check-label" for="question_1_1">
+                        <label class="form-check-label" for="${loop.count}">
                                 ${qs.answerA}
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="question_group_1" id="question_1_2"
+                        <input class="form-check-input" type="radio" name="${loop.count}" id="${loop.count}"
                                value="option2">
-                        <label class="form-check-label" for="question_1_2">
+                        <label class="form-check-label" for="${loop.count}">
                                 ${qs.answerB}
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="question_group_1" id="question_1_3"
+                        <input class="form-check-input" type="radio" name="${loop.count}" id="${loop.count}"
                                value="option3">
-                        <label class="form-check-label" for="question_1_3">
+                        <label class="form-check-label" for="${loop.count}">
                                 ${qs.answerC}
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="question_group_1" id="question_1_4"
+                        <input class="form-check-input" type="radio" name="${loop.count}" id="${loop.count}"
                                value="option4">
-                        <label class="form-check-label" for="question_1_3">
+                        <label class="form-check-label" for="${loop.count}">
                                 ${qs.answerD}
                         </label>
                     </div>
                 </div>
+
             </c:forEach>
+            <button type="submit" name="submit" onclick="sendInformationToResult('${qs.question}','${loop.count}')">Chấm điểm</button>
         </form>
-        <button type="submit" name="submit">Chấm điểm</button>
     </div>
 </div>
 <div class="footer">

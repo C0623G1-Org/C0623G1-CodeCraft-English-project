@@ -128,3 +128,15 @@ VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
        (3, "This library card will give you free access____the Internet eight hours a day","on","to","from","in","to"),
        (3, "She had to hand in her notice____advance when she decided to leave the job","with","from","in","to","in"),
        (3, "Young people have become increasingly commited____social activities","of","to","in","at","to");
+
+DELIMITER $$
+CREATE PROCEDURE create_practice_list(diff_id INT)
+BEGIN
+SELECT qs.*, dt.diff_name
+FROM questions AS qs
+         LEFT JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
+WHERE qs.diff_id = diff_id
+ORDER BY RAND() LIMIT 10;
+END $$
+DELIMITER ;
+CALL create_practice_list(1);
