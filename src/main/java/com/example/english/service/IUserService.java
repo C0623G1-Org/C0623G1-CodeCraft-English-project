@@ -2,8 +2,6 @@ package com.example.english.service;
 
 import com.example.english.model.User;
 
-import java.sql.SQLException;
-
 public interface IUserService {
     void signup(User user);
 

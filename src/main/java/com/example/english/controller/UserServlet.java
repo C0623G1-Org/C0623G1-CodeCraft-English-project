@@ -76,10 +76,17 @@ public class UserServlet extends HttpServlet {
             case "signup":
                 signup(request, response);
                 break;
+            case "forget-password":
+                forgetPassword(request, response);
+                break;
             case "edit":
                 editUserById(request,response);
                 break;
         }
+    }
+
+    private void forgetPassword(HttpServletRequest request, HttpServletResponse response) {
+
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
