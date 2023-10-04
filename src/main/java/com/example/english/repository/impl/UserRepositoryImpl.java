@@ -12,7 +12,7 @@ public class UserRepositoryImpl implements IUserRepository {
     private static final String SQL_USERNAME = "root";
     private static final String SQL_PASSWORD = "123456";
     private static final String SQL_URL = "jdbc:mysql://localhost:3306/?user=root";
-    private static final String SIGNUP_SQL = "INSERT INTO case_study.nguoi_dung(user_name, email, dob, login_id, password) VALUES (?, ?, ?, ?, ?);";
+    private static final String SIGNUP_SQL = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
 
     public UserRepositoryImpl() {
     }
@@ -32,11 +32,12 @@ public class UserRepositoryImpl implements IUserRepository {
     public void signup(User user) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_SQL)) {
-            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(1, user.getLoginId());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getDob());
             preparedStatement.setString(4, user.getLoginId());
             preparedStatement.setString(5, user.getPassword());
+            preparedStatement.setString(6, "SIMPLE_USER");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

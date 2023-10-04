@@ -8,11 +8,18 @@
     padding: 0 !important;
 }
 
+
 #navbarMain {
-    padding: 30px;
-    background: #29313c;
+    padding: 25px;
+    background: #1c2630;
     font-size: 1.5em;
     font-weight: 500;
+    transition: 0.5s;
+}
+
+#navbarMain:hover {
+    background: #222c3a;
+    padding-bottom: 30px;
 }
 
 #navbarMain a {
@@ -68,6 +75,14 @@
     position: relative;
     background-position: center;
     background-size: cover;
+}
+
+#carouselCont1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 50px;
 }
 
 #carouselCont {

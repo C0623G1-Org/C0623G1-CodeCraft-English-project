@@ -74,13 +74,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${ketQua}" var="kq" varStatus="look">
+                <c:forEach items="${result}" var="result" varStatus="look">
                     <tr class="table-warning">
                         <th scope="row">Câu ${look.count}</th>
-                        <td>${kq.tenCauHoi}</td>
-                        <td>${kq.dapAnChon}</td>
-                        <td>${kq.dapAnDung}</td>
-                        <td>${kq.diem}</td>
+                        <td>${result.question}</td>
+                        <td>${result.seletectedAnswer}</td>
+                        <td>${result.correctAnswer}</td>
+                        <td>${result.score}</td>
                     </tr>
                 </c:forEach>
                 <tr class="table-primary">

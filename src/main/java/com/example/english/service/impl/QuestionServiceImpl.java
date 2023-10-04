@@ -10,10 +10,6 @@ import java.util.List;
 public class QuestionServiceImpl implements IQuestionService {
     private final IQuestionRepository questionRepository = new QuestionRepositoryImpl();
 
-    @Override
-    public List<Question> findAllQuestion() {
-        return questionRepository.findAllQuestion();
-    }
 
     @Override
     public List<Question> createEasyTest() {
