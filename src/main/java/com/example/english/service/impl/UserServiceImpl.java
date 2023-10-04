@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void editUser(User user) {
-
+        userRepository.editUser(user);
     }
 
     @Override
@@ -29,7 +29,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+
     public boolean forgetPassword(String email, String newPassword, String confirmPassword) {
         return userRepository.forgetPassword(email, newPassword, confirmPassword);
     }
+
+    public User getByIdUser(int id) {
+        return userRepository.getByIdUser(id);
+
+    }
 }
+

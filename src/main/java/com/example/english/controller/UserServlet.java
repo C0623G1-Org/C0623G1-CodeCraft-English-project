@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "UserServlet", value = "")
 public class UserServlet extends HttpServlet {
@@ -24,9 +25,39 @@ public class UserServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "getUser":
+                getUserById(request,response);
+                break;
             default:
                 homePage(request, response);
                 break;
+        }
+    }
+
+    private void getUserById(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            User getIdUser = userService.getByIdUser(id);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
+            request.setAttribute("getIdUser",getIdUser);
+            requestDispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void editUserById(HttpServletRequest request,HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        RequestDispatcher requestDispatcher = null;
+        try {
+            User user = userService.getByIdUser(id);
+            request.setAttribute("user",user);
+            requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -45,6 +76,9 @@ public class UserServlet extends HttpServlet {
                 break;
             case "forget-password":
                 forgetPassword(request, response);
+                break;
+            case "edit":
+                editUserById(request,response);
                 break;
         }
     }
