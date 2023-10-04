@@ -27,4 +27,9 @@ public class UserServiceImpl implements IUserService {
     public void deleteUser(int userId) {
 
     }
+
+    @Override
+    public boolean forgetPassword(String email, String newPassword, String confirmPassword) {
+        return userRepository.forgetPassword(email, newPassword, confirmPassword);
+    }
 }

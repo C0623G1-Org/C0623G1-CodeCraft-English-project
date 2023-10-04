@@ -10,4 +10,5 @@ public interface IUserRepository {
     void editUser(User user);
 
     void deleteUser(int userId);
+    boolean forgetPassword(String email, String newPassword, String confirmPassword);
 }
