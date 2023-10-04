@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <img src="img.jpg" class="rounded-circle" width="150" alt="">
                         <div class="mt-3">
-                            <h3 style="color: white">Khoa</h3>
+                            <h3 style="color: white">${getIdUser.userName}</h3>
                             <a href="">History</a>
                             <a href="edit_my_page.jsp">Setting</a>
                             <a href="homePage.jsp">Sign Out</a>
@@ -72,7 +72,7 @@
                                 <h5>Full name</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                Le Tu Khoa
+                                ${getIdUser.userName}
                             </div>
                         </div>
                         <hr>
@@ -81,16 +81,16 @@
                                 <h5>Email</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                abc@gmail.com
+                                ${getIdUser.email}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>SĐT</h5>
+                                <h5>DATE OF BIRTH</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                0123456789
+                                ${getIdUser.dob}
                             </div>
                         </div>
                     </div>

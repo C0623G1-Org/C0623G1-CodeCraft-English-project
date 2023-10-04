@@ -46,6 +46,23 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    private void editUserById(HttpServletRequest request,HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        RequestDispatcher requestDispatcher = null;
+        try {
+            User user = userService.getByIdUser(id);
+            request.setAttribute("user",user);
+            requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
+            requestDispatcher.forward(request,response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -58,6 +75,9 @@ public class UserServlet extends HttpServlet {
                 break;
             case "signup":
                 signup(request, response);
+                break;
+            case "edit":
+                editUserById(request,response);
                 break;
         }
     }

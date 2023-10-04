@@ -10,9 +10,9 @@ public class UserRepositoryImpl implements IUserRepository {
     private static final String SQL_PASSWORD = "06061998";
     private static final String SQL_URL = "jdbc:mysql://localhost:3306/case_study_english";
     private static final String SIGNUP_SQL = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
-    private static final String GET_USER_BY_ID = "select user_id, userName, email, login_password from users\n" +
+    private static final String GET_USER_BY_ID = "select * from users\n" +
             "where user_id = ?";
-    private static final String UPDATE_USER = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
+    private static final String UPDATE_USER = "update users set display_name = ?,email= ?, dob =?,login_password =? where user_id = ?;";
 
     private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";
     public UserRepositoryImpl() {
@@ -69,7 +69,17 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public void editUser(User user) {
-
+        try(Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER)) {
+            preparedStatement.setString(1,user.getUserName());
+            preparedStatement.setString(2,user.getEmail());
+            preparedStatement.setString(3,user.getDob());
+            preparedStatement.setString(4,user.getPassword());
+            preparedStatement.setInt(5,user.getUserId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -84,18 +94,18 @@ public class UserRepositoryImpl implements IUserRepository {
         statement.setInt(1, id);
 
         ResultSet resultSet = statement.executeQuery();
-
         if (resultSet.next()) {
             int user_id = resultSet.getInt("user_id");
             String userName = resultSet.getString("userName");
             String email = resultSet.getString("email");
+            String dob = resultSet.getString("dob");
+            String loginId = resultSet.getString("loginId");
             String login_password = resultSet.getString("login_password");
-            user = new User(user_id,userName,email,login_password);
+            String role = resultSet.getString("role");
+            user = new User(user_id,userName,email,dob,loginId,login_password,role);
         }
-
         resultSet.close();
         statement.close();
-
         return user;
     }
 }
