@@ -3,16 +3,16 @@ package com.example.english.repository.impl;
 import com.example.english.model.User;
 import com.example.english.repository.IUserRepository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserRepositoryImpl implements IUserRepository {
     private static final String SQL_USERNAME = "root";
-    private static final String SQL_PASSWORD = "123456";
-    private static final String SQL_URL = "jdbc:mysql://localhost:3306/?user=root";
+    private static final String SQL_PASSWORD = "06061998";
+    private static final String SQL_URL = "jdbc:mysql://localhost:3306/case_study_english";
     private static final String SIGNUP_SQL = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
+    private static final String GET_USER_BY_ID = "select user_id, userName, email, login_password from users\n" +
+            "where user_id = ?";
+    private static final String UPDATE_USER = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
 
     public UserRepositoryImpl() {
     }
@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements IUserRepository {
     @Override
     public void signup(User user) {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_SQL)) {
+                 PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_SQL)) {
             preparedStatement.setString(1, user.getUserName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getDob());
@@ -57,5 +57,27 @@ public class UserRepositoryImpl implements IUserRepository {
     @Override
     public void deleteUser(int userId) {
 
+    }
+
+    @Override
+    public User getByIdUser(int id) throws SQLException {
+        User user = null;
+        PreparedStatement statement = getConnection().prepareStatement(GET_USER_BY_ID);
+        statement.setInt(1, id);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet.next()) {
+            int user_id = resultSet.getInt("user_id");
+            String userName = resultSet.getString("userName");
+            String email = resultSet.getString("email");
+            String login_password = resultSet.getString("login_password");
+            user = new User(user_id,userName,email,login_password);
+        }
+
+        resultSet.close();
+        statement.close();
+
+        return user;
     }
 }

@@ -5,6 +5,8 @@ import com.example.english.repository.IUserRepository;
 import com.example.english.repository.impl.UserRepositoryImpl;
 import com.example.english.service.IUserService;
 
+import java.sql.SQLException;
+
 public class UserServiceImpl implements IUserService {
     private final IUserRepository userRepository = new UserRepositoryImpl();
 
@@ -20,11 +22,16 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void editUser(User user) {
-
+        userRepository.editUser(user);
     }
 
     @Override
     public void deleteUser(int userId) {
 
+    }
+
+    @Override
+    public User getByIdUser(int id) throws SQLException {
+        return userRepository.getByIdUser(id);
     }
 }

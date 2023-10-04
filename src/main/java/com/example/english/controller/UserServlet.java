@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "UserServlet", value = "")
 public class UserServlet extends HttpServlet {
@@ -23,9 +24,24 @@ public class UserServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "getUser":
+                getUserById(request,response);
+                break;
             default:
                 homePage(request, response);
                 break;
+        }
+    }
+
+    private void getUserById(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            User getIdUser = userService.getByIdUser(id);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
+            request.setAttribute("getIdUser",getIdUser);
+            requestDispatcher.forward(request,response);
+        } catch (SQLException | ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
