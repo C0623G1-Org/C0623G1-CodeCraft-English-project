@@ -5,9 +5,9 @@ public class User {
     private String userName;
     private String email;
     private String dob;
-    private String loginId;
-    private String password;
-    private String role;
+    private String loginId; //ko dc edit
+    private String password; // ko dc hien thi
+    private String role; // ko dc edit
 
     public User() {
     }
@@ -74,5 +74,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
     }
 }

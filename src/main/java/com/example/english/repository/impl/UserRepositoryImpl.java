@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class UserRepositoryImpl implements IUserRepository {
     private static final String SQL_USERNAME = "root";
-    private static final String SQL_PASSWORD = "123456";
+    private static final String SQL_PASSWORD = "root@123";
     private static final String SQL_URL = "jdbc:mysql://localhost:3306/?user=root";
     private static final String SIGNUP_SQL = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
     private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";

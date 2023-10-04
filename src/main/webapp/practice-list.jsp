@@ -46,7 +46,7 @@
             <!--      <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user"><i class="fa-regular fa-user"></i> Đăng nhập</a>-->
             <ul class="nav-item dropdown" id="user_name">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                   aria-expanded="false">Tên user
+                   aria-expanded="false">${user.userName}
                 </a>
                 <i class="fa-regular fa-user"></i>
                 <ul class="dropdown-menu">
