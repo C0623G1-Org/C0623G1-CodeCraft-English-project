@@ -51,12 +51,12 @@ public class ResultServlet extends HttpServlet {
     }
 
     private void result(HttpServletRequest request, HttpServletResponse response) {
-        String question = request.getParameter("question");
-        String seletectedAnswer = request.getParameter("seletectedAnswer");
-        String correctAnswer = request.getParameter("correctAnswer");
-        int score = Integer.parseInt(request.getParameter("score"));
-        Result result = new Result(question, seletectedAnswer, correctAnswer, score);
-        resultService.create(result);
+//        String question = request.getParameter("question");
+//        String seletectedAnswer = request.getParameter("seletectedAnswer");
+//        String correctAnswer = request.getParameter("correctAnswer");
+//        int score = Integer.parseInt(request.getParameter("score"));
+//        Result result = new Result(question, seletectedAnswer, correctAnswer, score);
+//        resultService.create(result);
     }
 
 }

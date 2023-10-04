@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface IQuestionService {
 
-    List<Question> findAllQuestion();
     List<Question> createEasyTest();
     List<Question> createMediumTest();
     List<Question> createHardTest();

@@ -67,36 +67,37 @@
 <%--    Content--%>
     <div class="container-fluid" id="page_body">
         <h3>Làm bài</h3>
-        <form action="/question-servlet?action=submit">
+        <form action="/question-servlet?action=submit" method="post">
             <c:forEach var="qs" items="${questionList}" varStatus="loop">
                 <div class="form-group">
                     <label for="${qs.question}"
-                           class="font-weight-bold text-capitalize"> ${loop.count} ${qs.question})
+                           class="font-weight-bold text-capitalize"> ${loop.count} ${qs.question}
                     </label>
+                    <input type="hidden" name="questionId" value="${qs.id}">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answer_${qs.id}" id="answerA_${qs.id}"
-                               value="option1">
+                               value="${qs.answerA}">
                         <label class="form-check-label" for="${loop.count})">
                                 ${qs.answerA}
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answer_${qs.id}" id="answerB_${qs.id}"
-                               value="option2">
+                               value="${qs.answerB}">
                         <label class="form-check-label" for="${loop.count})">
                                 ${qs.answerB}
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answer_${qs.id}" id="answerC_${qs.id}"
-                               value="option3">
+                               value="${qs.answerC}">
                         <label class="form-check-label" for="${loop.count})">
                                 ${qs.answerC}
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answer_${qs.id}" id="answerD_${qs.id}"
-                               value="option4">
+                               value=" ${qs.answerD}">
                         <label class="form-check-label" for="${loop.count})">
                                 ${qs.answerD}
                         </label>
