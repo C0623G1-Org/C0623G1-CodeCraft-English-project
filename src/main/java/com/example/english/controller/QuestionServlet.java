@@ -23,16 +23,13 @@ public class QuestionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-//        if(action==null){
-//            action="";
-//        }
         action = action == null ? "" : action;
         switch (action) {
             case "create-test":
                 createTest(request, response);
                 break;
             default:
-//                showQuestionList(request, response);
+
                 break;
         }
     }
@@ -42,20 +39,8 @@ public class QuestionServlet extends HttpServlet {
 
     private void createTest(HttpServletRequest request, HttpServletResponse response) {
         String level = request.getParameter("level");
-        List<Question> questionList = null;
-        switch (level) {
-            case "easy":
-                questionList = questionService.createEasyTest();
-                break;
-            case "medium":
-                questionList = questionService.createMediumTest();
-                break;
-            case "hard":
-                questionList = questionService.createHardTest();
-                break;
-            default:
-                break;
-        }
+        List<Question> questionList = questionService.createTest(level);
+
         request.setAttribute("questionList", questionList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("practice-list.jsp");
 
