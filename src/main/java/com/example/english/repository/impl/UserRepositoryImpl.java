@@ -27,21 +27,25 @@ public class UserRepositoryImpl implements IUserRepository {
     }
 
     @Override
-    public void signup(User user) {
+    public boolean signup(User user) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SIGNUP_SQL)) {
             User checkUser = findUserByEmail(user.getEmail());
-            if ()
-            preparedStatement.setString(1, user.getLoginId());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getDob());
-            preparedStatement.setString(4, user.getLoginId());
-            preparedStatement.setString(5, user.getPassword());
-            preparedStatement.setString(6, "SIMPLE_USER");
-            preparedStatement.executeUpdate();
+            if (checkUser == null) {
+                preparedStatement.setString(1, user.getLoginId());
+                preparedStatement.setString(2, user.getEmail());
+                preparedStatement.setString(3, user.getDob());
+                preparedStatement.setString(4, user.getLoginId());
+                preparedStatement.setString(5, user.getPassword());
+                preparedStatement.setString(6, "SIMPLE_USER");
+                preparedStatement.executeUpdate();
+                return true;
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
 
     @Override

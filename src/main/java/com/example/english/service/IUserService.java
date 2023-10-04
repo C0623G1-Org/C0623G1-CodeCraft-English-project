@@ -3,7 +3,7 @@ package com.example.english.service;
 import com.example.english.model.User;
 
 public interface IUserService {
-    void signup(User user);
+    boolean signup(User user);
 
     User login(String loginId, String password);
 

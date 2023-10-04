@@ -3,7 +3,7 @@ package com.example.english.repository;
 import com.example.english.model.User;
 
 public interface IUserRepository {
-    void signup(User user);
+    boolean signup(User user);
 
     User login(String loginId, String password);
 

@@ -9,8 +9,8 @@ public class UserServiceImpl implements IUserService {
     private final IUserRepository userRepository = new UserRepositoryImpl();
 
     @Override
-    public void signup(User user) {
-        userRepository.signup(user);
+    public boolean signup(User user) {
+        return userRepository.signup(user);
     }
 
     @Override
