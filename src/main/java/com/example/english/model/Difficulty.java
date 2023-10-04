@@ -15,4 +15,20 @@ public class Difficulty {
         this.diffId = diffId;
         this.diffName = diffName;
     }
+
+    public int getDiffId() {
+        return diffId;
+    }
+
+    public void setDiffId(int diffId) {
+        this.diffId = diffId;
+    }
+
+    public String getDiffName() {
+        return diffName;
+    }
+
+    public void setDiffName(String diffName) {
+        this.diffName = diffName;
+    }
 }

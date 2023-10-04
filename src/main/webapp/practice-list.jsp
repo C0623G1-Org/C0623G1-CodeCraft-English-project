@@ -74,6 +74,7 @@
                            class="font-weight-bold text-capitalize"> ${loop.count} ${qs.question}
                     </label>
                     <input type="hidden" name="questionId" value="${qs.id}">
+                    <input type="hidden" name="levelId" value="${qs.levelId}">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answer_${qs.id}" id="answerA_${qs.id}"
                                value="${qs.answerA}">

@@ -15,6 +15,11 @@ public class Result {
         this.score = score;
     }
 
+    public Result(int questionId, String seletectedAnswer) {
+        this.questionId = questionId;
+        this.seletectedAnswer = seletectedAnswer;
+    }
+
     public Result(int questionId, String seletectedAnswer, int score) {
         this.questionId = questionId;
         this.seletectedAnswer = seletectedAnswer;

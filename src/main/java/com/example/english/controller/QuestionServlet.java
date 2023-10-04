@@ -23,9 +23,6 @@ public class QuestionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-//        if(action==null){
-//            action="";
-//        }
         action = action == null ? "" : action;
         switch (action) {
             case "create-test":
@@ -39,23 +36,10 @@ public class QuestionServlet extends HttpServlet {
 //    practice-list.jsp/?action=create-test&level=easy
 
 
-
     private void createTest(HttpServletRequest request, HttpServletResponse response) {
         String level = request.getParameter("level");
-        List<Question> questionList = null;
-        switch (level) {
-            case "easy":
-                questionList = questionService.createEasyTest();
-                break;
-            case "medium":
-                questionList = questionService.createMediumTest();
-                break;
-            case "hard":
-                questionList = questionService.createHardTest();
-                break;
-            default:
-                break;
-        }
+        List<Question> questionList = questionService.createTest(level);
+
         request.setAttribute("questionList", questionList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("practice-list.jsp");
 
@@ -67,6 +51,7 @@ public class QuestionServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -84,11 +69,13 @@ public class QuestionServlet extends HttpServlet {
     }
 
     private void submit(HttpServletRequest request, HttpServletResponse response) {
+        String level = request.getParameter("level");
         List<Result> resultList = new ArrayList<>();
-        String [] questionId = (request.getParameterMap().get("questionId"));
-        for (String id: questionId){
-            String seletectedAnswer = request.getParameter("answer_" +id);
-            System.out.println(id +"dap an: " + seletectedAnswer);
+        String[] questionId = request.getParameterMap().get("questionId");
+        for (String id : questionId) {
+            String seletectedAnswer = request.getParameter("answer_" + id);
+            resultList.add(new Result(Integer.parseInt(id), seletectedAnswer));
+
         }
     }
 }
