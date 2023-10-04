@@ -5,7 +5,7 @@ import com.example.english.model.User;
 public interface IUserService {
     void signup(User user);
 
-    Boolean login(String loginId, String password);
+    User login(String loginId, String password);
 
     void editUser(User user);
 

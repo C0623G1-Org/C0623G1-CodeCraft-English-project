@@ -18,6 +18,7 @@
 <body>
 <form action="/?action=login" method="post">
     <h2>ĐĂNG NHẬP</h2>
+    <p style="color:red;">${error}</p>
     <div class="inputBox">
         <input type="text" name="loginId" placeholder="Username" value="${name}" required>
     </div>

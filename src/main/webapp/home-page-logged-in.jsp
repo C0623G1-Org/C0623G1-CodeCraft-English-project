@@ -46,10 +46,10 @@
             </ul>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                    USER NAME
+                   aria-expanded="false"><i class="fa-regular fa-user"></i>
+                    ${user.userName}
                 </a>
-                <ul class="dropdown-menu" style="padding-right: 40px;">
+                <ul class="dropdown-menu" style="padding-right: 40px; list-style: none">
                     <li><a class="dropdown-item" href="#" style="color: #000000;">Hồ sơ</a></li>
                     <li><a class="dropdown-item" href="#" style="color: #000000;">Đăng xuất</a></li>
                 </ul>
