@@ -5,7 +5,7 @@ import com.example.english.model.Question;
 import java.util.List;
 
 public interface IQuestionRepository {
-    List<Question> findAllQuestion();
+//    List<Question> findAllQuestion();
 
     List<Question> createEasyTest();
     List<Question> createMediumTest();
