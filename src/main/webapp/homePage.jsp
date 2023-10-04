@@ -14,41 +14,7 @@
 </head>
 
 <body>
-
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid" id="navbarMain">
-        <a class="navbar-brand" href="#"><i class="fa-solid fa-book"></i></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">TRANG CHỦ </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">GIỚI THIỆU </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        LUYỆN ĐỀ
-                    </a>
-                    <ul class="dropdown-menu" style="padding-right: 40px;">
-                        <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
-                        <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
-                        <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <a href="login.jsp" role="button" class="btn btn-lg btn-primary" id="user"><i
-                    class="fa-regular fa-user"></i> ĐĂNG NHẬP</a>
-        </div>
-    </div>
-</nav>
+<c:import url="header.jsp"></c:import>
 <!-- CAROUSEL -->
 <div>
     <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">

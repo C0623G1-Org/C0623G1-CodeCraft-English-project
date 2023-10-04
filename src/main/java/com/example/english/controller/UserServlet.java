@@ -92,7 +92,7 @@ public class UserServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home-page-logged-in.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
             requestDispatcher.forward(request, response);
         } else {
             String error  = "Sai tên đăng nhập hoặc mật khẩu";
