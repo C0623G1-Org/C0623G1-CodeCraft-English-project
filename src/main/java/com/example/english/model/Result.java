@@ -3,21 +3,41 @@ package com.example.english.model;
 public class Result {
     private int questionId;
     private String question;
-    private String seletectedAnswer;
+    private String selectedAnswer;
     private String rightAnswer;
+
     private int score;
+
+    public Result(int questionId, String question, String seletectedAnswer, String rightAnswer) {
+        this.questionId = questionId;
+        this.question = question;
+        this.selectedAnswer = seletectedAnswer;
+        this.rightAnswer = rightAnswer;
+    }
 
     public Result(int questionId, String question, String seletectedAnswer, String rightAnswer, int score) {
         this.questionId = questionId;
         this.question = question;
-        this.seletectedAnswer = seletectedAnswer;
+        this.selectedAnswer = seletectedAnswer;
         this.rightAnswer = rightAnswer;
         this.score = score;
     }
 
     public Result(int questionId, String seletectedAnswer, int score) {
         this.questionId = questionId;
-        this.seletectedAnswer = seletectedAnswer;
+        this.selectedAnswer = seletectedAnswer;
+        this.score = score;
+    }
+
+    public Result(int questionId, String seletectedAnswer) {
+        this.questionId = questionId;
+        this.selectedAnswer = seletectedAnswer;
+    }
+
+    public Result(String question, String selectedAnswer, String rightAnswer, int score) {
+        this.question = question;
+        this.selectedAnswer = selectedAnswer;
+        this.rightAnswer = rightAnswer;
         this.score = score;
     }
 
@@ -37,12 +57,12 @@ public class Result {
         this.question = question;
     }
 
-    public String getSeletectedAnswer() {
-        return seletectedAnswer;
+    public String getSelectedAnswer() {
+        return selectedAnswer;
     }
 
-    public void setSeletectedAnswer(String seletectedAnswer) {
-        this.seletectedAnswer = seletectedAnswer;
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
     }
 
     public String getRightAnswer() {

@@ -11,19 +11,18 @@ public class Question {
 //    correct_answer VARCHAR(100) NOT NULL,
 //    FOREIGN KEY(diff_id) REFERENCES difficulty(diff_id)
     private int id;
-    private int levelId;
     private String question;
     private String answerA;
     private String answerB;
     private String answerC;
     private String answerD;
     private String rightAnswer;
+    private Difficulty difficulty;
 
 
 
-    public Question(int id, int levelId, String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer, Difficulty difficulty) {
+    public Question(int id, String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer, Difficulty difficulty) {
         this.id = id;
-        this.levelId = levelId;
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
@@ -33,14 +32,13 @@ public class Question {
         this.difficulty = difficulty;
     }
 
-    private Difficulty difficulty;
+
 
     public Question() {
 
     }
 
-    public Question(int levelId, String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer) {
-        this.levelId = levelId;
+    public Question(String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer) {
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
@@ -49,9 +47,8 @@ public class Question {
         this.rightAnswer = rightAnswer;
     }
 
-    public Question(int id, int levelId, String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer) {
+    public Question(int id, String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer) {
         this.id = id;
-        this.levelId = levelId;
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
@@ -68,13 +65,6 @@ public class Question {
         this.id = id;
     }
 
-    public int getLevelId() {
-        return levelId;
-    }
-
-    public void setLevelId(int levelId) {
-        this.levelId = levelId;
-    }
 
     public String getQuestion() {
         return question;

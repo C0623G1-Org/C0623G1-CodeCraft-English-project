@@ -151,7 +151,7 @@ public class UserServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home-page-logged-in.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
             requestDispatcher.forward(request, response);
         } else {
             String error  = "Sai tên đăng nhập hoặc mật khẩu";
@@ -167,13 +167,19 @@ public class UserServlet extends HttpServlet {
         String password = request.getParameter("pswd");
         String confirm = request.getParameter("cfrm pswd");
         String error = "Xác nhận mật khẩu không chính xác";
+        String emailExist = "Địa chỉ email đã tồn tại";
         if (password.equals(confirm)) {
             User user = new User(email, name,  password);
-            userService.signup(user);
-            request.setAttribute("name", name);
-            request.setAttribute("password", password);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
-            requestDispatcher.forward(request, response);
+            if (userService.signup(user)) {
+                request.setAttribute("name", name);
+                request.setAttribute("password", password);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                request.setAttribute("error", emailExist);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/reg.jsp");
+                requestDispatcher.forward(request, response);
+            }
         } else {
             request.setAttribute("error", error);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/reg.jsp");

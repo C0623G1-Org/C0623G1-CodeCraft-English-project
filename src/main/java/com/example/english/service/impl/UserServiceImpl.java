@@ -12,8 +12,8 @@ public class UserServiceImpl implements IUserService {
     private final IUserRepository userRepository = new UserRepositoryImpl();
 
     @Override
-    public void signup(User user) {
-        userRepository.signup(user);
+    public boolean signup(User user) {
+        return userRepository.signup(user);
     }
 
     @Override
@@ -32,7 +32,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User getByIdUser(int id){
+
+    public boolean forgetPassword(String email, String newPassword, String confirmPassword) {
+        return userRepository.forgetPassword(email, newPassword, confirmPassword);
+    }
+
+    public User getByIdUser(int id) {
         return userRepository.getByIdUser(id);
     }
 
@@ -46,3 +51,4 @@ public class UserServiceImpl implements IUserService {
         return userRepository.fillEditForm(id);
     }
 }
+

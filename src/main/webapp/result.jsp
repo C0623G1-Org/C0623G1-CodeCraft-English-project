@@ -22,42 +22,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="/?action=ketqua" method="post">
+<form action="/?action=submit" method="post">
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid" id="navbarMain">
-                <a class="navbar-brand" href="#"><i class="fa-solid fa-book"></i></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Trang chủ </a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Luyện đề
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" style="color: #000000;">Làm đề dễ</a></li>
-                                <li><a class="dropdown-item" href="#" style="color: #000000;">Làm đề trung bình</a></li>
-                                <li><a class="dropdown-item" href="#" style="color: #000000;">Làm đề khó</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user">
-                        <i class="fa-regular fa-user"></i>
-                        Trần Văn A
-                    </a>
-                </div>
-            </div>
-        </nav>
+        <c:import url="header.jsp"></c:import>
     </header>
 
     <content class=" border-bottom-2">
@@ -74,12 +41,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${result}" var="result" varStatus="look">
+                <c:forEach items="${resultList}" var="result" varStatus="look">
                     <tr class="table-warning">
                         <th scope="row">Câu ${look.count}</th>
                         <td>${result.question}</td>
-                        <td>${result.seletectedAnswer}</td>
-                        <td>${result.correctAnswer}</td>
+                        <td>${result.selectedAnswer}</td>
+                        <td>${result.rightAnswer}</td>
                         <td>${result.score}</td>
                     </tr>
                 </c:forEach>

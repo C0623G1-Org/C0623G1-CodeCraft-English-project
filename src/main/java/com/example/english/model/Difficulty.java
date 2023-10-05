@@ -7,6 +7,22 @@ public class Difficulty {
     private String diffName;
     public Difficulty(){}
 
+    public int getDiffId() {
+        return diffId;
+    }
+
+    public void setDiffId(int diffId) {
+        this.diffId = diffId;
+    }
+
+    public String getDiffName() {
+        return diffName;
+    }
+
+    public void setDiffName(String diffName) {
+        this.diffName = diffName;
+    }
+
     public Difficulty(String diffName) {
         this.diffName = diffName;
     }
