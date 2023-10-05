@@ -1,9 +1,12 @@
 package com.example.english.controller;
 
+import com.example.english.model.History;
 import com.example.english.model.Question;
 import com.example.english.model.Result;
+import com.example.english.service.IHistoryService;
 import com.example.english.service.IQuestionService;
 import com.example.english.service.IResultService;
+import com.example.english.service.impl.HistoryService;
 import com.example.english.service.impl.QuestionServiceImpl;
 import com.example.english.service.impl.ResultServiceImpl;
 
@@ -15,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,25 +26,12 @@ import java.util.List;
 public class ResultServlet extends HttpServlet {
     private IResultService resultService = new ResultServiceImpl();
     private IQuestionService questionService = new QuestionServiceImpl();
+    private IHistoryService historyService=new HistoryService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        formResult(request, response);
     }
 
-    private void formResult(HttpServletRequest request, HttpServletResponse response) {
-        List<Result> resultList = resultService.getAll();
-        request.setAttribute("totalScore", resultService.score());
-        request.setAttribute("result", resultList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/result.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,9 +40,6 @@ public class ResultServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "result":
-                result(request, response);
-                break;
             case "submit" :
                 try {
                     submit(request, response);
@@ -66,42 +54,41 @@ public class ResultServlet extends HttpServlet {
         }
     }
 
-    private void result(HttpServletRequest request, HttpServletResponse response) {
-//        String question = request.getParameter("question");
-//        String selectedAnswer = request.getParameter("selectedAnswer");
-//        String correctAnswer = request.getParameter("correctAnswer");
-//        int score = Integer.parseInt(request.getParameter("score"));
-//        Result result = new Result(question, selectedAnswer, correctAnswer, score);
-//        resultService.create(result);
-    }
-
     private void submit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        String level = request.getParameter("level");
         List<Result> resultList = new ArrayList<>();
+        List<Result> saveResult = new ArrayList<>();
         String[] questionId = request.getParameterMap().get("questionId");
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        History history = new History(userId,dateTime);
+        historyService.create(history);
         Question question = null;
-        int score = 0;
+        int score ;
         for (String id : questionId) {
             question = questionService.findQuestionById(Integer.parseInt(id));
             String selectedAnswer = request.getParameter("answer_" + id);
             String question_content = question.getQuestion();
             String rightAnswer = question.getRightAnswer();
+            int historyId = historyService.findByDate(dateTime);
 
-            if(selectedAnswer.equals(rightAnswer)) {
+            if(rightAnswer.equals(selectedAnswer)) {
                 score = 1;
-            } else {
-                score = 0;
+            }else {
+                score=0;
             }
             resultList.add(new Result(question_content, selectedAnswer, rightAnswer, score));
-
+            saveResult.add(new Result(Integer.parseInt(id),selectedAnswer,historyId,score));
         }
+        int totalScore = 0;
+        for (Result r:resultList){
+            totalScore+=r.getScore();
+        }
+        request.setAttribute("totalScore",totalScore);
         RequestDispatcher rq = request.getRequestDispatcher("/result.jsp");
         request.setAttribute("resultList", resultList);
         rq.forward(request,response);
+
+        resultService.saveResult(saveResult);
     }
-//    private int questionId;
-//    private String question;
-//    private String seletectedAnswer;
-//    private String rightAnswer;
-//    private int score;
+
 }

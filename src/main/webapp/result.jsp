@@ -24,7 +24,10 @@
 <body>
 <form action="/?action=submit" method="post">
     <header>
+
+
         <c:import url="header.jsp"></c:import>
+
     </header>
 
     <content class=" border-bottom-2">
@@ -54,7 +57,7 @@
                     <td colspan="4">
                         <span style="font-weight: bold">Tổng điểm</span>
                     </td>
-                    <td>${tongDiem}</td>
+                    <td>${totalScore}</td>
                 </tr>
                 </tbody>
             </table>

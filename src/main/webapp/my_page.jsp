@@ -24,7 +24,12 @@
                         <img src="img.jpg" class="rounded-circle" width="150" alt="">
                         <div class="mt-3">
                             <h3 style="color: white">${getIdUser.userName}</h3>
-                            <a href="">History</a>
+<%--                            <a href="/history-servlet">--%>
+<%--                              History</a>--%>
+                            <form action="/history-servlet" >
+                                <input type="hidden" name="userId" value="${user.userId}">
+                                <button type="submit" style="background: #29313c; color: white">History</button>
+                            </form>
                             <a href="edit_my_page.jsp">Setting</a>
                             <a href="homePage.jsp">Sign Out</a>
                         </div>
@@ -67,33 +72,22 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">STT</th>
+                            <th scope="col">Stt</th>
                             <th scope="col">Time</th>
-                            <th scope="col">point</th>
-                            <th scope="col">Topic Type</th>
+                            <th scope="col">Score</th>
                             <th scope="col">Detail</th>
                         </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${historyList}" var="h" varStatus="look">
+                            <th scope="row">${look.count}</th>
+                            <td>${h.date}</td>
+                            <td>${h.totalScore}</td>
+                            <td></td>
+                        </c:forEach>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-<!--                        <tr>-->
-<!--                            <th scope="row">3</th>-->
-<!--                            <td colspan="2">Larry the Bird</td>-->
-<!--                            <td>@twitter</td>-->
-<!--                        </tr>-->
                         </tbody>
                     </table>
                 </div>

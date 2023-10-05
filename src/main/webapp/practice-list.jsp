@@ -12,11 +12,13 @@
     <title>Practice List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="practice-list.css">
-<%--    <link rel="stylesheet" href="style.css">--%>
+    <link rel="stylesheet" href="practice-list.css">
+    <%--    <link rel="stylesheet" href="style.css">--%>
 </head>
 <body>
+
 <c:import url="header.jsp"></c:import>
+
 <%--    Content--%>
 <div class="container-fluid" id="page_body">
     <h3>Làm bài</h3>
@@ -56,11 +58,10 @@
                     </label>
                 </div>
             </div>
-
         </c:forEach>
+        <input type="hidden" name="userId" value="${user.userId}">
         <button type="submit" name="submit">Chấm điểm</button>
     </form>
-</div>
 </div>
 
 <%--Footer--%>
