@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "resultServlet", value = "/result")
@@ -104,4 +105,5 @@ public class ResultServlet extends HttpServlet {
 //    private String seletectedAnswer;
 //    private String rightAnswer;
 //    private int score;
+
 }
