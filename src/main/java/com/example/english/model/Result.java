@@ -5,14 +5,14 @@ public class Result {
     private String question;
     private String selectedAnswer;
     private String rightAnswer;
-
+    private int historyId;
     private int score;
 
-    public Result(int questionId, String question, String seletectedAnswer, String rightAnswer) {
+    public Result(int questionId, String selectedAnswer, int historyId ,int score) {
         this.questionId = questionId;
-        this.question = question;
-        this.selectedAnswer = seletectedAnswer;
-        this.rightAnswer = rightAnswer;
+        this.selectedAnswer = selectedAnswer;
+        this.historyId = historyId;
+        this.score = score;
     }
 
     public Result(int questionId, String question, String seletectedAnswer, String rightAnswer, int score) {
@@ -23,16 +23,6 @@ public class Result {
         this.score = score;
     }
 
-    public Result(int questionId, String seletectedAnswer, int score) {
-        this.questionId = questionId;
-        this.selectedAnswer = seletectedAnswer;
-        this.score = score;
-    }
-
-    public Result(int questionId, String seletectedAnswer) {
-        this.questionId = questionId;
-        this.selectedAnswer = seletectedAnswer;
-    }
 
     public Result(String question, String selectedAnswer, String rightAnswer, int score) {
         this.question = question;
@@ -79,5 +69,13 @@ public class Result {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getHistoryId() {
+        return historyId;
+    }
+
+    public void setHistoryId(int historyId) {
+        this.historyId = historyId;
     }
 }

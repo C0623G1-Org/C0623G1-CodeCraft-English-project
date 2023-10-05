@@ -8,57 +8,30 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="my_page/css_my_page.css">
+    <link rel="stylesheet" href="css_my_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <%--    <script src="../../bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>--%>
 
 </head>
 <body>
-<div class="container-fluid">
-    <div class="main">
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid" id="navbarMain">
-                <a class="navbar-brand" href="#"><i class="fa-solid fa-book"></i></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Trang chủ </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Giới thiệu </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Luyện đề
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" style="color: #000000;">Làm đề dễ</a></li>
-                                <li><a class="dropdown-item" href="#" style="color: #000000;">Làm đề trung bình</a></li>
-                                <li><a class="dropdown-item" href="#" style="color: #000000;">Làm đề khó</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-<!--                    <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user"><i class="fa-regular fa-user"></i> Đăng nhập</a>-->
-                </div>
-            </div>
-        </nav>
+<c:import url="header.jsp"></c:import>
+
         <div class="row">
             <div class="col-md-4 mt-0">
                 <div class="card-left text-center sidebar">
                     <div class="card-body">
-                        <img src="my_page/assets/img.jpg" class="rounded-circle" width="150" alt="">
+                        <img src="img.jpg" class="rounded-circle" width="150" alt="">
                         <div class="mt-3">
-                            <h3 style="color: white">Khoa</h3>
-                            <a href="">History</a>
-                            <a href="">Setting</a>
-                            <a href="">Sign Out</a>
+                            <h3 style="color: white">${getIdUser.userName}</h3>
+<%--                            <a href="/history-servlet">--%>
+<%--                              History</a>--%>
+                            <form action="/history-servlet" >
+                                <input type="hidden" name="userId" value="${user.userId}">
+                                <button type="submit" style="background: #29313c; color: white">History</button>
+                            </form>
+                            <a href="edit_my_page.jsp">Setting</a>
+                            <a href="homePage.jsp">Sign Out</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +45,7 @@
                                 <h5>Full name</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                Le Tu Khoa
+                                ${getIdUser.userName}
                             </div>
                         </div>
                         <hr>
@@ -81,16 +54,16 @@
                                 <h5>Email</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                abc@gmail.com
+                                ${getIdUser.email}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>SĐT</h5>
+                                <h5>DATE OF BIRTH</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                0123456789
+                                ${getIdUser.dob}
                             </div>
                         </div>
                     </div>
@@ -99,33 +72,22 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">STT</th>
+                            <th scope="col">Stt</th>
                             <th scope="col">Time</th>
-                            <th scope="col">point</th>
-                            <th scope="col">Topic Type</th>
+                            <th scope="col">Score</th>
                             <th scope="col">Detail</th>
                         </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${historyList}" var="h" varStatus="look">
+                            <th scope="row">${look.count}</th>
+                            <td>${h.date}</td>
+                            <td>${h.totalScore}</td>
+                            <td></td>
+                        </c:forEach>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-<!--                        <tr>-->
-<!--                            <th scope="row">3</th>-->
-<!--                            <td colspan="2">Larry the Bird</td>-->
-<!--                            <td>@twitter</td>-->
-<!--                        </tr>-->
                         </tbody>
                     </table>
                 </div>

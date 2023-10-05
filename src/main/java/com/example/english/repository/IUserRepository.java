@@ -2,12 +2,19 @@ package com.example.english.repository;
 
 import com.example.english.model.User;
 
-public interface IUserRepository {
-    void signup(User user);
+import java.sql.SQLException;
 
-    boolean login(String loginId, String password);
+public interface IUserRepository {
+    boolean signup(User user);
+
+    User login(String loginId, String password);
 
     void editUser(User user);
 
     void deleteUser(int userId);
+
+    boolean forgetPassword(String email, String username, String newPassword, String confirmPassword);
+
+    User getByIdUser(int id);
+
 }

@@ -9,22 +9,34 @@ public class UserServiceImpl implements IUserService {
     private final IUserRepository userRepository = new UserRepositoryImpl();
 
     @Override
-    public void signup(User user) {
-        userRepository.signup(user);
+    public boolean signup(User user) {
+        return userRepository.signup(user);
     }
 
     @Override
-    public Boolean login(String loginId, String password) {
+    public User login(String loginId, String password) {
         return userRepository.login(loginId, password);
     }
 
     @Override
     public void editUser(User user) {
-
+        userRepository.editUser(user);
     }
 
     @Override
     public void deleteUser(int userId) {
 
     }
+
+    @Override
+
+    public boolean forgetPassword(String email, String username, String newPassword, String confirmPassword) {
+        return userRepository.forgetPassword(email, username, newPassword, confirmPassword);
+    }
+
+    public User getByIdUser(int id) {
+        return userRepository.getByIdUser(id);
+
+    }
 }
+

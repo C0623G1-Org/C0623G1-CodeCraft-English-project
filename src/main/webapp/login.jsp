@@ -19,6 +19,16 @@
 <form action="/?action=login" method="post">
     <h2>ĐĂNG NHẬP</h2>
     <div class="inputBox">
+        <c:choose>
+            <c:when test="${error == null && success != null}">
+                <p style="color:#00ff4a;">${success}</p>
+            </c:when>
+            <c:otherwise>
+                <p style="color:red;">${error}</p>
+            </c:otherwise>
+        </c:choose>
+    </div>
+    <div class="inputBox">
         <input type="text" name="loginId" placeholder="Username" value="${name}" required>
     </div>
     <div class="inputBox">
@@ -31,7 +41,7 @@
     <div class="inputBox">
         <input type="submit" value="Đăng nhập">
     </div>
-    <p><a href="#" style="padding-bottom: 20px">Quên mật khẩu?</a></p>
+    <p><a href="forget-password.jsp" style="padding-bottom: 20px">Quên mật khẩu?</a></p>
 </form>
 </body>
 </html>
