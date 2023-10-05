@@ -2,6 +2,8 @@ package com.example.english.service;
 
 import com.example.english.model.User;
 
+import java.util.List;
+
 public interface IUserService {
     void signup(User user);
 
@@ -12,4 +14,6 @@ public interface IUserService {
     void deleteUser(int userId);
 
     User getByIdUser(int id);
+    List<User> selectAllUser();
+    User fillEditForm(int id);
 }

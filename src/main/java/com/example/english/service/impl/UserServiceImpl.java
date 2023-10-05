@@ -6,6 +6,7 @@ import com.example.english.repository.impl.UserRepositoryImpl;
 import com.example.english.service.IUserService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserServiceImpl implements IUserService {
     private final IUserRepository userRepository = new UserRepositoryImpl();
@@ -27,11 +28,21 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void deleteUser(int userId) {
-
+        userRepository.deleteUser(userId);
     }
 
     @Override
     public User getByIdUser(int id){
         return userRepository.getByIdUser(id);
+    }
+
+    @Override
+    public List<User> selectAllUser() {
+        return userRepository.selectAllUser();
+    }
+
+    @Override
+    public User fillEditForm(int id) {
+        return userRepository.fillEditForm(id);
     }
 }

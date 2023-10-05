@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "")
 public class UserServlet extends HttpServlet {
@@ -28,9 +29,67 @@ public class UserServlet extends HttpServlet {
             case "getUser":
                 getUserById(request,response);
                 break;
+            case "delete":
+                deleteUser(request,response);
+                break;
+            case "selectAll":
+                showListUser(request,response);
+                break;
+            case "fill-form":
+                fillForm(request,response);
+                break;
             default:
                 homePage(request, response);
                 break;
+        }
+    }
+
+//    private int userId;
+//    private String userName;
+//    private String email;
+//    private String dob;
+//    private String loginId; //ko dc edit
+//    private String password; // ko dc hien thi
+//    private String role; // ko dc edit
+    private void fillForm(HttpServletRequest request, HttpServletResponse response) {
+        User user = userService.getByIdUser(Integer.parseInt(request.getParameter("id")));
+        request.setAttribute("user",user);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showListUser(HttpServletRequest request, HttpServletResponse response) {
+        List<User> userList =userService.selectAllUser();
+        request.setAttribute("userList",userList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        User user = userService.getByIdUser(id);
+        if(user!=null){
+            request.setAttribute("user",user);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
+            try {
+                requestDispatcher.forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

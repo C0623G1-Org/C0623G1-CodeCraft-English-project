@@ -3,10 +3,12 @@ package com.example.english.repository.impl;
 import com.example.english.model.User;
 import com.example.english.repository.IUserRepository;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepositoryImpl implements IUserRepository {
     private static final String SQL_USERNAME = "root";
-    private static final String SQL_PASSWORD = "06061998";
+    private static final String SQL_PASSWORD = "root@123";
     private static final String SQL_URL = "jdbc:mysql://localhost:3306/case_study";
     private static final String SIGNUP_SQL = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
     private static final String GET_USER_BY_ID = "select * from users\n" +
@@ -14,6 +16,8 @@ public class UserRepositoryImpl implements IUserRepository {
     private static final String UPDATE_USER = "update users set display_name = ?,email= ?, dob =?,login_password =? where user_id = ?;";
 
     private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";
+    private static final String DELETE_USER =  "DELETE FROM `users`\n" + "WHERE id = ?;";
+    private static final String SELECT_USER =  "SELECT * FROM users ORDER BY `name`;";
 
     public UserRepositoryImpl() {
     }
@@ -84,6 +88,14 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public void deleteUser(int userId) {
+        Connection connection = getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER);
+            preparedStatement.setInt(1,userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -116,4 +128,50 @@ public class UserRepositoryImpl implements IUserRepository {
             return user;
         }
     }
+
+    @Override
+    public List<User> selectAllUser() {
+        Connection connection = getConnection();
+        List<User> userList = new ArrayList<>();
+        User user;
+        try {
+//            private int userId;
+//            private String userName;
+//            private String email;
+//            private String dob;
+//            private String loginId; //ko dc edit
+//            private String password; // ko dc hien thi
+//            private String role; // ko dc edit
+            Statement statement =connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SELECT_USER);
+            while (resultSet.next()){
+                int userId = resultSet.getInt("userId");
+                String userName = resultSet.getString("userName");
+                String email = resultSet.getString("email");
+                String dob = resultSet.getString("dob");
+                String loginId = resultSet.getString("loginId");
+                String password = resultSet.getString("password");
+                String role = resultSet.getString("role");
+                user = new User(userId,userName,email,dob,loginId,password,role);
+                userList.add(user);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return userList;
+    }
+
+    @Override
+    public User fillEditForm(int id) {
+
+        return null;
+    }
+
 }
