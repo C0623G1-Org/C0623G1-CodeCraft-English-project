@@ -16,20 +16,23 @@
 </head>
 
 <body>
+
 <form action="/?action=forget-password" method="post">
-    <h2>ĐĂNG NHẬP</h2>
-    <p style="color:red;">${error}</p>
+    <h2>QUÊN MẬT KHẨU</h2>
     <div class="inputBox">
-        <input type="email" name="email" placeholder="Email" value="${email}" required>
+        <p style="color:red;">${error}</p>
     </div>
     <div class="inputBox">
-        <input type="text" name="userName" placeholder="Tên đăng nhập" value="${username}" required>
+        <input type="email" name="email" placeholder="Email" required>
     </div>
     <div class="inputBox">
-        <input type="password" name="newPassword" placeholder="Mật khẩu mới" value="${password}" required>
+        <input type="text" name="userName" placeholder="Tên đăng nhập" required>
     </div>
     <div class="inputBox">
-        <input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu" value="${confirmPassword}" required>
+        <input type="password" name="newPassword" placeholder="Mật khẩu mới" required>
+    </div>
+    <div class="inputBox">
+        <input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu" required>
     </div>
     <div class="inputBox">
         <input type="submit" value="Lưu thay đổi">
