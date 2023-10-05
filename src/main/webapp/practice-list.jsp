@@ -12,11 +12,10 @@
     <title>Practice List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="practice-list.css">
-<%--    <link rel="stylesheet" href="style.css">--%>
+    <link rel="stylesheet" href="practice-list.css">
+    <%--    <link rel="stylesheet" href="style.css">--%>
 </head>
 <body>
-<h3>Làm bài</h3>
 <!-- NAVBAR -->
 
 <nav class="navbar navbar-expand-lg bg-light">
@@ -27,45 +26,46 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul>
-                <img id="image" rel="stylesheet"
-                     src="https://w7.pngwing.com/pngs/485/25/png-transparent-foreign-language-english-language-verb-part-of-speech-ingles-logo-word-course-thumbnail.png">
-            </ul>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/homePage.jsp">Trang chủ </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/homePage.jsp">Giới thiệu </a>
-                </li>
-                <li class="nav-item" id="slogan">
-                    <a class="nav-link active" aria-current="page" href="#">
-                        The more you practice the better you get !!!
-                    </a>
-                </li>
-            </ul>
-            <!--      <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user"><i class="fa-regular fa-user"></i> Đăng nhập</a>-->
-            <ul class="nav-item dropdown" id="user_name">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                   aria-expanded="false">${user.userName}
+        < class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul>
+            <img id="image" rel="stylesheet"
+                 src="https://w7.pngwing.com/pngs/485/25/png-transparent-foreign-language-english-language-verb-part-of-speech-ingles-logo-word-course-thumbnail.png">
+        </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/homePage.jsp">Trang chủ </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/homePage.jsp">Giới thiệu </a>
+            </li>
+            <li class="nav-item" id="slogan">
+                <a class="nav-link active" aria-current="page" href="#">
+                    The more you practice the better you get !!!
                 </a>
-                <i class="fa-regular fa-user"></i>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href=" /my_page.jsp" style="color: black">Trang của tôi</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: black">Đăng xuất</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
+            </li>
+        </ul>
+        <!--      <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user"><i class="fa-regular fa-user"></i> Đăng nhập</a>-->
+        <ul class="nav-item dropdown" id="user_name">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">${user.userName}
+            </a>
+            <i class="fa-regular fa-user"></i>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href=" /my_page.jsp" style="color: black">Trang của tôi</a></li>
+                <li><a class="dropdown-item" href="#" style="color: black">Đăng xuất</a></li>
+                <li>
+                    <hr class="dropdown-divider">
 
-                    </li>
-                </ul>
-                <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user">
-                    <i class="fa-regular fa-user"></i>
-                    Trần Văn A
-                </a>
-            </div>
-        </div>
-    </nav>
+                </li>
+            </ul>
+            <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user">
+                <i class="fa-regular fa-user"></i>
+
+            </a>
+        </ul>
+        >
+    </div>
+</nav>
 </header>
 
 
@@ -108,11 +108,10 @@
                     </label>
                 </div>
             </div>
-
         </c:forEach>
+        <input type="hidden" name="userId" value="${user.userId}">
         <button type="submit" name="submit">Chấm điểm</button>
     </form>
-</div>
 </div>
 
 <%--Footer--%>

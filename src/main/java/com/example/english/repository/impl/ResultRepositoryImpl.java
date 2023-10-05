@@ -4,10 +4,7 @@ import com.example.english.model.Result;
 import com.example.english.repository.BaseRepository;
 import com.example.english.repository.IResultRepository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,42 +18,31 @@ public class ResultRepositoryImpl implements IResultRepository {
             "FROM results r\n" +
             "JOIN questions q ON r.question_id=q.question_id\n" +
             "WHERE r.history_id=?;";
+    private static final String INSERT = "INSERT INTO results(question_id,history_id,choosen_answer,score)\n" +
+            "VALUES (?,?,?,?);";
+
 
     @Override
-    public List<Result> getAll() {
+    public void saveResult(List<Result> saveResult) {
         Connection connection = BaseRepository.getConnection();
-        List<Result> resultList = new ArrayList<>();
-        Result result = null;
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT);
-            while (resultSet.next()) {
-                int questionId = resultSet.getInt("question_id");
-                String question = resultSet.getNString("question_content");
-                String seletectedAnswer = resultSet.getNString("choosen_answer");
-                String rightAnswer = resultSet.getNString("correct_answer");
-                int score = resultSet.getInt("score");
-                result = new Result(questionId, question, seletectedAnswer, rightAnswer,score);
-                resultList.add(result);
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT);
+            for (Result result:saveResult){
+                preparedStatement.setInt(1,result.getQuestionId());
+                preparedStatement.setInt(2,result.getHistoryId());
+                preparedStatement.setString(3,result.getSelectedAnswer());
+                preparedStatement.setInt(4,result.getScore());
+                preparedStatement.executeUpdate();
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
-
-        return resultList;
-    }
-
-    @Override
-    public int score() {
-        int totalScore = 0;
-        for (Result result : getAll()) {
-            totalScore += result.getScore();
-        }
-        return totalScore;
-    }
-
-    @Override
-    public void create(Result result) {
-
     }
 }

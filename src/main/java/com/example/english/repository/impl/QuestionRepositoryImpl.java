@@ -56,21 +56,4 @@ public class QuestionRepositoryImpl implements IQuestionRepository {
 
         return question;
     }
-//    private int id;
-//    private String question;
-//    private String answerA;
-//    private String answerB;
-//    private String answerC;
-//    private String answerD;
-//    private String rightAnswer;
-
-//    question_id INT PRIMARY KEY AUTO_INCREMENT,
-//    diff_id INT NOT NULL,
-//    question_content VARCHAR(255) NOT NULL,
-//    answer_a VARCHAR(100) NOT NULL,
-//    answer_b VARCHAR(100) NOT NULL,
-//    answer_c VARCHAR(100) NOT NULL,
-//    answer_d VARCHAR(100) NOT NULL,
-//    correct_answer VARCHAR(100) NOT NULL,
-//    FOREIGN KEY(diff_id) REFERENCES difficulty(diff_id)
 }

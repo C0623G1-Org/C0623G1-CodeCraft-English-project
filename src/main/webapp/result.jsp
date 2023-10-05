@@ -51,10 +51,27 @@
                             </ul>
                         </li>
                     </ul>
-                    <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user">
+                    <ul class="nav-item dropdown" id="user_name">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">${user.userName}
+                        </a>
                         <i class="fa-regular fa-user"></i>
-                        Trần Văn A
-                    </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href=" /my_page.jsp" style="color: black">Trang của tôi</a></li>
+                            <li><a class="dropdown-item" href="#" style="color: black">Đăng xuất</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+
+                            </li>
+                        </ul>
+                        <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    </ul>
+<%--                    <a href="login.html" role="button" class="btn btn-lg btn-primary" id="user">--%>
+<%--                        <i class="fa-regular fa-user"></i>--%>
+<%--&lt;%&ndash;                        Trần Văn A&ndash;%&gt;--%>
+<%--                    </a>--%>
                 </div>
             </div>
         </nav>
@@ -87,7 +104,7 @@
                     <td colspan="4">
                         <span style="font-weight: bold">Tổng điểm</span>
                     </td>
-                    <td>${tongDiem}</td>
+                    <td>${totalScore}</td>
                 </tr>
                 </tbody>
             </table>
