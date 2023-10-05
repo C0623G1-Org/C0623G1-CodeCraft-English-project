@@ -30,8 +30,8 @@ public class UserServiceImpl implements IUserService {
 
     @Override
 
-    public boolean forgetPassword(String email, String newPassword, String confirmPassword) {
-        return userRepository.forgetPassword(email, newPassword, confirmPassword);
+    public boolean forgetPassword(String email, String username, String newPassword, String confirmPassword) {
+        return userRepository.forgetPassword(email, username, newPassword, confirmPassword);
     }
 
     public User getByIdUser(int id) {

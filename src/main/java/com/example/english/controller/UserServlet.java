@@ -28,10 +28,19 @@ public class UserServlet extends HttpServlet {
             case "getUser":
                 getUserById(request,response);
                 break;
+            case "logOut":
+                logOut(request, response);
+                break;
             default:
                 homePage(request, response);
                 break;
         }
+    }
+
+    private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("/");
     }
 
     private void getUserById(HttpServletRequest request, HttpServletResponse response) {
@@ -83,8 +92,23 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void forgetPassword(HttpServletRequest request, HttpServletResponse response) {
-
+    private void forgetPassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String username = request.getParameter("userName");
+        String newPassword = request.getParameter("newPassword");
+        String confirmPassword = request.getParameter("confirmPassword");
+        String error = "Các thông tin nhập vào không chính xác";
+        String success = "Đổi mật khẩu thành công, vui lòng đăng nhập lại";
+        boolean result = userService.forgetPassword(email, username, newPassword, confirmPassword);
+        if (result) {
+            request.setAttribute("success", success);
+            RequestDispatcher requestDispatcher  = request.getRequestDispatcher("login.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/forget-password.jsp");
+            request.setAttribute("error", error);
+            requestDispatcher.forward(request, response);
+        }
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -92,7 +116,7 @@ public class UserServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home-page-logged-in.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
             requestDispatcher.forward(request, response);
         } else {
             String error  = "Sai tên đăng nhập hoặc mật khẩu";

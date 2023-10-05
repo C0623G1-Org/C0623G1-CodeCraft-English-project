@@ -14,7 +14,7 @@ public class UserRepositoryImpl implements IUserRepository {
     private static final String UPDATE_USER = "update users set display_name = ?,email= ?, dob =?,login_password =? where user_id = ?;";
 
     private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";
-    private static final String FORGET_PASSWORD_SQL = "UPDATE case_study.users SET login_password = ? WHERE email = ?";
+    private static final String FORGET_PASSWORD_SQL = "UPDATE case_study.users SET login_password = ? WHERE email = ? AND username = ?";
     public UserRepositoryImpl() {
     }
 
@@ -94,14 +94,20 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
 
-    public boolean forgetPassword(String email, String newPassword, String confirmPassword) {
+    public boolean forgetPassword(String email, String username, String newPassword, String confirmPassword) {
         try (Connection connection = getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(FORGET_PASSWORD_SQL)) {
-
+                if (newPassword.equals(confirmPassword)) {
+                    preparedStatement.setString(1, newPassword);
+                    preparedStatement.setString(2, email);
+                    preparedStatement.setString(3, username);
+                    return preparedStatement.executeUpdate() > 0;
+                } else {
+                    return false;
+                }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return false;
     }
     private User findUserByEmail(String email) {
         try (Connection connection = getConnection();
