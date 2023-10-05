@@ -32,7 +32,7 @@ CREATE TABLE questions (
 CREATE TABLE test_history(
                              history_id INT PRIMARY KEY AUTO_INCREMENT,
                              user_id INT NOT NULL,
-                             test_date DATETIME DEFAULT NOW(),
+                             test_date VARCHAR(50) ,
                              FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 CREATE TABLE results (
@@ -139,13 +139,15 @@ WHERE qt.diff_name = diff_name
 ORDER BY RAND() LIMIT 10;
 END $$
 DELIMITER ;
-CALL create_practice_list(1);
+
+CALL create_practice_list('hard');
 
 DELIMITER $$
-CREATE PROCEDURE find_question_by_id(question_id int)
+CREATE PROCEDURE find_question_by_id(question_id INT)
 BEGIN
-SELECT qs.question_id, qs.question_content, qs.answer_a, qs.answer_b, qs.answer_c, qs.answer_d, qs.correct_answer
+SELECT qs.*
 FROM questions AS qs
+JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
 WHERE qs.question_id = question_id;
 END $$
 DELIMITER ;
