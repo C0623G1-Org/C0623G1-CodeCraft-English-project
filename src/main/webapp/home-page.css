@@ -127,16 +127,3 @@
     letter-spacing: 0.1em;
     font-size: 1.3em
 }
-
-.footer {
-    background: #1c2630;
-    height: 200px;
-    display: grid;
-    place-items: center;
-}
-
-.footer table {
-    color: white;
-    width: 70%;
-
-}
