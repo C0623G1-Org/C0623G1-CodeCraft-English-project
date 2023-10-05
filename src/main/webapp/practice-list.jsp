@@ -16,10 +16,7 @@
 <%--    <link rel="stylesheet" href="style.css">--%>
 </head>
 <body>
-<h3>Làm bài</h3>
-
 <c:import url="header.jsp"></c:import>
-
 <%--    Content--%>
 <div class="container-fluid" id="page_body">
     <h3>Làm bài</h3>
