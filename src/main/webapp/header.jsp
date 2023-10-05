@@ -72,8 +72,8 @@
                                 ${user.userName}
                         </a>
                         <ul class="dropdown-menu" style="padding-right: 40px; overflow: hidden">
-                            <li><a class="dropdown-item" href="#" style="color: #000000;">Hồ sơ</a></li>
-                            <li><a class="dropdown-item" href="#" style="color: #000000;">Đăng xuất</a></li>
+                            <li><a class="dropdown-item" href="my_page.jsp" style="color: #000000;">Hồ sơ</a></li>
+                            <li><a class="dropdown-item" href="/?action=logOut" style="color: #000000;">Đăng xuất</a></li>
                         </ul>
                     </li>
                 </c:otherwise>
