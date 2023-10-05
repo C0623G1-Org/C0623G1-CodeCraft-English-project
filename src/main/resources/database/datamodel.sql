@@ -130,15 +130,16 @@ VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
        (3, "Young people have become increasingly commited____social activities","of","to","in","at","to");
 
 DELIMITER $$
-CREATE PROCEDURE create_practice_list(diff_name VARCHAR(100))
+CREATE PROCEDURE create_practice_list(diff_name varchar(100))
 BEGIN
 SELECT qs.*, dt.diff_name
 FROM questions AS qs
-JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
-WHERE dt.diff_name = diff_name
+         LEFT JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
+WHERE qt.diff_name = diff_name
 ORDER BY RAND() LIMIT 10;
 END $$
 DELIMITER ;
+
 CALL create_practice_list('hard');
 
 DELIMITER $$
@@ -150,5 +151,3 @@ JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
 WHERE qs.question_id = question_id;
 END $$
 DELIMITER ;
-
-CALL find_question_by_id('15');
