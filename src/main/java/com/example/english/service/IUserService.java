@@ -12,7 +12,7 @@ public interface IUserService {
     void deleteUser(int userId);
 
 
-    boolean forgetPassword(String email, String newPassword, String confirmPassword);
+    boolean forgetPassword(String email, String username, String newPassword, String confirmPassword);
 
     User getByIdUser(int id);
 
