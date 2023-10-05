@@ -28,10 +28,19 @@ public class UserServlet extends HttpServlet {
             case "getUser":
                 getUserById(request,response);
                 break;
+            case "logOut":
+                logOut(request, response);
+                break;
             default:
                 homePage(request, response);
                 break;
         }
+    }
+
+    private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("/");
     }
 
     private void getUserById(HttpServletRequest request, HttpServletResponse response) {
