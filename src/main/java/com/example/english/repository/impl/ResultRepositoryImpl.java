@@ -9,15 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultRepositoryImpl implements IResultRepository {
-    private static final String SELECT = "SELECT \n" +
-            "q.question_id,\n" +
-            "q.question_content,\n" +
-            "r.choosen_answer,\n" +
-            "q.correct_answer,\n" +
-            "r.score\n" +
-            "FROM results r\n" +
-            "JOIN questions q ON r.question_id=q.question_id\n" +
-            "WHERE r.history_id=?;";
     private static final String INSERT = "INSERT INTO results(question_id,history_id,choosen_answer,score)\n" +
             "VALUES (?,?,?,?);";
 

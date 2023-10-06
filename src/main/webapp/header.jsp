@@ -81,8 +81,15 @@
                         </a>
                         <ul class="dropdown-menu" style="padding-right: 40px; overflow: hidden">
                             <li><a class="dropdown-item" href="my_page.jsp" style="color: #000000;">Hồ sơ</a></li>
-                            <li><a class="dropdown-item" href="/?action=logOut" style="color: #000000;">Đăng xuất</a>
-                            </li>
+
+                            <c:choose>
+                                <c:when test="${user.role == 'ADMIN'}">
+                                    <li><a class="dropdown-item" href="/?action=selectAll" style="color: #000000;">Admin</a></li>
+                                </c:when>
+                            </c:choose>
+                           
+                            <li><a class="dropdown-item" href="/?action=logOut" style="color: #000000;">Đăng xuất</a></li>
+
                         </ul>
                     </li>
                 </c:otherwise>

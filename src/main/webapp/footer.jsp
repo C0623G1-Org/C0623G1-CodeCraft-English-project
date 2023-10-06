@@ -17,7 +17,12 @@
             display: grid;
             place-items: center;
         }
-        .row {
+        #row1{
+            color: white;
+            width: 90%;
+            margin-top: 25px;
+        }
+        #row2{
             color: white;
             width: 90%;
             margin-top: 25px;
@@ -45,18 +50,18 @@
 </head>
 <body>
 <div class="footer">
-    <div class="row">
+    <div class="row" id="row1">
         <div class="col-lg-4 col-md-12">
-            <h5>Hotline</h5>
+            <h5>Đường dây nóng</h5>
         </div>
         <div class="col-lg-4 col-md-12">
-            <h5>Follow Us</h5>
+            <h5>Theo dõi</h5>
         </div>
         <div class="col-lg-4 col-md-12">
-            <h5>CONTACT</h5>
+            <h5>Liên hệ</h5>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="row2">
         <div class="col-lg-4 col-md-12">
 
             <p>1900-7582</p>

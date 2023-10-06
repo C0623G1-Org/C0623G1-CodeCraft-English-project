@@ -1,13 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: ACER
-  Date: 9/30/2023
-  Time: 7:45 PM
+  Date: 10/5/2023
+  Time: 10:07 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -22,36 +21,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="/?action=submit" method="post">
     <header>
-
-
         <c:import url="header.jsp"></c:import>
-
     </header>
 
-    <content class=" border-bottom-2" >
-        <div class="container" style="padding-top: 10px">
-            <div style="text-align: center">
-                <c:choose>
-                    <c:when test="${totalScore >7}">
-                        <p style="font-style: italic"><span style="font-size: 40px; font-weight: 300;color: red">Chúc mừng bạn</span></br>
-                            Kết quả thật tuyệt vời. Hãy cố gắng phát huy nhé! </p>
-                    </c:when>
-                    <c:when test="${totalScore <5}">
-                        <p style="font-style: italic"> <span style="font-size: 40px; font-weight: 300;color: red">Bạn cần cố gắng hơn</span><br/>
-                            Ai mới bắt đầu cũng sẽ gặp khó khăn cả. Chúc bạn sẽ có kết quả tốt hơn lần sau! </p>
-                    </c:when>
-                    <c:otherwise>
-                        <p style="font-style: italic"> <span style="font-size: 40px; font-weight: 300;color: red">Bạn đã làm tương đối tốt</span><br/>
-                            Cố gắng thử thách bản thân hơn nữa để mình ngày càng tiến bộ. Cố gắng lên nhé!</p>
-                    </c:otherwise>
-                </c:choose>
-            </div>
+    <content class=" border-bottom-2">
+        <div class="container" style="padding-top: 10px; padding-bottom: 15px">
 
 
-            <table class="table" border="1px">
-                <thead>
+
+            <table class="table" border="1px" >
+                <thead >
                 <tr class="table-primary">
                     <th scope="col" style="width: 10%"></th>
                     <th scope="col" style="width: 60%; text-align: center">Câu hỏi</th>
@@ -60,10 +40,12 @@
 
                 </tr>
                 </thead>
-                <tbody >
+                <tbody>
                 <c:forEach items="${resultList}" var="result" varStatus="look">
+
+
                     <c:if test="${result.score==1}">
-                        <tr >
+                        <tr>
                             <th scope="row">Câu ${look.count}</th>
                             <td>${result.question}</td>
                             <td>${result.selectedAnswer}</td>
@@ -97,16 +79,16 @@
                 </tr>
                 </tbody>
             </table>
-
-            <%--            <a href="">Thi lại</a>--%>
+            <a href="my_page.jsp" class="btn btn-success">Trở về</a>
+<%--            <div class="col-lg-2">--%>
+<%--            </div>--%>
 
         </div>
     </content>
-
 <%--footer--%>
     <c:import url="footer.jsp"></c:import>
 
-</form>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
