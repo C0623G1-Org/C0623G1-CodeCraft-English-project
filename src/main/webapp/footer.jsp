@@ -47,13 +47,13 @@
 <div class="footer">
     <div class="row">
         <div class="col-lg-4 col-md-12">
-            <h5>Hotline</h5>
+            <h5>Đường dây nóng</h5>
         </div>
         <div class="col-lg-4 col-md-12">
-            <h5>Follow Us</h5>
+            <h5>Theo dõi</h5>
         </div>
         <div class="col-lg-4 col-md-12">
-            <h5>CONTACT</h5>
+            <h5>Liên hệ</h5>
         </div>
     </div>
     <div class="row">

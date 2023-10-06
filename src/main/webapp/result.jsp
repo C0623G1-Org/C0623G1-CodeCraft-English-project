@@ -30,10 +30,28 @@
 
     </header>
 
-    <content class=" border-bottom-2">
-        <div class="container">
+    <content class=" border-bottom-2" >
+        <div class="container" style="padding-top: 10px">
+            <div style="text-align: center">
+                <c:choose>
+                    <c:when test="${totalScore >7}">
+                        <p style="font-style: italic"><span style="font-size: 40px; font-weight: 300;color: red">Chúc mừng bạn</span></br>
+                            Kết quả thật tuyệt vời. Hãy cố gắng phát huy nhé! </p>
+                    </c:when>
+                    <c:when test="${totalScore <5}">
+                        <p style="font-style: italic"> <span style="font-size: 40px; font-weight: 300;color: red">Bạn cần cố gắng hơn</span><br/>
+                            Ai mới bắt đầu cũng sẽ gặp khó khăn cả. Chúc bạn sẽ có kết quả tốt hơn lần sau! </p>
+                    </c:when>
+                    <c:otherwise>
+                        <p style="font-style: italic"> <span style="font-size: 40px; font-weight: 300;color: red">Bạn đã làm tương đối tốt</span><br/>
+                            Cố gắng thử thách bản thân hơn nữa để mình ngày càng tiến bộ. Cố gắng lên nhé!</p>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+
+
             <table class="table" border="1px">
-                <thead >
+                <thead>
                 <tr class="table-primary">
                     <th scope="col" style="width: 10%"></th>
                     <th scope="col" style="width: 60%; text-align: center">Câu hỏi</th>
@@ -42,12 +60,10 @@
 
                 </tr>
                 </thead>
-                <tbody>
+                <tbody >
                 <c:forEach items="${resultList}" var="result" varStatus="look">
-
-
                     <c:if test="${result.score==1}">
-                        <tr style="background: #00ff4a">
+                        <tr >
                             <th scope="row">Câu ${look.count}</th>
                             <td>${result.question}</td>
                             <td>${result.selectedAnswer}</td>
@@ -55,7 +71,7 @@
                         </tr>
                     </c:if>
                     <c:if test="${result.score==0}">
-                        <tr style="background: #fcf471">
+                        <tr style="color: #FF0000">
                             <th scope="row">Câu ${look.count}</th>
                             <td>${result.question}</td>
                             <td>${result.selectedAnswer}</td>
@@ -63,65 +79,32 @@
                         </tr>
                     </c:if>
                 </c:forEach>
-                <tr class="table-primary "style="height: 50px">
+                <tr class="table-primary " style="height: 50px">
                     <td colspan="3">
-                        <span style="font-weight: bold">Tổng điểm</span>
+                        <span style="font-weight: bold" class="large">Tổng điểm</span>
                     </td>
-                    <td style="color: red;font-weight: bold ">${totalScore}</td>
+                    <c:choose>
+                        <c:when test="${totalScore >7}">
+                            <td style="color: green;font-weight: bold "  >${totalScore}</td>
+                        </c:when>
+                        <c:when test="${totalScore <5}">
+                            <td style="color: red;font-weight: bold "  >${totalScore}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td style="color: #FF6600 ;font-weight: bold " >${totalScore}</td>
+                        </c:otherwise>
+                    </c:choose>
                 </tr>
                 </tbody>
             </table>
 
-<%--            <a href="">Thi lại</a>--%>
+            <%--            <a href="">Thi lại</a>--%>
 
         </div>
     </content>
 
-
-    <div class="footer">
-
-        <div class="row">
-            <div class="col-lg-4 col-md-12">
-                <h5>Hotline</h5>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <h5>Follow Us</h5>
-
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <h5>CONTACT</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-12">
-
-                <p>1900-7582</p>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <p>
-                    <a href="" class="btn btn-icon btn-round social-facebook m-1">
-                        <i class="icon fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="" class="btn btn-icon btn-round social-linkedin m-1">
-                        <i class="icon fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="" class="btn btn-icon btn-round social-youtube m-1">
-                        <i class="icon fa fa-youtube" aria-hidden="true"></i>
-                    </a>
-                </p>
-
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <ol>
-                    <li>Đoàn Thị Hương Ly</li>
-                    <li>Nguyễn Đình Nam</li>
-                    <li>Đào Đức Duy</li>
-                    <li>Lê Tự Khoa</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
+<%--footer--%>
+    <c:import url="footer.jsp"></c:import>
 
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
