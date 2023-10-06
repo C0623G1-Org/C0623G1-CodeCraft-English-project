@@ -91,6 +91,7 @@
 
                 </div>
                 <div class="submit hover-zoom">
+                    <input type="hidden" name="userId" value="${user.userId}">
                     <button style="text-align: right" type="submit" name="submit">Chấm điểm</button>
                 </div>
             </div>
