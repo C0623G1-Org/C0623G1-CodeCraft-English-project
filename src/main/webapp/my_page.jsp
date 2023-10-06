@@ -18,60 +18,48 @@
 <body>
 <c:import url="header.jsp"></c:import>
 
-        <div class="row">
-            <div class="col-md-4 mt-0">
-                <div class="card-left text-center sidebar">
-                    <div class="card-body">
-                        <img src="img.jpg" class="rounded-circle" width="150" alt="">
-                        <div class="mt-3">
-                            <h3 style="color: white">${user.userName}</h3>
-                            <a href="">History</a>
-                            <a href="/?action=fill-form&id=${user.userId}">Setting</a>
-                            <a href="homePage.jsp">Sign Out</a>
-                        </div>
-                    </div>
+<div class="row">
+    <div class="col-md-4 mt-0">
+        <div class="card-left text-center sidebar">
+            <div class="card-body">
+                <img src="img.jpg" class="rounded-circle" width="150" alt="">
+                <div class="mt-3">
+                    <h3 style="color: white">${user.userName}</h3>
+                    <a href="">History</a>
+                    <a href="/?action=fill-form&id=${user.userId}">Đặt lại thông tin</a>
+                    <a href="homePage.jsp">Đăng xuất</a>
                 </div>
             </div>
-            <div class="card-right col-md-8 mt-0">
-                <div class="mb-3 content">
-                    <h1 class="m-3 pt-3">Information</h1>
-                    <div class="card-body card-body-custom-left">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>Full name</h5>
-                            </div>
-                            <div class="col-md-9 text-secondary">
-                                ${user.userName}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>Email</h5>
-                            </div>
-                            <div class="col-md-9 text-secondary">
-                                ${user.email}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>DATE OF BIRTH</h5>
-                            </div>
-                            <div class="col-md-9 text-secondary">
-                                ${user.dob}
-                            </div>
-                        </div>            
-
+        </div>
+    </div>
+    <div class="card-right col-md-8 mt-0">
+        <div class="mb-3 content">
+            <h1 class="m-3 pt-3">Information</h1>
+            <div class="card-body card-body-custom-left">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Họ và Tên</h5>
+                    </div>
+                    <div class="col-md-9 text-secondary">
+                        ${user.userName}
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-3">
-                        <h5>DATE OF BIRTH</h5>
+                        <h5>Email</h5>
                     </div>
                     <div class="col-md-9 text-secondary">
-                        ${getIdUser.dob}
+                        ${user.email}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Ngày Sinh</h5>
+                    </div>
+                    <div class="col-md-9 text-secondary">
+                        ${user.dob}
                     </div>
                 </div>
             </div>
@@ -81,9 +69,9 @@
                 <thead>
                 <tr>
                     <th scope="col">Stt</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Score</th>
-                    <th scope="col">Detail</th>
+                    <th scope="col">Thời gian</th>
+                    <th scope="col">Số điểm</th>
+                    <th scope="col">Chi tiết</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -102,29 +90,12 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    <table>
-        <tr>
-            <th><h5>COPYRIGHT</h5></th>
-            <th><h5>CONTACT</h5></th>
-        </tr>
-        <tr>
-            <td>by Codecraft team, all rights reserved</td>
-            <td>
-                <ol>
-                    <li>Đoàn Thị Hương Ly</li>
-                    <li>Nguyễn Đình Nam</li>
-                    <li>Đào Đức Duy</li>
-                    <li>Lê Tự Khoa</li>
-                </ol>
-            </td>
-        </tr>
-    </table>
-</div>
-</div>
 
 
-</div>
+<c:import url="footer.jsp"></c:import>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
