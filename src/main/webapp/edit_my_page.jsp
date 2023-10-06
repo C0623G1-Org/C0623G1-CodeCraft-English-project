@@ -21,7 +21,7 @@
         <input type="number" name="userId" readonly value="${user.userId}"  required>
     </div>
     <div class="inputBox">
-        <input type="text" name="name" value="${user.userName}" required>
+        <input type="text" name="userName" value="${user.userName}" required>
     </div>
     <div class="inputBox">
         <input type="email" name="email" value="${user.email}" required>
@@ -32,7 +32,6 @@
     <div class="inputBox">
         <input type="submit"  value="Lưu">
     </div>
-    <p><a href="/my_page.jsp">Trang Của Tôi</a></p>
 </form>
 </body>
 </html>

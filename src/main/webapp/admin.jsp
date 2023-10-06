@@ -24,76 +24,36 @@
                         <img src="img.jpg" class="rounded-circle" width="150" alt="">
                         <div class="mt-3">
                             <h3 style="color: white">${user.userName}</h3>
-                            <a href="">History</a>
-                            <a href="/?action=fill-form&id=${user.userId}">Setting</a>
-                            <a href="homePage.jsp">Sign Out</a>
+                            <a href="/?action=fill-form&id=${user.userId}">Đặt lại thông tin</a>
+                            <a href="homePage.jsp">Đăng xuất</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-right col-md-8 mt-0">
-                <div class="mb-3 content">
-                    <h1 class="m-3 pt-3">Information</h1>
-                    <div class="card-body card-body-custom-left">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>Full name</h5>
-                            </div>
-                            <div class="col-md-9 text-secondary">
-                                ${user.userName}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>Email</h5>
-                            </div>
-                            <div class="col-md-9 text-secondary">
-                                ${user.email}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>DATE OF BIRTH</h5>
-                            </div>
-                            <div class="col-md-9 text-secondary">
-                                ${user.dob}
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card mb-3 content">
                     <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">STT</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">point</th>
-                            <th scope="col">Topic Type</th>
-                            <th scope="col">Detail</th>
+                            <th scope="col">Họ và tên</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Ngày sinh</th>
+                            <th scope="col">Tên đăng nhập</th>
+                            <th scope="col">Xóa</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-<!--                        <tr>-->
-<!--                            <th scope="row">3</th>-->
-<!--                            <td colspan="2">Larry the Bird</td>-->
-<!--                            <td>@twitter</td>-->
-<!--                        </tr>-->
+                        <c:forEach items="${users}" varStatus="loop" var="p">
+                            <tr>
+                                <td>${loop.count}</td>
+                                <td>${p.userName}</td>
+                                <td>${p.email}</td>
+                                <td>${p.dob}</td>
+                                <td>${p.loginId}</td>
+                                <td><a href="/?action=delete&id=${p.userId}">Xóa</a></td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>

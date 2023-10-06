@@ -11,12 +11,11 @@ public interface IUserService {
 
     void editUser(User user);
 
-    void deleteUser(int userId);
+    boolean deleteUser(int userId);
 
 
-    boolean forgetPassword(String email, String newPassword, String confirmPassword);
+    boolean forgetPassword(String email, String username, String newPassword, String confirmPassword);
 
     User getByIdUser(int id);
     List<User> selectAllUser();
-    User fillEditForm(int id);
 }

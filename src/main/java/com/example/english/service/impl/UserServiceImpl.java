@@ -27,14 +27,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteUser(int userId) {
-        userRepository.deleteUser(userId);
+    public boolean deleteUser(int userId) {
+        return userRepository.deleteUser(userId);
     }
 
     @Override
 
-    public boolean forgetPassword(String email, String newPassword, String confirmPassword) {
-        return userRepository.forgetPassword(email, newPassword, confirmPassword);
+    public boolean forgetPassword(String email, String username, String newPassword, String confirmPassword) {
+        return userRepository.forgetPassword(email, username, newPassword, confirmPassword);
     }
 
     public User getByIdUser(int id) {
@@ -44,11 +44,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> selectAllUser() {
         return userRepository.selectAllUser();
-    }
-
-    @Override
-    public User fillEditForm(int id) {
-        return userRepository.fillEditForm(id);
     }
 }
 

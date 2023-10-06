@@ -29,6 +29,9 @@ public class UserServlet extends HttpServlet {
             case "getUser":
                 getUserById(request,response);
                 break;
+            case "logOut":
+                logOut(request, response);
+                break;
             case "delete":
                 deleteUser(request,response);
                 break;
@@ -53,7 +56,7 @@ public class UserServlet extends HttpServlet {
 //    private String role; // ko dc edit
     private void fillForm(HttpServletRequest request, HttpServletResponse response) {
         User user = userService.getByIdUser(Integer.parseInt(request.getParameter("id")));
-        request.setAttribute("user",user);
+            request.setAttribute("user",user);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
         try {
             requestDispatcher.forward(request,response);
@@ -66,52 +69,48 @@ public class UserServlet extends HttpServlet {
 
     private void showListUser(HttpServletRequest request, HttpServletResponse response) {
         List<User> userList =userService.selectAllUser();
-        request.setAttribute("userList",userList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
+        request.setAttribute("users",userList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin.jsp");
         try {
-            requestDispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void deleteUser(HttpServletRequest request, HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
-        User user = userService.getByIdUser(id);
-        if(user!=null){
-            request.setAttribute("user",user);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
-            try {
-                requestDispatcher.forward(request,response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void getUserById(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        try {
-            User getIdUser = userService.getByIdUser(id);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
-            request.setAttribute("getIdUser",getIdUser);
             requestDispatcher.forward(request,response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void editUserById(HttpServletRequest request,HttpServletResponse response){
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response){
         int id = Integer.parseInt(request.getParameter("id"));
-        RequestDispatcher requestDispatcher = null;
+        userService.deleteUser(id);
+        showListUser(request,response);
+    }
+
+    private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("/");
+    }
+
+    private void getUserById(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
         try {
-            User user = userService.getByIdUser(id);
-            request.setAttribute("user",user);
-            requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
+            User getIdUser = userService.getByIdUser(id);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
+            request.setAttribute("getIdUser",getIdUser);
+            requestDispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void editUserById(HttpServletRequest request,HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("userId"));
+        String name = request.getParameter("userName");
+        String email = request.getParameter("email");
+        String dob = request.getParameter("dob");
+        User user = new User(id,name,email,dob);
+        userService.editUser(user);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
+        request.setAttribute("user",user);
+        try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -142,8 +141,23 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void forgetPassword(HttpServletRequest request, HttpServletResponse response) {
-
+    private void forgetPassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String username = request.getParameter("userName");
+        String newPassword = request.getParameter("newPassword");
+        String confirmPassword = request.getParameter("confirmPassword");
+        String error = "Các thông tin nhập vào không chính xác";
+        String success = "Đổi mật khẩu thành công, vui lòng đăng nhập lại";
+        boolean result = userService.forgetPassword(email, username, newPassword, confirmPassword);
+        if (result) {
+            request.setAttribute("success", success);
+            RequestDispatcher requestDispatcher  = request.getRequestDispatcher("login.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/forget-password.jsp");
+            request.setAttribute("error", error);
+            requestDispatcher.forward(request, response);
+        }
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
