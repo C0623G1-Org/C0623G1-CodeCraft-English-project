@@ -19,68 +19,6 @@
     <c:import url="header.jsp"></c:import>
 </header>
 
-<%--<div class="container-fluid" id="page_body">--%>
-
-<%--    <form action="/result?action=submit" class="needs-validation" novalidate method="post">--%>
-<%--        <div class="body-row">--%>
-<%--            <div class="col-lg-2"></div>--%>
-<%--            <div class="col-lg-8">--%>
-<%--                <div class="practice">--%>
-<%--                    <h3>Làm bài</h3>--%>
-<%--                </div>--%>
-
-<%--                <div class="row text-dark" >--%>
-<%--                    <c:forEach var="qs" items="${questionList}" varStatus="loop">--%>
-<%--                        <div class="form-group col-lg-6">--%>
-<%--                            <label for="${qs.question}"--%>
-<%--                                   class="font-weight-bold text"> ${loop.count}) ${qs.question}--%>
-<%--                            </label>--%>
-<%--                            <input type="hidden" name="questionId" value="${qs.id}">--%>
-<%--                            <div class="form-check">--%>
-<%--                                <input type="radio" class="form-check-input" name="answer_${qs.id}" id="answerA_${qs.id}"--%>
-<%--                                       value="${qs.answerA}" required>--%>
-<%--                                <label class="form-check-label" for="answerA_${qs.id}">${qs.answerA}</label>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-check">--%>
-<%--                                <input type="radio" class="form-check-input" name="answer_${qs.id}" id="answerA_${qs.id}"--%>
-<%--                                       value="${qs.answerB}" required>--%>
-<%--                                <label class="form-check-label" for="answerA_${qs.id}">${qs.answerB}</label>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-check">--%>
-<%--                                <input type="radio" class="form-check-input" name="answer_${qs.id}" id="answerA_${qs.id}"--%>
-<%--                                       value="${qs.answerC}" required>--%>
-<%--                                <label class="form-check-label" for="answerA_${qs.id}">${qs.answerC}</label>--%>
-<%--                            </div>--%>
-<%--                            <div class="form-check">--%>
-<%--                                <input type="radio" class="form-check-input" name="answer_${qs.id}" id="answerA_${qs.id}"--%>
-<%--                                       value="${qs.answerD}" required>--%>
-<%--                                <label class="form-check-label" for="answerA_${qs.id}">${qs.answerD}</label>--%>
-<%--                                <div class="invalid-feedback">--%>
-<%--                                    Bạn hãy chọn đáp án!--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-
-<%--                    </c:forEach>--%>
-
-<%--                </div>--%>
-<%--                <div class="submit hover-zoom">--%>
-<%--                    <input type="hidden" name="userId" value="${user.userId}">--%>
-<%--                    <button style="text-align: right" type="submit" name="submit">Chấm điểm</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-lg-2">--%>
-
-<%--            </div>--%>
-
-<%--        </div>--%>
-
-<%--    </form>--%>
-
-<%--</div>--%>
-
-<%--lam thu--%>
-
 <div class="container-fluid" id="page_body">
 
     <form action="/result?action=submit" class="needs-validation" novalidate method="post">

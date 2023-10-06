@@ -91,10 +91,4 @@ public class ResultServlet extends HttpServlet {
 
         resultService.saveResult(saveResult);
     }
-//    private int questionId;
-//    private String question;
-//    private String seletectedAnswer;
-//    private String rightAnswer;
-//    private int score;
-
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultRepositoryImpl implements IResultRepository {
-    private static final String INSERT = "INSERT INTO results(question_id,history_id,choosen_answer,score)\n" +
+    private static final String INSERT = "INSERT INTO results(question_id,history_id,chosen_answer,score)\n" +
             "VALUES (?,?,?,?);";
 
 

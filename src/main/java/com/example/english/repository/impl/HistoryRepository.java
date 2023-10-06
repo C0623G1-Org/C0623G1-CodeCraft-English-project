@@ -24,7 +24,7 @@ public class HistoryRepository implements IHistoryRepository {
     private static final String SELECT_HISTORY_ID = "SELECT t.history_id\n" +
             "FROM test_history t\n" +
             "WHERE t.test_date = ?;";
-    private static final String SELECT_RESULT = "SELECT q.question_content,r.choosen_answer,q.correct_answer,r.score\n" +
+    private static final String SELECT_RESULT = "SELECT q.question_content,r.chosen_answer,q.correct_answer,r.score\n" +
             "FROM test_history t\n" +
             "JOIN results r On t.history_id=r.history_id\n" +
             "JOIN questions q ON r.question_id =q.question_id\n" +
@@ -114,7 +114,7 @@ public class HistoryRepository implements IHistoryRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String questionName = resultSet.getString("question_content");
-                String selectedAnswer =resultSet.getString("choosen_answer");
+                String selectedAnswer =resultSet.getString("chosen_answer");
                 String rightAnswer =resultSet.getString("correct_answer");
                 int score =resultSet.getInt("score");
                 result = new Result(questionName,selectedAnswer,rightAnswer,score);

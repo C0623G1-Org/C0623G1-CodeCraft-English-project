@@ -36,10 +36,6 @@ public class UserServlet extends HttpServlet {
             case "logOut":
                 logOut(request, response);
                 break;
-
-            case "delete":
-                deleteUser(request,response);
-                break;
             case "selectAll":
                 showListUser(request,response);
                 break;
@@ -140,6 +136,9 @@ public class UserServlet extends HttpServlet {
             case "edit":
                 editUserById(request, response);
                 break;
+            case "delete":
+                deleteUser(request,response);
+                break;
         }
     }
 
@@ -207,8 +206,6 @@ public class UserServlet extends HttpServlet {
     }
 
     private void homePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
         requestDispatcher.forward(request, response);
     }

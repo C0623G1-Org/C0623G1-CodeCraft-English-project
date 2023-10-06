@@ -17,8 +17,8 @@ public class UserRepositoryImpl implements IUserRepository {
 
     private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";
 
-    private static final String DELETE_USER =  "DELETE FROM `users`\n" + "WHERE user_Id = ?;";
-    private static final String SELECT_USER =  "SELECT * FROM users where role_name = \"SIMPLE_USER\" ORDER BY `display_name`;";
+    private static final String DELETE_USER =  "UPDATE  users SET delete_user = 1 WHERE user_id =?;";
+    private static final String SELECT_USER =  "SELECT * FROM users WHERE role_name = \"SIMPLE_USER\" AND delete_user=0;";
 
     private static final String FORGET_PASSWORD_SQL = "UPDATE case_study.users SET login_password = ? WHERE email = ? AND username = ?";
     public UserRepositoryImpl() {
