@@ -1,7 +1,10 @@
 package com.example.english.controller;
 
+import com.example.english.model.Difficulty;
 import com.example.english.model.User;
+import com.example.english.service.IDifficultyService;
 import com.example.english.service.IUserService;
+import com.example.english.service.impl.DifficultyServiceImpl;
 import com.example.english.service.impl.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +21,7 @@ import java.util.List;
 @WebServlet(name = "UserServlet", value = "")
 public class UserServlet extends HttpServlet {
     private final IUserService userService = new UserServiceImpl();
+    private final IDifficultyService difficultyService = new DifficultyServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +31,7 @@ public class UserServlet extends HttpServlet {
         }
         switch (action) {
             case "getUser":
-                getUserById(request,response);
+                getUserById(request, response);
                 break;
             case "logOut":
                 logOut(request, response);
@@ -88,13 +92,16 @@ public class UserServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             User getIdUser = userService.getByIdUser(id);
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
             request.setAttribute("getIdUser",getIdUser);
             requestDispatcher.forward(request,response);
+          
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
+
     private void editUserById(HttpServletRequest request,HttpServletResponse response){
         int id = Integer.parseInt(request.getParameter("userId"));
         String name = request.getParameter("userName");
@@ -106,6 +113,7 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("user",user);
         try {
             requestDispatcher.forward(request,response);
+
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -130,7 +138,7 @@ public class UserServlet extends HttpServlet {
                 forgetPassword(request, response);
                 break;
             case "edit":
-                editUserById(request,response);
+                editUserById(request, response);
                 break;
         }
     }
@@ -145,7 +153,7 @@ public class UserServlet extends HttpServlet {
         boolean result = userService.forgetPassword(email, username, newPassword, confirmPassword);
         if (result) {
             request.setAttribute("success", success);
-            RequestDispatcher requestDispatcher  = request.getRequestDispatcher("login.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
             requestDispatcher.forward(request, response);
         } else {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/forget-password.jsp");
@@ -158,11 +166,14 @@ public class UserServlet extends HttpServlet {
         User user = userService.login(request.getParameter("loginId"), request.getParameter("password"));
         if (user != null) {
             HttpSession session = request.getSession();
+            List<Difficulty> difficultyList = difficultyService.showDifficulties();
+            request.setAttribute("difficultyList", difficultyList);
             session.setAttribute("user", user);
+            session.setAttribute("difficultyList", difficultyList);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
             requestDispatcher.forward(request, response);
         } else {
-            String error  = "Sai tên đăng nhập hoặc mật khẩu";
+            String error = "Sai tên đăng nhập hoặc mật khẩu";
             request.setAttribute("error", error);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
             requestDispatcher.forward(request, response);
@@ -177,7 +188,7 @@ public class UserServlet extends HttpServlet {
         String error = "Xác nhận mật khẩu không chính xác";
         String emailExist = "Địa chỉ email đã tồn tại";
         if (password.equals(confirm)) {
-            User user = new User(email, name,  password);
+            User user = new User(email, name, password);
             if (userService.signup(user)) {
                 request.setAttribute("name", name);
                 request.setAttribute("password", password);
@@ -196,6 +207,8 @@ public class UserServlet extends HttpServlet {
     }
 
     private void homePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
         requestDispatcher.forward(request, response);
     }

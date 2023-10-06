@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -39,7 +40,8 @@
                             </a>
                             <ul class="dropdown-menu" style="padding-right: 40px;">
                                 <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
-                                <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
+                                <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ TRUNG
+                                    BÌNH</a></li>
                                 <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
                             </ul>
                         </li>
@@ -51,9 +53,15 @@
                                 LUYỆN ĐỀ
                             </a>
                             <ul class="dropdown-menu" style="padding-right: 40px;">
-                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=1" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
-                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=2" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
-                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=3" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
+                                <c:forEach items="${difficultyList}" var="df">
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="/question-servlet?action=create-test&level=${df.diffId}"
+                                           style="color: #000000;">
+                                            <c:out value="LÀM ĐỀ ${df.diffName}"/>
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </li>
                     </c:otherwise>
