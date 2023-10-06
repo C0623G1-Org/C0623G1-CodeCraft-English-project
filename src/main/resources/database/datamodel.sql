@@ -38,7 +38,7 @@ CREATE TABLE test_history(
 CREATE TABLE results (
                          question_id INT NOT NULL,
                          history_id INT NOT NULL,
-                         choosen_answer VARCHAR(100) NOT NULL,
+                         chosen_answer VARCHAR(100) NOT NULL,
                          score INT NOT NULL,
                          FOREIGN KEY(question_id) REFERENCES questions(question_id),
                          FOREIGN KEY(history_id) REFERENCES test_history(history_id)
@@ -132,7 +132,7 @@ VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
 DELIMITER $$
 CREATE PROCEDURE create_practice_list(diff_name VARCHAR(100))
 BEGIN
-SELECT qs.*, dt.diff_name
+SELECT distinct qs.*, dt.diff_name
 FROM questions AS qs
 JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
 WHERE dt.diff_name = diff_name
@@ -140,3 +140,14 @@ ORDER BY RAND() LIMIT 10;
 END $$
 DELIMITER ;
 CALL create_practice_list('hard');
+
+
+DELIMITER $$
+CREATE PROCEDURE find_question_by_id(question_id INT)
+BEGIN
+SELECT qs.*
+FROM questions AS qs
+JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
+WHERE qs.question_id = question_id;
+END $$
+DELIMITER ;

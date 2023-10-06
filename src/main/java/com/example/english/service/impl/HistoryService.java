@@ -1,6 +1,7 @@
 package com.example.english.service.impl;
 
 import com.example.english.model.History;
+import com.example.english.model.Result;
 import com.example.english.repository.IHistoryRepository;
 import com.example.english.repository.impl.HistoryRepository;
 import com.example.english.service.IHistoryService;
@@ -24,5 +25,10 @@ public class HistoryService implements IHistoryService {
     @Override
     public int findByDate(LocalDateTime date) {
         return historyRepository.findByDate(date);
+    }
+
+    @Override
+    public List<Result> displayResult(LocalDateTime dateTime) {
+        return historyRepository.displayResult(dateTime);
     }
 }

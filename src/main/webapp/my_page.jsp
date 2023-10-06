@@ -23,14 +23,9 @@
                     <div class="card-body">
                         <img src="img.jpg" class="rounded-circle" width="150" alt="">
                         <div class="mt-3">
-                            <h3 style="color: white">${getIdUser.userName}</h3>
-<%--                            <a href="/history-servlet">--%>
-<%--                              History</a>--%>
-                            <form action="/history-servlet" >
-                                <input type="hidden" name="userId" value="${user.userId}">
-                                <button type="submit" style="background: #29313c; color: white">History</button>
-                            </form>
-                            <a href="edit_my_page.jsp">Setting</a>
+                            <h3 style="color: white">${user.userName}</h3>
+                            <a href="">History</a>
+                            <a href="/?action=fill-form&id=${user.userId}">Setting</a>
                             <a href="homePage.jsp">Sign Out</a>
                         </div>
                     </div>
@@ -45,16 +40,16 @@
                                 <h5>Full name</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                ${getIdUser.userName}
+                                ${user.userName}
                             </div>
                         </div>
                         <hr>
-                        <div class="page-row" style="width: 100%">
+                        <div class="row">
                             <div class="col-md-3">
                                 <h5>Email</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                ${getIdUser.email}
+                                ${user.email}
                             </div>
                         </div>
                         <hr>
@@ -63,29 +58,70 @@
                                 <h5>DATE OF BIRTH</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                ${getIdUser.dob}
+                                ${user.dob}
                             </div>
-                        </div>
+                        </div>            
+
                     </div>
                 </div>
-                <div class="card mb-3 content">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Stt</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Score</th>
-                            <th scope="col">Detail</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${historyList}" var="h" varStatus="look">
-                            <th scope="row">${look.count}</th>
-                            <td>${h.date}</td>
-                            <td>${h.totalScore}</td>
-                            <td></td>
-                        </c:forEach>
-                        <tr>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>DATE OF BIRTH</h5>
+                    </div>
+                    <div class="col-md-9 text-secondary">
+                        ${getIdUser.dob}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Stt</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Detail</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${historyList}" var="h" varStatus="look">
+                    <tr>
+                        <th scope="row">${look.count}</th>
+                        <td>${h.date}</td>
+                        <td>${h.totalScore}</td>
+                        <td>
+                            <a href="/history-servlet?action=displayResult&date=${h.date}">Chi tiết</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <table>
+        <tr>
+            <th><h5>COPYRIGHT</h5></th>
+            <th><h5>CONTACT</h5></th>
+        </tr>
+        <tr>
+            <td>by Codecraft team, all rights reserved</td>
+            <td>
+                <ol>
+                    <li>Đoàn Thị Hương Ly</li>
+                    <li>Nguyễn Đình Nam</li>
+                    <li>Đào Đức Duy</li>
+                    <li>Lê Tự Khoa</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+
 
                         </tr>
                         </tbody>
