@@ -3,6 +3,8 @@ package com.example.english.repository.impl;
 import com.example.english.model.User;
 import com.example.english.repository.IUserRepository;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepositoryImpl implements IUserRepository {
     private static final String SQL_USERNAME = "root";
@@ -11,9 +13,13 @@ public class UserRepositoryImpl implements IUserRepository {
     private static final String SIGNUP_SQL = "INSERT INTO case_study.users(display_name, email, dob, username, login_password, role_name) VALUES (?, ?, ?, ?, ?, ?);";
     private static final String GET_USER_BY_ID = "select * from users\n" +
             "where user_id = ?";
-    private static final String UPDATE_USER = "update users set display_name = ?,email= ?, dob =?,login_password =? where user_id = ?;";
+    private static final String UPDATE_USER = "update users set display_name = ?,email= ?, dob =? where user_id = ?;";
 
     private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";
+
+    private static final String DELETE_USER =  "DELETE FROM `users`\n" + "WHERE user_Id = ?;";
+    private static final String SELECT_USER =  "SELECT * FROM users where role_name = \"SIMPLE_USER\" ORDER BY `display_name`;";
+
     private static final String FORGET_PASSWORD_SQL = "UPDATE case_study.users SET login_password = ? WHERE email = ? AND username = ?";
     public UserRepositoryImpl() {
     }
@@ -79,8 +85,7 @@ public class UserRepositoryImpl implements IUserRepository {
             preparedStatement.setString(1, user.getUserName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getDob());
-            preparedStatement.setString(4, user.getPassword());
-            preparedStatement.setInt(5, user.getUserId());
+            preparedStatement.setInt(4, user.getUserId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,12 +93,25 @@ public class UserRepositoryImpl implements IUserRepository {
     }
 
     @Override
-    public void deleteUser(int userId) {
-
+    public boolean deleteUser(int userId) {
+        Connection connection = getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER);
+            preparedStatement.setInt(1,userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
     }
 
     @Override
-
     public boolean forgetPassword(String email, String username, String newPassword, String confirmPassword) {
         try (Connection connection = getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(FORGET_PASSWORD_SQL)) {
@@ -137,12 +155,12 @@ public class UserRepositoryImpl implements IUserRepository {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 int user_id = resultSet.getInt("user_id");
-                String userName = resultSet.getString("userName");
+                String userName = resultSet.getString("display_Name");
                 String email = resultSet.getString("email");
                 String dob = resultSet.getString("dob");
-                String loginId = resultSet.getString("loginId");
+                String loginId = resultSet.getString("username");
                 String login_password = resultSet.getString("login_password");
-                String role = resultSet.getString("role");
+                String role = resultSet.getString("role_name");
                 user = new User(user_id, userName, email, dob, loginId, login_password, role);
             }
         } catch (SQLException e) {
@@ -155,5 +173,37 @@ public class UserRepositoryImpl implements IUserRepository {
             }
             return user;
         }
+    }
+
+    @Override
+    public List<User> selectAllUser() {
+        Connection connection = getConnection();
+        List<User> userList = new ArrayList<>();
+        User user;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SELECT_USER);
+            while (resultSet.next()){
+                int id = resultSet.getInt("user_id");
+                String name = resultSet.getString("display_name");
+                String email = resultSet.getString("email");
+                String dob = resultSet.getString("dob");
+                String userName = resultSet.getString("username");
+                String loginPassword = resultSet.getString("login_password");
+                String roleName = resultSet.getString("role_name");
+                user = new User(id,name,email,dob,userName,loginPassword,roleName);
+                userList.add(user);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return userList;
     }
 }

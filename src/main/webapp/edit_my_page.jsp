@@ -18,7 +18,10 @@
 <form action="/?action=edit" method="post">
     <h2>Chỉnh sửa thông tin người dùng</h2>
     <div class="inputBox">
-        <input type="text" name="name" value="${user.userName}" required>
+        <input type="number" name="userId" readonly value="${user.userId}"  required>
+    </div>
+    <div class="inputBox">
+        <input type="text" name="userName" value="${user.userName}" required>
     </div>
     <div class="inputBox">
         <input type="email" name="email" value="${user.email}" required>
@@ -27,12 +30,8 @@
         <input type="dob" name="dob" value="${user.dob}" required>
     </div>
     <div class="inputBox">
-        <input type="password" name="password" value="${user.password}"  required>
-    </div>
-    <div class="inputBox">
         <input type="submit"  value="Lưu">
     </div>
-    <p><a href="/my_page.jsp">Trang Của Tôi</a></p>
 </form>
 </body>
 </html>

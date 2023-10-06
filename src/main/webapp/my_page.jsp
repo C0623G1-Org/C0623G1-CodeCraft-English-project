@@ -18,39 +18,51 @@
 <body>
 <c:import url="header.jsp"></c:import>
 
-<div class="row">
-    <div class="col-md-4 mt-0">
-        <div class="card-left text-center sidebar">
-            <div class="card-body">
-                <img src="img.jpg" class="rounded-circle" width="150" alt="">
-                <div class="mt-3">
-                    <h3 style="color: white">${getIdUser.userName}</h3>
-                    <a href="/history-servlet?action=displayHistory&userId=${user.userId}">History</a>
-                    <a href="edit_my_page.jsp">Setting</a>
-                    <a href="homePage.jsp">Sign Out</a>
+        <div class="row">
+            <div class="col-md-4 mt-0">
+                <div class="card-left text-center sidebar">
+                    <div class="card-body">
+                        <img src="img.jpg" class="rounded-circle" width="150" alt="">
+                        <div class="mt-3">
+                            <h3 style="color: white">${user.userName}</h3>
+                            <a href="">History</a>
+                            <a href="/?action=fill-form&id=${user.userId}">Setting</a>
+                            <a href="homePage.jsp">Sign Out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card-right col-md-8 mt-0">
-        <div class="mb-3 content">
-            <h1 class="m-3 pt-3">Information</h1>
-            <div class="card-body card-body-custom-left">
-                <div class="row">
-                    <div class="col-md-3">
-                        <h5>Full name</h5>
-                    </div>
-                    <div class="col-md-9 text-secondary">
-                        ${getIdUser.userName}
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-3">
-                        <h5>Email</h5>
-                    </div>
-                    <div class="col-md-9 text-secondary">
-                        ${getIdUser.email}
+            <div class="card-right col-md-8 mt-0">
+                <div class="mb-3 content">
+                    <h1 class="m-3 pt-3">Information</h1>
+                    <div class="card-body card-body-custom-left">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Full name</h5>
+                            </div>
+                            <div class="col-md-9 text-secondary">
+                                ${user.userName}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>Email</h5>
+                            </div>
+                            <div class="col-md-9 text-secondary">
+                                ${user.email}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5>DATE OF BIRTH</h5>
+                            </div>
+                            <div class="col-md-9 text-secondary">
+                                ${user.dob}
+                            </div>
+                        </div>            
+
                     </div>
                 </div>
                 <hr>
