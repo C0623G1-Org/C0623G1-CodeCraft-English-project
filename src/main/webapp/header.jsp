@@ -51,9 +51,9 @@
                                 LUYỆN ĐỀ
                             </a>
                             <ul class="dropdown-menu" style="padding-right: 40px;">
-                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=easy" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
-                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=medium" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
-                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=hard" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
+                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=1" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
+                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=2" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
+                                <li><a class="dropdown-item" href="/question-servlet?action=create-test&level=3" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
                             </ul>
                         </li>
                     </c:otherwise>

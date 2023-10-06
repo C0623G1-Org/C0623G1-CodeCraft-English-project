@@ -33,12 +33,9 @@ public class QuestionServlet extends HttpServlet {
                 break;
         }
     }
-//    practice-list.jsp/?action=create-test&level=easy
-
-
 
     private void createTest(HttpServletRequest request, HttpServletResponse response) {
-        String level = request.getParameter("level");
+        int level = Integer.parseInt(request.getParameter("level"));
         List<Question> questionList = questionService.createTest(level);
 
         request.setAttribute("questionList", questionList);

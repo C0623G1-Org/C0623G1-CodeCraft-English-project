@@ -12,7 +12,7 @@ public class QuestionServiceImpl implements IQuestionService {
     private final IQuestionRepository questionRepository = new QuestionRepositoryImpl();
 
     @Override
-    public List<Question> createTest(String level) {
+    public List<Question> createTest(int level) {
         return questionRepository.createTest(level);
     }
 
