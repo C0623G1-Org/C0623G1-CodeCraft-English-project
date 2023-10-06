@@ -59,29 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <table>
-                <tr>
-                    <th><h5>COPYRIGHT</h5></th>
-                    <th><h5>CONTACT</h5></th>
-                </tr>
-                <tr>
-                    <td>by Codecraft team, all rights reserved</td>
-                    <td>
-                        <ol>
-                            <li>Đoàn Thị Hương Ly</li>
-                            <li>Nguyễn Đình Nam</li>
-                            <li>Đào Đức Duy</li>
-                            <li>Lê Tự Khoa</li>
-                        </ol>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-
-</div>
+<c:import url="footer.jsp"></c:import>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
