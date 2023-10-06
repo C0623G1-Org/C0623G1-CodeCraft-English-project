@@ -10,8 +10,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css_my_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<%--    <script src="../../bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>--%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%--    <script src="../../bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>--%>
 
 </head>
 <body>
@@ -60,65 +61,67 @@
                             <div class="col-md-9 text-secondary">
                                 ${user.dob}
                             </div>
-                        </div>
+                        </div>            
+
                     </div>
                 </div>
-                <div class="card mb-3 content">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">point</th>
-                            <th scope="col">Topic Type</th>
-                            <th scope="col">Detail</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-<!--                        <tr>-->
-<!--                            <th scope="row">3</th>-->
-<!--                            <td colspan="2">Larry the Bird</td>-->
-<!--                            <td>@twitter</td>-->
-<!--                        </tr>-->
-                        </tbody>
-                    </table>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>DATE OF BIRTH</h5>
+                    </div>
+                    <div class="col-md-9 text-secondary">
+                        ${getIdUser.dob}
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <table>
+        <div class="card mb-3 content">
+            <table class="table">
+                <thead>
                 <tr>
-                    <th><h5>COPYRIGHT</h5></th>
-                    <th><h5>CONTACT</h5></th>
+                    <th scope="col">Stt</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Detail</th>
                 </tr>
-                <tr>
-                    <td>by Codecraft team, all rights reserved</td>
-                    <td>
-                        <ol>
-                            <li>Đoàn Thị Hương Ly</li>
-                            <li>Nguyễn Đình Nam</li>
-                            <li>Đào Đức Duy</li>
-                            <li>Lê Tự Khoa</li>
-                        </ol>
-                    </td>
-                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${historyList}" var="h" varStatus="look">
+                    <tr>
+                        <th scope="row">${look.count}</th>
+                        <td>${h.date}</td>
+                        <td>${h.totalScore}</td>
+                        <td>
+                            <a href="/history-servlet?action=displayResult&date=${h.date}">Chi tiết</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
             </table>
         </div>
     </div>
+</div>
+<div class="footer">
+    <table>
+        <tr>
+            <th><h5>COPYRIGHT</h5></th>
+            <th><h5>CONTACT</h5></th>
+        </tr>
+        <tr>
+            <td>by Codecraft team, all rights reserved</td>
+            <td>
+                <ol>
+                    <li>Đoàn Thị Hương Ly</li>
+                    <li>Nguyễn Đình Nam</li>
+                    <li>Đào Đức Duy</li>
+                    <li>Lê Tự Khoa</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
 
 
 </div>

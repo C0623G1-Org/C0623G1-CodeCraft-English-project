@@ -69,11 +69,6 @@ public class QuestionServlet extends HttpServlet {
     }
 
     private void submit(HttpServletRequest request, HttpServletResponse response) {
-        List<Result> resultList = new ArrayList<>();
-        String [] questionId = (request.getParameterMap().get("questionId"));
-        for (String id: questionId){
-            String seletectedAnswer = request.getParameter("answer_" +id);
-            System.out.println(id +"dap an: " + seletectedAnswer);
-        }
+
     }
 }

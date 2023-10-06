@@ -1,10 +1,81 @@
 
 
-.navbar {
-    padding: 0 !important;
-}
-body{
-}
+/*.navbar {*/
+/*    padding: 0 !important;*/
+/*}*/
+/*body{*/
+/*}*/
+/*!*#navbarMain {*!*/
+/*!*    !* border-bottom-left-radius: 15px;*!*/
+/*!*    border-bottom-right-radius: 15px; *!*!*/
+/*!*    padding: 35px;*!*/
+/*!*    background: #29313c;*!*/
+/*!*    font-size: 1.5em;*!*/
+/*!*    font-weight: 500;*!*/
+/*!*}*!*/
+
+/*!*#navbarMain a {*!*/
+/*!*    color: white;*!*/
+/*!*    border-radius: 20px;*!*/
+/*!*}*!*/
+
+/*!*.nav-item a:hover {*!*/
+/*!*    background: #0ab3ff;*!*/
+/*!*}*!*/
+
+/*!*.nav-item a {*!*/
+/*!*    margin: 0 12px;*!*/
+/*!*}*!*/
+
+/*!*#navbarSupportedContent #user  {*!*/
+/*!*    background: #0ab3ff;*!*/
+/*!*    border: none;*!*/
+/*!*    padding: 15px;*!*/
+/*!*    font-weight: 600;*!*/
+/*!*    letter-spacing: 0.1em;*!*/
+/*!*    text-transform: uppercase;*!*/
+/*!*    border-radius: 50px;*!*/
+/*!*    cursor: pointer;*!*/
+/*!*    transition: 0.5s;*!*/
+/*!*}*!*/
+
+/*!*#navbarSupportedContent #user:hover {*!*/
+/*!*    letter-spacing: 0.2em;*!*/
+/*!*    font-size: 0.8em*!*/
+/*!*}*!*/
+/*!*.footer {*!*/
+/*!*    background: #1c2630;*!*/
+/*!*    height: 200px;*!*/
+/*!*    display: grid;*!*/
+/*!*    place-items: center;*!*/
+/*!*}*!*/
+/*!*.footer table {*!*/
+/*!*    color: white;*!*/
+/*!*    width: 70%;*!*/
+
+/*!*}*!*/
+/*!*.container-fluid {*!*/
+/*!*    background-color: #29313c;*!*/
+/*!*    color: black;*!*/
+/*!*}*!*/
+/*!*#page_body{*!*/
+/*!*    width: 100%;*!*/
+/*!*    height: 1500px;*!*/
+/*!*    background-color: aliceblue;*!*/
+/*!*}*!*/
+/*!*#image{*!*/
+/*!*    width: 180px;*!*/
+/*!*    height: auto;*!*/
+/*!*}*!*/
+/*#slogan{*/
+/*    background-color: #6c93c8;*/
+/*    box-shadow: 10px 20px  blanchedalmond;*/
+/*    border-radius: 10%;*/
+/*}*/
+/*.navbar {*/
+/*    padding: 0 !important;*/
+/*}*/
+
 /*#navbarMain {*/
 /*    !* border-bottom-left-radius: 15px;*/
 /*    border-bottom-right-radius: 15px; *!*/
@@ -26,6 +97,9 @@ body{
 /*.nav-item a {*/
 /*    margin: 0 12px;*/
 /*}*/
+/*.dropdown-menu {*/
+/*    padding-right: 40px;*/
+/*}*/
 
 /*#navbarSupportedContent #user  {*/
 /*    background: #0ab3ff;*/
@@ -43,128 +117,122 @@ body{
 /*    letter-spacing: 0.2em;*/
 /*    font-size: 0.8em*/
 /*}*/
+/*!*sfdsfsdfsdf*!*/
+
+/*#table-1{*/
+/*    width: 500px;*/
+/*    height: 50px;*/
+/*    padding:2px;*/
+/*}*/
+/*#table-1 tr{*/
+/*    border-spacing: 1px;*/
+/*}*/
+
+
+
+
+/*sfdsfsdfsdf*/
+
+
 /*.footer {*/
 /*    background: #1c2630;*/
 /*    height: 200px;*/
 /*    display: grid;*/
 /*    place-items: center;*/
 /*}*/
-/*.footer table {*/
-/*    color: white;*/
-/*    width: 70%;*/
+/*!*.row {*!*/
+/*!*    color: white;*!*/
+/*!*    width: 70%;*!*/
 
+/*!*}*!*/
+/*.footer-mid{*/
+/*    display: inline;*/
 /*}*/
-/*.container-fluid {*/
-/*    background-color: #29313c;*/
-/*    color: black;*/
+/*.col-lg-4 {*/
+/*    display: grid;*/
+/*    place-items: center;*/
 /*}*/
-/*#page_body{*/
-/*    width: 100%;*/
-/*    height: 1500px;*/
-/*    background-color: aliceblue;*/
+/*.col-lg-4 p a{*/
+/*    margin-left: 50px;*/
 /*}*/
-/*#image{*/
-/*    width: 180px;*/
-/*    height: auto;*/
+/*.social-facebook {*/
+/*    background-color: #3b5998!important;*/
 /*}*/
-#slogan{
-    background-color: #6c93c8;
-    box-shadow: 10px 20px  blanchedalmond;
-    border-radius: 10%;
-}
-.navbar {
-    padding: 0 !important;
-}
+/*.social-linkedin {*/
+/*    background-color: #0976b4!important;*/
+/*}*/
+/*.social-youtube {*/
+/*    background-color: #b31217!important;*/
+/*}*/
 
-#navbarMain {
-    /* border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px; */
-    padding: 35px;
-    background: #29313c;
-    font-size: 1.5em;
-    font-weight: 500;
-}
+/*#page_body .form-group .form-check {*/
+/*    padding-left: 0px !important;*/
+/*}*/
 
-#navbarMain a {
+/*.form-check {*/
+/*    padding-left: 0 !important;*/
+/*}*/
+.practice{
+    margin-top: 30px;
+    background-color: #1c2630;
     color: white;
-    border-radius: 20px;
-}
-
-.nav-item a:hover {
-    background: #0ab3ff;
-}
-
-.nav-item a {
-    margin: 0 12px;
-}
-.dropdown-menu {
-    padding-right: 40px;
-}
-
-#navbarSupportedContent #user  {
-    background: #0ab3ff;
-    border: none;
-    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 22px;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.5s;
 }
-
-#navbarSupportedContent #user:hover {
-    letter-spacing: 0.2em;
-    font-size: 0.8em
+.submit{
+    margin: 20px;
+    color: #b31217;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: none;
 }
-/*sfdsfsdfsdf*/
-
-#table-1{
-    width: 500px;
-    height: 50px;
-    padding:2px;
-}
-#table-1 tr{
-    border-spacing: 1px;
-}
-
-
-
-
-/*sfdsfsdfsdf*/
-
-
-.footer {
-    background: #1c2630;
-    height: 200px;
-    display: grid;
-    place-items: center;
-}
-.row {
+.submit button{
+    border: none;
+    border-radius: 20px;
+    background-color: #6c93c8;
     color: white;
-    width: 70%;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: 0.5s;
 
 }
-.footer-mid{
-    display: inline;
-}
-.col-lg-4 {
-    display: grid;
-    place-items: center;
-}
-.col-lg-4 p a{
-    margin-left: 50px;
-}
-.social-facebook {
-    background-color: #3b5998!important;
-}
-.social-linkedin {
-    background-color: #0976b4!important;
-}
-.social-youtube {
-    background-color: #b31217!important;
-}
+.submit button:hover{
+    letter-spacing: 0.3em;
+    padding: 2em;
 
+}
+.body-row{
+    width: 100%;
+    display: flex;
 
+}
+#page_body{
+    background-color: rgba(247,243,237,0.51);
+}
+/*.row-question {*/
+/*    background-color: white;*/
+/*    margin: 20px;*/
+/*}*/
+.question-group{
+    background-color: white;
+    margin: 30px;
+    border-radius: 15px;
+}
+.form-check{
+    margin-top: 10px;
 
-
+}
+.form-group{
+    padding: 20px 30px;
+}

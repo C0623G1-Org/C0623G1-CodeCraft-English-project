@@ -98,5 +98,9 @@ form p a {
     text-decoration: none;
 }
 
+.loginMess {
+    word-wrap: break-word;
+}
+
 
 

@@ -9,19 +9,8 @@ import java.util.List;
 
 public class ResultServiceImpl implements IResultService {
     private IResultRepository resultRepository = new ResultRepositoryImpl();
-
     @Override
-    public List<Result> getAll() {
-        return resultRepository.getAll();
-    }
-
-    @Override
-    public int score() {
-        return resultRepository.score();
-    }
-
-    @Override
-    public void create(Result result) {
-
+    public void saveResult(List<Result> saveResult) {
+        resultRepository.saveResult(saveResult);
     }
 }

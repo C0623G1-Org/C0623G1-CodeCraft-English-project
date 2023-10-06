@@ -11,6 +11,7 @@ public interface IUserService {
 
     void editUser(User user);
 
+
     boolean deleteUser(int userId);
 
 
@@ -18,4 +19,5 @@ public interface IUserService {
 
     User getByIdUser(int id);
     List<User> selectAllUser();
+
 }

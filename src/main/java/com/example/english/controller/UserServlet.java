@@ -32,6 +32,7 @@ public class UserServlet extends HttpServlet {
             case "logOut":
                 logOut(request, response);
                 break;
+
             case "delete":
                 deleteUser(request,response);
                 break;
@@ -47,13 +48,6 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-//    private int userId;
-//    private String userName;
-//    private String email;
-//    private String dob;
-//    private String loginId; //ko dc edit
-//    private String password; // ko dc hien thi
-//    private String role; // ko dc edit
     private void fillForm(HttpServletRequest request, HttpServletResponse response) {
         User user = userService.getByIdUser(Integer.parseInt(request.getParameter("id")));
             request.setAttribute("user",user);

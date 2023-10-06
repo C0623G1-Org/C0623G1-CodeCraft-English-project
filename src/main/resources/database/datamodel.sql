@@ -32,13 +32,13 @@ CREATE TABLE questions (
 CREATE TABLE test_history(
                              history_id INT PRIMARY KEY AUTO_INCREMENT,
                              user_id INT NOT NULL,
-                             test_date DATETIME DEFAULT NOW(),
+                             test_date VARCHAR(50) ,
                              FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 CREATE TABLE results (
                          question_id INT NOT NULL,
                          history_id INT NOT NULL,
-                         choosen_answer VARCHAR(100) NOT NULL,
+                         chosen_answer VARCHAR(100) NOT NULL,
                          score INT NOT NULL,
                          FOREIGN KEY(question_id) REFERENCES questions(question_id),
                          FOREIGN KEY(history_id) REFERENCES test_history(history_id)
@@ -130,13 +130,23 @@ VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
        (3, "Young people have become increasingly commited____social activities","of","to","in","at","to");
 
 DELIMITER $$
-CREATE PROCEDURE create_practice_list(diff_id INT)
+CREATE PROCEDURE create_practice_list(diff_name varchar(100))
 BEGIN
-SELECT qs.*, dt.diff_name
+SELECT distinct qs.*, dt.diff_name
 FROM questions AS qs
          LEFT JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
-WHERE qs.diff_id = diff_id
+WHERE dt.diff_name = diff_name
 ORDER BY RAND() LIMIT 10;
 END $$
 DELIMITER ;
-CALL create_practice_list(1);
+
+
+DELIMITER $$
+CREATE PROCEDURE find_question_by_id(question_id INT)
+BEGIN
+SELECT qs.*
+FROM questions AS qs
+JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
+WHERE qs.question_id = question_id;
+END $$
+DELIMITER ;

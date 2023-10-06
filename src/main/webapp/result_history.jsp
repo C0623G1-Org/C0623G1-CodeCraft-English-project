@@ -1,13 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: ACER
-  Date: 9/30/2023
-  Time: 7:45 PM
+  Date: 10/5/2023
+  Time: 10:07 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -22,12 +21,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="/?action=submit" method="post">
     <header>
-
-
         <c:import url="header.jsp"></c:import>
-
     </header>
 
     <content class=" border-bottom-2">
@@ -65,14 +60,17 @@
                 </c:forEach>
                 <tr class="table-primary "style="height: 50px">
                     <td colspan="3">
-                        <span style="font-weight: bold">Tổng điểm</span>
+                        <h5 >Tổng điểm</h5>
                     </td>
-                    <td style="color: red;font-weight: bold ">${totalScore}</td>
+                    <td style="color: red ">
+                        <h5>${totalScore}</h5>
+                    </td>
                 </tr>
                 </tbody>
             </table>
-
-<%--            <a href="">Thi lại</a>--%>
+            <a href="my_page.jsp" class="btn btn-success">Trở về</a>
+<%--            <div class="col-lg-2">--%>
+<%--            </div>--%>
 
         </div>
     </content>
@@ -122,8 +120,6 @@
         </div>
     </div>
 
-
-</form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
