@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IQuestionService {
 
-    List<Question> createTest(String level);
+    List<Question> createTest(int level);
     Question findQuestionById(int id) throws SQLException;
 }
