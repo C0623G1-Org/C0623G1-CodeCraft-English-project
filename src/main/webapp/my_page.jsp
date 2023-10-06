@@ -25,12 +25,7 @@
                 <img src="img.jpg" class="rounded-circle" width="150" alt="">
                 <div class="mt-3">
                     <h3 style="color: white">${getIdUser.userName}</h3>
-                    <%--                            <a href="/history-servlet">--%>
-                    <%--                              History</a>--%>
-                    <form action="/history-servlet">
-                        <input type="hidden" name="userId" value="${user.userId}">
-                        <button type="submit" style="background: #29313c; color: white">History</button>
-                    </form>
+                    <a href="/history-servlet?action=displayHistory&userId=${user.userId}">History</a>
                     <a href="edit_my_page.jsp">Setting</a>
                     <a href="homePage.jsp">Sign Out</a>
                 </div>
@@ -85,7 +80,9 @@
                         <th scope="row">${look.count}</th>
                         <td>${h.date}</td>
                         <td>${h.totalScore}</td>
-                        <td></td>
+                        <td>
+                            <a href="/history-servlet?action=displayResult&date=${h.date}">Chi tiết</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

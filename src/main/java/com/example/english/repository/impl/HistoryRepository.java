@@ -1,6 +1,7 @@
 package com.example.english.repository.impl;
 
 import com.example.english.model.History;
+import com.example.english.model.Result;
 import com.example.english.repository.BaseRepository;
 import com.example.english.repository.IHistoryRepository;
 
@@ -23,6 +24,11 @@ public class HistoryRepository implements IHistoryRepository {
     private static final String SELECT_HISTORY_ID = "SELECT t.history_id\n" +
             "FROM test_history t\n" +
             "WHERE t.test_date = ?;";
+    private static final String SELECT_RESULT = "SELECT q.question_content,r.choosen_answer,q.correct_answer,r.score\n" +
+            "FROM test_history t\n" +
+            "JOIN results r On t.history_id=r.history_id\n" +
+            "JOIN questions q ON r.question_id =q.question_id\n" +
+            "WHERE t.test_date=?;";
 
     @Override
     public List<History> display(int checkUserId) {
@@ -95,6 +101,30 @@ public class HistoryRepository implements IHistoryRepository {
             }
         }
         return historyId;
+    }
+
+    @Override
+    public List<Result> displayResult(LocalDateTime dateTime) {
+        List<Result> resultList = new ArrayList<>();
+        Result result;
+        Connection connection =BaseRepository.getConnection();
+        try {
+            PreparedStatement preparedStatement= connection.prepareStatement(SELECT_RESULT);
+            preparedStatement.setString(1,String.valueOf(dateTime));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String questionName = resultSet.getString("question_content");
+                String selectedAnswer =resultSet.getString("choosen_answer");
+                String rightAnswer =resultSet.getString("correct_answer");
+                int score =resultSet.getInt("score");
+                result = new Result(questionName,selectedAnswer,rightAnswer,score);
+                resultList.add(result);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultList;
     }
 }
 
