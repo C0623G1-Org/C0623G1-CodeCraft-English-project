@@ -87,8 +87,6 @@ public class ResultServlet extends HttpServlet {
         RequestDispatcher rq = request.getRequestDispatcher("/result.jsp");
         request.setAttribute("resultList", resultList);
         rq.forward(request,response);
-
         resultService.saveResult(saveResult);
     }
-
 }

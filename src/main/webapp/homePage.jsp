@@ -24,7 +24,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="overlay-image" style="background-image:url(./2.jpg);"></div>
+                <div class="overlay-image" style="background-image:url(./picture1.jpg);"></div>
                     <div class="container" id="carouselCont">
                         <h1>Ảnh 1</h1>
                         <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="overlay-image" style="background-image:url(./1.jpg);"></div>
+                    <div class="overlay-image" style="background-image:url(./picture2.jpg);"></div>
                     <div class="container" id="carouselCont1">
                         <h1>Ảnh 2</h1>
                         <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
