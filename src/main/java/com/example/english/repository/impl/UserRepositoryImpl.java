@@ -19,7 +19,7 @@ public class UserRepositoryImpl implements IUserRepository {
 
     private static final String DELETE_USER =  "DELETE FROM `users`\n" + "WHERE user_Id = ?;";
     private static final String SELECT_USER =  "SELECT * FROM users where role_name = \"SIMPLE_USER\" ORDER BY `display_name`;";
-
+    protected static final String USERNAME_EXIST = "SELECT username FROM case_study.users WHERE user_id = ?;";
     private static final String FORGET_PASSWORD_SQL = "UPDATE case_study.users SET login_password = ? WHERE email = ? AND username = ?";
     public UserRepositoryImpl() {
     }
@@ -76,6 +76,19 @@ public class UserRepositoryImpl implements IUserRepository {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    @Override
+    public int signupValidation(String username, String email) {
+        List<User> userList = selectAllUser();
+        for (User user : userList) {
+            if (user.getLoginId().equals(username)) {
+                return 1;
+            } else if (user.getEmail().equals(email)) {
+                return 2;
+            }
+        }
+        return 0;
     }
 
     @Override

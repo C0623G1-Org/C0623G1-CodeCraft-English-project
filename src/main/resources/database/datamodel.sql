@@ -1,5 +1,5 @@
--- CREATE DATABASE case_study;
--- USE case_study;
+CREATE DATABASE case_study;
+USE case_study;
 
 CREATE TABLE users(
                       user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -9,6 +9,7 @@ CREATE TABLE users(
                       username VARCHAR(45) UNIQUE NOT NULL,
                       login_password VARCHAR(45) NOT NULL,
                       role_name VARCHAR(120) NOT NULL,
+                      delete_user INT DEFAULT 0,
                       CHECK (role_name IN ('ADMIN', 'SIMPLE_USER'))
 );
 

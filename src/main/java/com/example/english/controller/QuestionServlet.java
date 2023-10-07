@@ -26,10 +26,10 @@ public class QuestionServlet extends HttpServlet {
         action = action == null ? "" : action;
         switch (action) {
             case "create-test":
-                createTest(request, response);
+                
                 break;
             default:
-
+                createTest(request, response);
                 break;
         }
     }
@@ -37,10 +37,8 @@ public class QuestionServlet extends HttpServlet {
     private void createTest(HttpServletRequest request, HttpServletResponse response) {
         int level = Integer.parseInt(request.getParameter("level"));
         List<Question> questionList = questionService.createTest(level);
-
         request.setAttribute("questionList", questionList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("practice-list.jsp");
-
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -52,20 +50,5 @@ public class QuestionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        action = action == null ? "" : action;
-        switch (action) {
-            case "submit":
-                submit(request, response);
-                break;
-            default:
-//                showQuestionList(request, response);
-                break;
-
-        }
-    }
-
-    private void submit(HttpServletRequest request, HttpServletResponse response) {
-
     }
 }
