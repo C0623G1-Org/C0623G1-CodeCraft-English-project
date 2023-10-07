@@ -52,7 +52,8 @@
     <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
     <div class="form-box login">
         <h2>Đăng nhập</h2>
-        <div style="text-align: center; justify-content: center;"><h2 style="color: red; font-size: 1em;">${loginError}</h2>
+        <div style="text-align: center; justify-content: center;"><h2
+                style="color: red; font-size: 1em;">${loginError}</h2>
         </div>
         <form action="/?action=login" method="post">
             <div class="input-box">
@@ -119,45 +120,56 @@
     <div class="formbox difficulty">
         <h2>Làm đề</h2>
         <div class="d-flex">
-            <form action="">
-            <div class="easy">
-                <div class="card">
-                    <img src="00007.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Đề dễ</h5>
-                        <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ khó cơ bản
-                            nhất.</p>
-                        <button class="btn-begin" type="submit">Làm bài</button>
+            <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                <div class="easy">
+                    <div class="card">
+                        <img src="00007.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Đề dễ</h5>
+                            <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ khó cơ
+                                bản
+                                nhất.</p>
+                            <button class="btn-begin" type="submit">Làm bài</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </form>
-            <form action="">
-            <div class="medium">
-                <div class="card">
-                    <img src="00008.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Đề trung bình</h5>
-                        <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo ra với độ khó
-                            nâng cao.</p>
-                        <button class="btn-begin" type="submit">Làm bài</button>
-                    </div>
-                </div>
-            </div>
-            </form>
-            <form action="">
-            <div class="hard">
-                <div class="card">
-                    <img src="00013.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Đề khó</h5>
-                        <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được chọn từ đề thi Đại
-                            học.</p>
-                        <button class="btn-begin" type="submit">Làm bài</button>
-                    </div>
-                </div>
-            </div>
-            </form>
+            <c:choose>
+            <c:when test="${user != null}">
+            <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                </c:when>
+                <c:otherwise>
+                <form action="/?action=login">
+                    </c:otherwise>
+                    </c:choose>
+                    <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                        <div class="medium">
+                            <div class="card">
+                                <img src="00008.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Đề trung bình</h5>
+                                    <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo ra
+                                        với độ khó
+                                        nâng cao.</p>
+                                    <button class="btn-begin" type="submit">Làm bài</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                        <div class="hard">
+                            <div class="card">
+                                <img src="00013.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Đề khó</h5>
+                                    <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được chọn
+                                        từ đề thi Đại
+                                        học.</p>
+                                    <button class="btn-begin" type="submit">Làm bài</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
         </div>
     </div>
 </div>
