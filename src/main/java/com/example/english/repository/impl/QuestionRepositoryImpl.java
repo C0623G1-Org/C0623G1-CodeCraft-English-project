@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionRepositoryImpl implements IQuestionRepository {
-    private static final String CREAT_PRACTICE_LIST = "CALL create_practice_list(?);";
     private static final String FIND_QUESTION_BY_ID = "call find_question_by_id(?);";
+    private static final String CREATE_PRACTICE_LIST_BY_ID = "call create_practice_list_by_id(?);";
 
     @Override
-    public List<Question> createTest(String level) {
+    public List<Question> createTest(int level) {
         Connection connection = BaseRepository.getConnection();
         List<Question> questionList = new ArrayList<>();
         try {
-            CallableStatement call = connection.prepareCall(CREAT_PRACTICE_LIST);
-            call.setString(1,level);
+            CallableStatement call = connection.prepareCall(CREATE_PRACTICE_LIST_BY_ID);
+            call.setInt(1,level);
             ResultSet resultSet = call.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("question_id");

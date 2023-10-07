@@ -132,10 +132,11 @@ VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
 DELIMITER $$
 CREATE PROCEDURE create_practice_list(diff_name VARCHAR(100))
 BEGIN
-SELECT distinct qs.*, dt.diff_name
+SELECT *
 FROM questions AS qs
-JOIN difficulty AS dt ON qs.diff_id = dt.diff_id
-WHERE dt.diff_name = diff_name
+         JOIN difficulty AS dt ON dt.diff_id = qs.diff_id
+         LEFT JOIN results AS rs ON qs.question_id = rs.question_id
+WHERE dt.diff_id = diff_id
 ORDER BY RAND() LIMIT 10;
 END $$
 DELIMITER ;
