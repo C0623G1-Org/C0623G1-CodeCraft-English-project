@@ -29,7 +29,7 @@
                 <a href="#">Trang chủ</a>
                 <a class="aboutUs" href="#">Giới thiệu</a>
                 <a class="doTest" href="#">Luyện đề</a>
-                <a href="../my_page.jsp" class="user">
+                <a href="my_page.jsp" class="user">
                     <ion-icon name="person-circle-outline"></ion-icon>
                         ${user.userName}</a>
             </c:otherwise>
@@ -115,116 +115,129 @@
 
 
 <!-- TEST MENU -->
-<div class="menu">
-    <span class="icon-close-menu"><ion-icon name="close-outline"></ion-icon></span>
-    <div class="formbox difficulty">
-        <h2>Làm đề</h2>
-        <div class="d-flex">
-            <form action="/question-servlet?action=create-test&level=${df.diffId}">
-                <div class="easy">
-                    <div class="card">
-                        <img src="00007.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Đề dễ</h5>
-                            <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ khó cơ
-                                bản
-                                nhất.</p>
-                            <button class="btn-begin" type="submit">Làm bài</button>
+<c:choose>
+<c:when test="${user != null}">
+<div class="menu active">
+    </c:when>
+    <c:otherwise>
+    <div class="menu">
+        </c:otherwise>
+        </c:choose>
+        <span class="icon-close-menu"><ion-icon name="close-outline"></ion-icon></span>
+        <div class="formbox difficulty">
+            <h2>Làm đề</h2>
+            <div class="d-flex">
+                <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                    <div class="easy">
+                        <div class="card">
+                            <img src="00007.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Đề dễ</h5>
+                                <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ khó
+                                    cơ
+                                    bản
+                                    nhất.</p>
+                                <button class="btn-begin" type="submit">Làm bài</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-            <c:choose>
-            <c:when test="${user != null}">
-            <form action="/question-servlet?action=create-test&level=${df.diffId}">
-                </c:when>
-                <c:otherwise>
-                <form action="/?action=login">
-                    </c:otherwise>
-                    </c:choose>
-                    <form action="/question-servlet?action=create-test&level=${df.diffId}">
-                        <div class="medium">
-                            <div class="card">
-                                <img src="00008.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Đề trung bình</h5>
-                                    <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo ra
-                                        với độ khó
-                                        nâng cao.</p>
-                                    <button class="btn-begin" type="submit">Làm bài</button>
+                </form>
+                <c:choose>
+                <c:when test="${user != null}">
+                <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                    </c:when>
+                    <c:otherwise>
+                    <form action="/?action=login">
+                        </c:otherwise>
+                        </c:choose>
+                        <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                            <div class="medium">
+                                <div class="card">
+                                    <img src="00008.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Đề trung bình</h5>
+                                        <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo
+                                            ra
+                                            với độ khó
+                                            nâng cao.</p>
+                                        <button class="btn-begin" type="submit">Làm bài</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                    <form action="/question-servlet?action=create-test&level=${df.diffId}">
-                        <div class="hard">
-                            <div class="card">
-                                <img src="00013.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Đề khó</h5>
-                                    <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được chọn
-                                        từ đề thi Đại
-                                        học.</p>
-                                    <button class="btn-begin" type="submit">Làm bài</button>
+                        </form>
+                        <form action="/question-servlet?action=create-test&level=${df.diffId}">
+                            <div class="hard">
+                                <div class="card">
+                                    <img src="00013.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Đề khó</h5>
+                                        <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được
+                                            chọn
+                                            từ đề thi Đại
+                                            học.</p>
+                                        <button class="btn-begin" type="submit">Làm bài</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- QUESTIONS -->
-<!-- <div id="test-content">
-    <span class="icon-close-test" onclick="closeTest()"><ion-icon name="close-outline"></ion-icon></span>
-    <div class="formbox content">
-        <h2>Làm đề</h2>
-        <div class="question">
-            <form action="#" method="post">
-                <table>
-                    <tr>
-                        <th colspan="2">Câu 1: Nội dung câu hỏi nằm ở đây</th>
-                    </tr>
-                    <tr>
-                        <td><input type="radio", id="answerA", name="answer"> <label for="answerA">Đáp án 1</label></td>
-                        <td><input type="radio", id="answerB", name="answer"> <label for="answerB">Đáp án 2</label></td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio", id="answerC", name="answer"> <label for="answerC">Đáp án 3</label></td>
-                        <td><input type="radio", id="answerD", name="answer"> <label for="answerD">Đáp án 4</label></td>
-                    </tr>
-                </table>
-            </form>
+    <!-- QUESTIONS -->
+    <!-- <div id="test-content">
+        <span class="icon-close-test" onclick="closeTest()"><ion-icon name="close-outline"></ion-icon></span>
+        <div class="formbox content">
+            <h2>Làm đề</h2>
+            <div class="question">
+                <form action="#" method="post">
+                    <table>
+                        <tr>
+                            <th colspan="2">Câu 1: Nội dung câu hỏi nằm ở đây</th>
+                        </tr>
+                        <tr>
+                            <td><input type="radio", id="answerA", name="answer"> <label for="answerA">Đáp án 1</label></td>
+                            <td><input type="radio", id="answerB", name="answer"> <label for="answerB">Đáp án 2</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio", id="answerC", name="answer"> <label for="answerC">Đáp án 3</label></td>
+                            <td><input type="radio", id="answerD", name="answer"> <label for="answerD">Đáp án 4</label></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- ABOUT -->
+    <div class="about">
+        <span class="icon-close-about"><ion-icon name="close-outline"></ion-icon></span>
+        <h2>Giới thiệu</h2>
+        <div class="about-us">
+            <table>
+                <tr>
+                    <th><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis distinctio praesentium
+                        excepturi
+                        explicabo vitae aliquid perferendis iusto, consectetur expedita dolorum asperiores illo
+                        nesciunt,
+                        unde voluptates impedit magni, saepe eaque? Ipsa? Lorem ipsum dolor sit amet consectetur
+                        adipisicing
+                        elit. Non corporis dolore, nulla maxime veritatis </p></th>
+                </tr>
+            </table>
         </div>
     </div>
-</div> -->
 
-<!-- ABOUT -->
-<div class="about">
-    <span class="icon-close-about"><ion-icon name="close-outline"></ion-icon></span>
-    <h2>Giới thiệu</h2>
-    <div class="about-us">
-        <table>
-            <tr>
-                <th><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis distinctio praesentium excepturi
-                    explicabo vitae aliquid perferendis iusto, consectetur expedita dolorum asperiores illo nesciunt,
-                    unde voluptates impedit magni, saepe eaque? Ipsa? Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Non corporis dolore, nulla maxime veritatis </p></th>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<script src="script.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-        crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/ebdd867c54.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ebdd867c54.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
