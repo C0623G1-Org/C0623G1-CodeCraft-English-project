@@ -52,52 +52,66 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //         count = 0;
     //     }
     // })
+    if (registerLink != null) {
+        registerLink.addEventListener('click', () => {
+            wrapper.classList.add('active');
+            menu.classList.remove('active');
+        })
+    }
 
-    registerLink.addEventListener('click', ()=> {
-        wrapper.classList.add('active');
-        menu.classList.remove('active');
-    })
+    if (loginLink != null) {
+        loginLink.addEventListener('click', () => {
+            wrapper.classList.remove('active');
+            menu.classList.remove('active');
+        })
+    }
 
-    loginLink.addEventListener('click', ()=> {
-        wrapper.classList.remove('active');
-        menu.classList.remove('active');
-    })
+    if (btnPopup != null) {
+        btnPopup.addEventListener('click', () => {
+            about.classList.remove('active');
+            wrapper.classList.add('active-popup');
+            menu.classList.remove('active');
+        })
+    }
 
-    btnPopup.addEventListener('click', ()=> {
-        about.classList.remove('active');
-        wrapper.classList.add('active-popup');
-        menu.classList.remove('active');
-    })
+    if (iconClose != null) {
+        iconClose.addEventListener('click', () => {
+            wrapper.classList.remove('active-popup');
+        })
+    }
 
-    iconClose.addEventListener('click', ()=> {
-        wrapper.classList.remove('active-popup');
-    })
+    if (doTest != null) {
+        doTest.addEventListener('click', () => {
+            menu.classList.add('active');
+            wrapper.classList.remove('active');
+            wrapper.classList.remove('active-popup');
+            about.classList.remove('active');
+        })
+    }
 
-    doTest.addEventListener('click', ()=> {
-        menu.classList.add('active');
-        wrapper.classList.remove('active');
-        wrapper.classList.remove('active-popup');
-        about.classList.remove('active');
-    })
-
-    iconCloseMenu.addEventListener('click', ()=> {
-        menu.classList.remove('active');
-    })
+    if (iconCloseMenu != null) {
+        iconCloseMenu.addEventListener('click', () => {
+            menu.classList.remove('active');
+        })
+    }
 
     // iconCloseTest.addEventListener('click', ()=> {
     //     testContent.classList.remove('active');
     // })
+    if (aboutUsLink != null) {
+        aboutUsLink.addEventListener('click', () => {
+            wrapper.classList.remove('active');
+            wrapper.classList.remove('active-popup');
+            menu.classList.remove('active');
+            about.classList.add('active');
+        })
+    }
 
-    aboutUsLink.addEventListener('click', ()=> {
-        wrapper.classList.remove('active');
-        wrapper.classList.remove('active-popup');
-        menu.classList.remove('active');
-        about.classList.add('active');
-    })
-
-    iconCloseAbout.addEventListener('click', ()=> {
-        about.classList.remove('active');
-    })
+    if (iconCloseAbout != null) {
+        iconCloseAbout.addEventListener('click', () => {
+            about.classList.remove('active');
+        })
+    }
 
 });
 
