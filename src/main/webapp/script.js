@@ -25,7 +25,7 @@ var user;
 //     about.classList.add('active');
 // }
 
-// document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", (event) => {
     wrapper = document.querySelector('.wrapper');
     loginLink = document.querySelector('.login-link');
     registerLink = document.querySelector('.register-link');
@@ -99,6 +99,6 @@ var user;
         about.classList.remove('active');
     })
 
-// });
+});
 
 

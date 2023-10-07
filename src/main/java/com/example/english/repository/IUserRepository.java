@@ -2,13 +2,14 @@ package com.example.english.repository;
 
 import com.example.english.model.User;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface IUserRepository {
     boolean signup(User user);
 
     User login(String loginId, String password);
+
+    int signupValidation(String username, String email);
 
     void editUser(User user);
 

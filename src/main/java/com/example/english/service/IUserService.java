@@ -9,6 +9,8 @@ public interface IUserService {
 
     User login(String loginId, String password);
 
+    int signupValidation(String username, String email);
+
     void editUser(User user);
 
 

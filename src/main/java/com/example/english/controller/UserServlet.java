@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "")
 public class UserServlet extends HttpServlet {
@@ -138,23 +139,44 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("pswd");
         String confirm = request.getParameter("cfrm pswd");
-        String error = "Xác nhận mật khẩu không chính xác";
-        String emailExist = "Địa chỉ email đã tồn tại";
+        RequestDispatcher requestDispatcher;
         if (password.equals(confirm)) {
             User user = new User(email, name, password);
-            if (userService.signup(user)) {
-                request.setAttribute("name", name);
-                request.setAttribute("password", password);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("homePage.jsp");
-                requestDispatcher.forward(request, response);
-            } else {
-                request.setAttribute("error", emailExist);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/reg.jsp");
-                requestDispatcher.forward(request, response);
+            switch (userService.signupValidation(name, email)) {
+                case 1: // Tên đăng nhập tồn tại
+                    String usernameExist = "Tên đăng nhập đã tồn tại";
+                    request.setAttribute("signupError", usernameExist);
+                    requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+                    requestDispatcher.forward(request, response);
+                    break;
+                case 2: // Email tồn tại
+                    String emailExist = "Địa chỉ email đã tồn tại";
+                    request.setAttribute("signupError", emailExist);
+                    requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+                    requestDispatcher.forward(request, response);
+                    break;
+                default:
+                    userService.signup(user);
+                    request.setAttribute("name", name);
+                    request.setAttribute("password", password);
+                    requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+                    requestDispatcher.forward(request, response);
+                    break;
             }
+//            if (userService.signup(user)) {
+//                request.setAttribute("name", name);
+//                request.setAttribute("password", password);
+//                RequestDispatcher requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+//                requestDispatcher.forward(request, response);
+//            } else if (userService.signupValidation(name, email) == 2){
+//                request.setAttribute("signupError", emailExist);
+//                RequestDispatcher requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+//                requestDispatcher.forward(request, response);
+//            }
         } else {
-            request.setAttribute("error", error);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/reg.jsp");
+            String error = "Xác nhận mật khẩu không chính xác";
+            request.setAttribute("signupError", error);
+            requestDispatcher = request.getRequestDispatcher("homePage.jsp");
             requestDispatcher.forward(request, response);
         }
     }

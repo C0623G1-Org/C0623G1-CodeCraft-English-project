@@ -55,7 +55,7 @@
 <%--</c:choose>--%>
 
 <!-- LOGIN & SIGNUP -->
-<div class="wrapper ${loginError != null ? "active-popup" : ""}">
+<div class="wrapper ${loginError != null ? "active-popup" : (signupError != null ? "active-popup active" : "")}">
     <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
     <div class="form-box login">
         <h2>Đăng nhập</h2>
@@ -125,6 +125,7 @@
     <div class="formbox difficulty">
         <h2>Làm đề</h2>
         <div class="d-flex">
+            <form action="">
             <div class="easy">
                 <div class="card">
                     <img src="00007.png" class="card-img-top" alt="...">
@@ -132,10 +133,12 @@
                         <h5 class="card-title">Đề dễ</h5>
                         <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ khó cơ bản
                             nhất.</p>
-                        <button class="btn-begin" onclick="onBeginTest(1)">Làm bài</button>
+                        <button class="btn-begin" type="submit">Làm bài</button>
                     </div>
                 </div>
             </div>
+            </form>
+            <form action="">
             <div class="medium">
                 <div class="card">
                     <img src="00008.png" class="card-img-top" alt="...">
@@ -143,10 +146,12 @@
                         <h5 class="card-title">Đề trung bình</h5>
                         <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo ra với độ khó
                             nâng cao.</p>
-                        <button class="btn-begin" onclick="onBeginTest(2)">Làm bài</button>
+                        <button class="btn-begin" type="submit">Làm bài</button>
                     </div>
                 </div>
             </div>
+            </form>
+            <form action="">
             <div class="hard">
                 <div class="card">
                     <img src="00013.png" class="card-img-top" alt="...">
@@ -154,10 +159,11 @@
                         <h5 class="card-title">Đề khó</h5>
                         <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được chọn từ đề thi Đại
                             học.</p>
-                        <button class="btn-begin" onclick="onBeginTest(3)">Làm bài</button>
+                        <button class="btn-begin" type="submit">Làm bài</button>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
