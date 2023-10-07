@@ -8,47 +8,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="home-page.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
 <body>
-<c:import url="header.jsp"></c:import>
-<!-- CAROUSEL -->
-<div>
-    <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="overlay-image" style="background-image:url(./2.jpg);"></div>
-                    <div class="container" id="carouselCont">
-                        <h1>Ảnh 1</h1>
-                        <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                            voluptas, sunt corporis
-                            excepturi
-                            tempora eaque consequuntur cumque hic voluptate quia explicabo placeat sint laborum
-                            praesentium
-                            quibusdam adipisci, totam architecto sequi.</p>
-                        <a href="reg.jsp" role="button" class="btn btn-lg btn-primary">ĐĂNG KÝ NGAY</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="overlay-image" style="background-image:url(./1.jpg);"></div>
-                    <div class="container" id="carouselCont1">
-                        <h1>Ảnh 2</h1>
-                        <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                            voluptas, sunt corporis
-                            excepturi
-                            tempora eaque consequuntur cumque hic voluptate quia explicabo placeat sint laborum
-                            praesentium
-                            quibusdam adipisci, totam architecto sequi.</p>
-                        <a href="reg.jsp" role="button" class="btn btn-lg btn-primary">ĐĂNG KÝ NGAY</a>
-                    </div>
-                </div>
+<!-- NAVBAR -->
+<header>
+    <h2 class="logo"><img src="logo5.png" alt=""></h2>
+    <nav class="navigation">
+        <c:choose>
+            <c:when test="${user == null}">
+                <a href="#">Trang chủ</a>
+                <a class="aboutUs" href="#">Giới thiệu</a>
+                <a class="doTest" href="#">Luyện đề</a>
+                <button class="btnLogin-popup">Đăng nhập</button>
+            </c:when>
+            <c:otherwise>
+                <a href="#">Trang chủ</a>
+                <a class="aboutUs" href="#">Giới thiệu</a>
+                <a class="doTest" href="#">Luyện đề</a>
+                <a href="../my_page.jsp" class="user">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                        ${user.userName}</a>
+            </c:otherwise>
+        </c:choose>
+    </nav>
+</header>
+<%--<c:choose>--%>
+<%--    <c:when test="${user != null}">--%>
+<%--        <div class="user-menu">--%>
+<%--            <ul>--%>
+<%--                <li><a href="">Hồ sơ</a></li>--%>
+<%--                <li><a href="">Đăng xuất</a></li>--%>
+<%--            </ul>--%>
+<%--        </div>--%>
+<%--    </c:when>--%>
+<%--</c:choose>--%>
+
+<!-- LOGIN & SIGNUP -->
+<div class="wrapper ${loginError != null ? "active-popup" : (signupError != null ? "active-popup active" : "")}">
+    <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+    <div class="form-box login">
+        <h2>Đăng nhập</h2>
+        <div style="text-align: center; justify-content: center;"><h2 style="color: red; font-size: 1em;">${loginError}</h2>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"
                 style="width: 50px;">
@@ -63,11 +67,101 @@
     </div>
 </div>
 
-<!-- FOOTER -->
-<c:import url="footer.jsp"></c:import>
-<!-- SCRIPT -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+<!-- TEST MENU -->
+<div class="menu">
+    <span class="icon-close-menu"><ion-icon name="close-outline"></ion-icon></span>
+    <div class="formbox difficulty">
+        <h2>Làm đề</h2>
+        <div class="d-flex">
+            <form action="">
+            <div class="easy">
+                <div class="card">
+                    <img src="00007.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Đề dễ</h5>
+                        <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ khó cơ bản
+                            nhất.</p>
+                        <button class="btn-begin" type="submit">Làm bài</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <form action="">
+            <div class="medium">
+                <div class="card">
+                    <img src="00008.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Đề trung bình</h5>
+                        <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo ra với độ khó
+                            nâng cao.</p>
+                        <button class="btn-begin" type="submit">Làm bài</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <form action="">
+            <div class="hard">
+                <div class="card">
+                    <img src="00013.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Đề khó</h5>
+                        <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được chọn từ đề thi Đại
+                            học.</p>
+                        <button class="btn-begin" type="submit">Làm bài</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- QUESTIONS -->
+<!-- <div id="test-content">
+    <span class="icon-close-test" onclick="closeTest()"><ion-icon name="close-outline"></ion-icon></span>
+    <div class="formbox content">
+        <h2>Làm đề</h2>
+        <div class="question">
+            <form action="#" method="post">
+                <table>
+                    <tr>
+                        <th colspan="2">Câu 1: Nội dung câu hỏi nằm ở đây</th>
+                    </tr>
+                    <tr>
+                        <td><input type="radio", id="answerA", name="answer"> <label for="answerA">Đáp án 1</label></td>
+                        <td><input type="radio", id="answerB", name="answer"> <label for="answerB">Đáp án 2</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio", id="answerC", name="answer"> <label for="answerC">Đáp án 3</label></td>
+                        <td><input type="radio", id="answerD", name="answer"> <label for="answerD">Đáp án 4</label></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<!-- ABOUT -->
+<div class="about">
+    <span class="icon-close-about"><ion-icon name="close-outline"></ion-icon></span>
+    <h2>Giới thiệu</h2>
+    <div class="about-us">
+        <table>
+            <tr>
+                <th><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis distinctio praesentium excepturi
+                    explicabo vitae aliquid perferendis iusto, consectetur expedita dolorum asperiores illo nesciunt,
+                    unde voluptates impedit magni, saepe eaque? Ipsa? Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Non corporis dolore, nulla maxime veritatis </p></th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"

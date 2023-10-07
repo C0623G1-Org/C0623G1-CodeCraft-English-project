@@ -5,7 +5,6 @@ import com.example.english.repository.IUserRepository;
 import com.example.english.repository.impl.UserRepositoryImpl;
 import com.example.english.service.IUserService;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements IUserService {
@@ -19,6 +18,11 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User login(String loginId, String password) {
         return userRepository.login(loginId, password);
+    }
+
+    @Override
+    public int signupValidation(String username, String email) {
+        return userRepository.signupValidation(username, email);
     }
 
     @Override
