@@ -77,6 +77,11 @@ body {
     background-color: #29313c;
 }
 
+.row {
+    /*background-color: #29313c;*/
+    /*padding: 0;*/
+}
+
 .text-secondary {
     color: #999;
 }
