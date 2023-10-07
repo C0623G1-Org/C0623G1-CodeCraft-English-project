@@ -121,7 +121,7 @@
     <div class="formbox difficulty">
         <h2>Làm đề</h2>
         <div class="d-flex">
-            <form action="/question-servlet?action=create-test&level=1">
+            <form action="/question-servlet?action=create-test">
                 <div class="easy">
                     <div class="card">
                         <img src="00007.png" class="card-img-top" alt="...">
@@ -132,12 +132,13 @@
                                 cơ
                                 bản
                                 nhất.</p>
+                            <input type="hidden" value="1" name="level">
                             <button class="btn-begin" type="submit">Làm bài</button>
                         </div>
                     </div>
                 </div>
             </form>
-            <form action="/question-servlet?action=create-test&level=2">
+            <form action="/question-servlet?action=create-test">
                 <div class="medium">
                     <div class="card">
                         <img src="00008.png" class="card-img-top" alt="...">
@@ -147,6 +148,7 @@
                                 ra
                                 với độ khó
                                 nâng cao.</p>
+                            <input type="hidden" value="2" name="level">
                             <button class="btn-begin" type="submit">Làm bài</button>
                         </div>
                     </div>
@@ -164,7 +166,6 @@
                                 học.</p>
                             <input type="hidden" value="3" name="level">
                             <button class="btn-begin" type="submit">Làm bài</button>
-
                         </div>
                     </div>
                 </div>

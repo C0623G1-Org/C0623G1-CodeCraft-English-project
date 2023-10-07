@@ -26,10 +26,10 @@ public class QuestionServlet extends HttpServlet {
         action = action == null ? "" : action;
         switch (action) {
             case "create-test":
-                createTest(request, response);
+                
                 break;
             default:
-
+                createTest(request, response);
                 break;
         }
     }
