@@ -40,7 +40,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Ngày sinh</th>
                             <th scope="col">Tên đăng nhập</th>
-                            <th scope="col">Xóa</th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,15 +51,50 @@
                                 <td>${p.email}</td>
                                 <td>${p.dob}</td>
                                 <td>${p.loginId}</td>
-                                <td><a href="/?action=delete&id=${p.userId}">Xóa</a></td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            onclick="sendInfoMoDal('${p.userId}','${p.userName}')">
+<%--                                        Xoá--%>
+                                        <img style="width: 28px;height: 28px" src="Trash-can.png">
+                                    </button>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="/?action=delete" method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận xoá</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h1><input type="hidden" name="id" id="userId"></h1>
+                                Bạn có chắc chắc xoá <span id="userName" class="text text-danger"></span> ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
+                                <button type="submit" class="btn btn-outline-danger">Xoá</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 <c:import url="footer.jsp"></c:import>
+
+<script>
+    function sendInfoMoDal(id, name) {
+        document.getElementById("userId").value = id;
+        document.getElementById("userName").innerText = name;
+
+    }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>

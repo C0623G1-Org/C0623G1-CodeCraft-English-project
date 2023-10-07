@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Asus
@@ -40,8 +40,7 @@
                             </a>
                             <ul class="dropdown-menu" style="padding-right: 40px;">
                                 <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ DỄ</a></li>
-                                <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ TRUNG
-                                    BÌNH</a></li>
+                                <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ TRUNG BÌNH</a></li>
                                 <li><a class="dropdown-item" href="reg.jsp" style="color: #000000;">LÀM ĐỀ KHÓ</a></li>
                             </ul>
                         </li>

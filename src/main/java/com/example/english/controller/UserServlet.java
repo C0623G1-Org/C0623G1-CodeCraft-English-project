@@ -35,6 +35,15 @@ public class UserServlet extends HttpServlet {
             case "logOut":
                 logOut(request, response);
                 break;
+
+            case "selectAll":
+                showListUser(request,response);
+                break;
+            case "fill-form":
+                fillForm(request,response);
+                break;
+
+
             default:
                 homePage(request, response);
                 break;
@@ -93,6 +102,9 @@ public class UserServlet extends HttpServlet {
                 break;
             case "edit":
                 editUserById(request, response);
+                break;
+            case "delete":
+                deleteUser(request,response);
                 break;
         }
     }
