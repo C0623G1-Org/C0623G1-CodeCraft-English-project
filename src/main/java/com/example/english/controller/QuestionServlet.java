@@ -52,20 +52,5 @@ public class QuestionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        action = action == null ? "" : action;
-        switch (action) {
-            case "submit":
-                submit(request, response);
-                break;
-            default:
-//                showQuestionList(request, response);
-                break;
-
-        }
-    }
-
-    private void submit(HttpServletRequest request, HttpServletResponse response) {
-
     }
 }

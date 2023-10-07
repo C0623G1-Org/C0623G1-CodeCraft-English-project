@@ -10,8 +10,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css_my_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<%--    <script src="../../bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>--%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%--    <script src="../../bootstrap-5.2.3-dist/js/bootstrap.bundle.js"></script>--%>
 
 </head>
 <body>
@@ -24,8 +25,8 @@
                 <img src="img.jpg" class="rounded-circle" width="150" alt="">
                 <div class="mt-3">
                     <h3 style="color: white">${user.userName}</h3>
-                    <a href="">History</a>
-                    <a href="/?action=fill-form&id=${user.userId}">Đặt lại thông tin</a>
+                    <a href="/history-servlet?action=displayHistory&userId=${user.userId}">Lịch sử</a>
+                    <a href="/?action=fill-form&id=${user.userId}">Thay đổi thông tin</a>
                     <a href="homePage.jsp">Đăng xuất</a>
                 </div>
             </div>
@@ -33,7 +34,7 @@
     </div>
     <div class="card-right col-md-8 mt-0">
         <div class="mb-3 content">
-            <h1 class="m-3 pt-3">Information</h1>
+            <h1 class="m-3 pt-3">Thông tin cá nhân </h1>
             <div class="card-body card-body-custom-left">
                 <div class="row">
                     <div class="col-md-3">
@@ -55,7 +56,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-3">
-                        <h5>Ngày Sinh</h5>
+                        <h5>Ngày sinh</h5>
                     </div>
                     <div class="col-md-9 text-secondary">
                         ${user.dob}
@@ -92,7 +93,6 @@
 
 
 <c:import url="footer.jsp"></c:import>
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

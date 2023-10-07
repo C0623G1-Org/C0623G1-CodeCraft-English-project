@@ -36,10 +36,46 @@ public class UserServlet extends HttpServlet {
             case "logOut":
                 logOut(request, response);
                 break;
+            case "selectAll":
+                showListUser(request,response);
+                break;
+            case "fill-form":
+                fillForm(request,response);
+                break;
             default:
                 homePage(request, response);
                 break;
         }
+    }
+
+    private void fillForm(HttpServletRequest request, HttpServletResponse response) {
+        User user = userService.getByIdUser(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("user",user);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showListUser(HttpServletRequest request, HttpServletResponse response) {
+        List<User> userList =userService.selectAllUser();
+        request.setAttribute("users",userList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin.jsp");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        userService.deleteUser(id);
+        showListUser(request,response);
     }
 
     private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -52,21 +88,26 @@ public class UserServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             User getIdUser = userService.getByIdUser(id);
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
             request.setAttribute("getIdUser",getIdUser);
-            requestDispatcher.forward(request,response); 
+            requestDispatcher.forward(request,response);
+          
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
     private void editUserById(HttpServletRequest request,HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
-        RequestDispatcher requestDispatcher = null;
+        int id = Integer.parseInt(request.getParameter("userId"));
+        String name = request.getParameter("userName");
+        String email = request.getParameter("email");
+        String dob = request.getParameter("dob");
+        User user = new User(id,name,email,dob);
+        userService.editUser(user);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
+        request.setAttribute("user",user);
         try {
-            User user = userService.getByIdUser(id);
-            request.setAttribute("user",user);
-            requestDispatcher = request.getRequestDispatcher("/edit_my_page.jsp");
             requestDispatcher.forward(request,response);
 
         } catch (ServletException e) {
@@ -94,6 +135,9 @@ public class UserServlet extends HttpServlet {
                 break;
             case "edit":
                 editUserById(request, response);
+                break;
+            case "delete":
+                deleteUser(request,response);
                 break;
         }
     }
@@ -124,12 +168,13 @@ public class UserServlet extends HttpServlet {
             List<Difficulty> difficultyList = difficultyService.showDifficulties();
             request.setAttribute("difficultyList", difficultyList);
             session.setAttribute("user", user);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+            session.setAttribute("difficultyList", difficultyList);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
             requestDispatcher.forward(request, response);
         } else {
-            String error  = "Sai tên đăng nhập hoặc mật khẩu";
-            request.setAttribute("loginError", error);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+            String error = "Sai tên đăng nhập hoặc mật khẩu";
+            request.setAttribute("error", error);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
             requestDispatcher.forward(request, response);
         }
     }

@@ -1,5 +1,5 @@
--- CREATE DATABASE case_study;
--- USE case_study;
+CREATE DATABASE case_study;
+USE case_study;
 
 CREATE TABLE users(
                       user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -9,6 +9,7 @@ CREATE TABLE users(
                       username VARCHAR(45) UNIQUE NOT NULL,
                       login_password VARCHAR(45) NOT NULL,
                       role_name VARCHAR(120) NOT NULL,
+                      delete_user INT DEFAULT 0,
                       CHECK (role_name IN ('ADMIN', 'SIMPLE_USER'))
 );
 
@@ -32,7 +33,7 @@ CREATE TABLE questions (
 CREATE TABLE test_history(
                              history_id INT PRIMARY KEY AUTO_INCREMENT,
                              user_id INT NOT NULL,
-                             test_date DATETIME DEFAULT NOW(),
+                             test_date VARCHAR(50) ,
                              FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 CREATE TABLE results (
@@ -45,7 +46,7 @@ CREATE TABLE results (
 );
 
 INSERT INTO difficulty (diff_name)
-VALUES ('easy'),('medium'),('hard');
+VALUES ('DỄ'),('TRUNG BÌNH'),('KHÓ');
 
 INSERT INTO questions ( diff_id ,question_content ,answer_a ,answer_b ,answer_c,answer_d ,correct_answer)
 VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
@@ -130,17 +131,17 @@ VALUES (1,'Who are all ________ people?','this','those','them','that','those'),
        (3, "Young people have become increasingly commited____social activities","of","to","in","at","to");
 
 DELIMITER $$
-CREATE PROCEDURE create_practice_list(diff_name VARCHAR(100))
+CREATE PROCEDURE create_practice_list_by_id(diff_id int)
 BEGIN
 SELECT *
 FROM questions AS qs
          JOIN difficulty AS dt ON dt.diff_id = qs.diff_id
          LEFT JOIN results AS rs ON qs.question_id = rs.question_id
 WHERE dt.diff_id = diff_id
+  AND rs.question_id IS NULL
 ORDER BY RAND() LIMIT 10;
 END $$
 DELIMITER ;
-CALL create_practice_list('hard');
 
 
 DELIMITER $$
