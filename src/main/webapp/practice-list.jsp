@@ -13,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="practice-list.css">
+    <%--    <link rel="stylesheet" href="style.css">--%>
 </head>
 <body>
 <header>
@@ -68,14 +69,10 @@
                     <button style="text-align: right" type="submit" name="submit">Chấm điểm</button>
                 </div>
             </div>
-            <div class="col-lg-2">
-
-            </div>
-
-        </div>
-
+        </c:forEach>
+        <input type="hidden" name="userId" value="${user.userId}">
+        <button type="submit" name="submit">Chấm điểm</button>
     </form>
-
 </div>
 
 <!-- FOOTER -->
@@ -87,25 +84,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
-<script>
-    (() => {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-</script>
 </body>
 </html>
