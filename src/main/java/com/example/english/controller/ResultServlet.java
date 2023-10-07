@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "resultServlet", value = "/result")
@@ -88,13 +87,6 @@ public class ResultServlet extends HttpServlet {
         RequestDispatcher rq = request.getRequestDispatcher("/result.jsp");
         request.setAttribute("resultList", resultList);
         rq.forward(request,response);
-
         resultService.saveResult(saveResult);
     }
-//    private int questionId;
-//    private String question;
-//    private String seletectedAnswer;
-//    private String rightAnswer;
-//    private int score;
-
 }
