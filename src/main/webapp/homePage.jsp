@@ -48,24 +48,70 @@
 <%--</c:choose>--%>
 
 <!-- LOGIN & SIGNUP -->
-<div class="wrapper ${loginError != null ? "active-popup" : (signupError != null ? "active-popup active" : "")}">
+<div class="wrapper ${loginError != null ? "active-popup" : ""}">
     <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
     <div class="form-box login">
         <h2>Đăng nhập</h2>
         <div style="text-align: center; justify-content: center;"><h2 style="color: red; font-size: 1em;">${loginError}</h2>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"
-                style="width: 50px;">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next"
-                style="width: 50px;">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <form action="/?action=login" method="post">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                <input type="text" id="loginId" name="loginId" required>
+                <label for="loginId">Tên đăng nhập</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <input type="password" id="password" name="password" required>
+                <label for="password">Mật khẩu</label>
+            </div>
+            <div class="remember-forgot">
+                <label for="password-checkbox"><input type="checkbox" id="password-checkbox">Ghi nhớ mật khẩu</label>
+                <a href="#">Quên mật khẩu</a>
+            </div>
+            <button type="submit" class="btn">Đăng nhập</button>
+            <div class="login-register">
+                <p>Chưa có tài khoản? <a href="#" class="register-link">Đăng ký</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-box register">
+        <h2>Đăng ký</h2>
+        <div style="text-align: center; justify-content: center;"><h2 style="color: red; font-size: 1em;">${error}</h2>
+        </div>
+        <form action="/?action=signup" method="post">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                <input type="text" id="reg-username" name="name" required>
+                <label for="reg-username">Tên đăng nhập</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <input type="password" id="reg-password" name="pswd" required>
+                <label for="reg-password">Mật khẩu</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <input type="password" id="cnfrm-reg-password" name="cfrm pswd" required>
+                <label for="cnfrm-reg-password">Xác nhận mật khẩu</label>
+            </div>
+            <div class="remember-forgot">
+                <label for="passord-checkbox"><input type="checkbox" id="passord-checkbox">Đồng ý với điều khoản</label>
+            </div>
+            <button type="submit" class="btn">Đăng ký</button>
+            <div class="login-register">
+                <p>Đã có tài khoản? <a href="#" class="login-link">Đăng nhập</a></p>
+            </div>
+        </form>
     </div>
 </div>
+
 
 <!-- TEST MENU -->
 <div class="menu">
