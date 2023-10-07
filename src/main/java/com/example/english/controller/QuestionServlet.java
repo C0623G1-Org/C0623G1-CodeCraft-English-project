@@ -37,10 +37,8 @@ public class QuestionServlet extends HttpServlet {
     private void createTest(HttpServletRequest request, HttpServletResponse response) {
         int level = Integer.parseInt(request.getParameter("level"));
         List<Question> questionList = questionService.createTest(level);
-
         request.setAttribute("questionList", questionList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("practice-list.jsp");
-
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {

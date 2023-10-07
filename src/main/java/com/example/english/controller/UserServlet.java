@@ -174,7 +174,7 @@ public class UserServlet extends HttpServlet {
         } else {
             String error = "Sai tên đăng nhập hoặc mật khẩu";
             request.setAttribute("error", error);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
             requestDispatcher.forward(request, response);
         }
     }
