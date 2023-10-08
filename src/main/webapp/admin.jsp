@@ -85,7 +85,7 @@
                 </div>
             </div>
         </div>
-<c:import url="footer.jsp"></c:import>
+<%--<c:import url="footer.jsp"></c:import>--%>
 
 <script>
     function sendInfoMoDal(id, name) {
