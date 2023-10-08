@@ -128,8 +128,6 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-
-
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = userService.login(request.getParameter("loginId"), request.getParameter("password"));
         if (user != null) {
@@ -160,13 +158,13 @@ public class UserServlet extends HttpServlet {
                 request.setAttribute("signupError", usernameValidate);
                 requestDispatcher = request.getRequestDispatcher("homePage.jsp");
                 requestDispatcher.forward(request, response);
-                break;
+                return;
             case 2://Mật khẩu  sai định dạng
                 String passwordValidate = "Mật khẩu sai định dạng";
                 request.setAttribute("signupError", passwordValidate);
                 requestDispatcher = request.getRequestDispatcher("homePage.jsp");
                 requestDispatcher.forward(request, response);
-                break;
+                return;
         }
         if (password.equals(confirm)) {
             User user = new User(email, name, password);
@@ -174,20 +172,20 @@ public class UserServlet extends HttpServlet {
                 case 1: // Tên đăng nhập tồn tại
                     String usernameExist = "Tên đăng nhập đã tồn tại";
                     request.setAttribute("signupError", usernameExist);
-                    requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+                    requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
                     requestDispatcher.forward(request, response);
                     break;
                 case 2: // Email tồn tại
                     String emailExist = "Địa chỉ email đã tồn tại";
                     request.setAttribute("signupError", emailExist);
-                    requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+                    requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
                     requestDispatcher.forward(request, response);
                     break;
                 default:
                     userService.signup(user);
                     request.setAttribute("name", name);
                     request.setAttribute("password", password);
-                    requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+                    requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
                     requestDispatcher.forward(request, response);
                     break;
             }
@@ -204,7 +202,7 @@ public class UserServlet extends HttpServlet {
         } else {
             String error = "Xác nhận mật khẩu không chính xác";
             request.setAttribute("signupError", error);
-            requestDispatcher = request.getRequestDispatcher("homePage.jsp");
+            requestDispatcher = request.getRequestDispatcher("/homePage.jsp");
             requestDispatcher.forward(request, response);
         }
     }

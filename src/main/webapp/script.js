@@ -24,7 +24,8 @@ var user;
 // function showAbout() {
 //     about.classList.add('active');
 // }
-
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 document.addEventListener("DOMContentLoaded", (event) => {
     wrapper = document.querySelector('.wrapper');
     loginLink = document.querySelector('.login-link');
