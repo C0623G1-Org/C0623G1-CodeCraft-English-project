@@ -35,24 +35,12 @@
 </header>
 <div class="profile-board">
     <div class="profile">
-<<<<<<< Updated upstream
         <c:choose>
             <c:when test="${user.role == 'ADMIN'}">
-                <h3>${user.userName}</h3>
-                <a href="/?action=selectAll" style="color: #000000;">Admin</a>
-=======
-<<<<<<< Updated upstream
-        <h2>Hồ sơ</h2>
-        <i class="fa-solid fa-user"></i>
-        <h3>${user.userName}</h3>
-        <a href="/history-servlet?action=displayHistory&userId=${user.userId}">Lịch sử</a><br>
-        <a href="/?action=fill-form&id=${user.userId}">Thay đổi thông tin</a><br>
-=======
-        <c:choose>
-            <c:when test="${user.role == 'ADMIN'}">
+                <h2>Hồ sơ</h2>
+                <i class="fa-solid fa-user"></i>
                 <h3>${user.userName}</h3>
                 <a href="/?action=selectAll" style="color: #000000;">Admin</a><br>
->>>>>>> Stashed changes
                 <a href="/?action=fill-form&id=${user.userId}">Thay đổi thông tin</a><br>
             </c:when>
             <c:otherwise>
@@ -63,10 +51,6 @@
                 <a href="/?action=fill-form&id=${user.userId}">Thay đổi thông tin</a><br>
             </c:otherwise>
         </c:choose>
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         <a href="/?action=logOut">Đăng xuất</a><br>
     </div>
     <div class="profile-details">

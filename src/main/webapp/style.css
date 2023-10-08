@@ -566,32 +566,23 @@ text-decoration: underline;
     height: 0px;
 }
 
-/*.history {*/
-/*    position: relative;*/
-/*    width: 50%;*/
-/*    height: 440px;*/
-/*    background: transparent;*/
-/*    border: 2px solid rgba(225, 225, 225, 0.5);*/
-/*    border-radius: 40px;*/
-/*    backdrop-filter: blur(20px);*/
-/*    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    overflow: hidden;*/
-/*    transform: scale(1);*/
-/*}*/
+.history {
+    margin-top: 100px;
+    max-height: 600px;
+    overflow-y: auto;
+    position: relative;
+    width: 60%;
+    padding-right: 15px;
+}
 
 .history table {
     position: relative;
     text-align: center;
-    width: 200%;
-    /*border: 2px solid rgba(225, 225, 225, 0.5);*/
+    width: 100%;
     border-radius: 20px;
     background: rgba(255,255,255,0.5);
     padding: 20px;
     backdrop-filter: blur(20px);
-    left: -230px;
 }
 
 .container {
@@ -670,4 +661,49 @@ text-decoration: underline;
     font-weight: 600;
     padding: 0 35px 0 5px;
     transform: translateY(-10px);
+}
+
+.profile-board.admin {
+    position: relative;
+    width: 80%;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(225, 225, 225, 0.5);
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-board.admin .profile {
+    position: relative;
+    left: -20px;
+}
+
+.profile-board.admin .admin-panel {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    position: relative;
+    right: -50px;
+    border-radius: 20px;
+    height: 65%;
+    width: 55%;
+}
+
+.profile-board.admin table td,th {
+    background: transparent !important;
+    outline: none;
+    border: none;
+    white-space: nowrap;
+}
+
+.profile-board.admin .card-right{
+    padding: 30px;
+}
+
+.profile-board.admin .table-content {
+    max-height: 200px;
+    overflow-y: auto;
 }
