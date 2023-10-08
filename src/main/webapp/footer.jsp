@@ -14,6 +14,7 @@
         .footer {
             background: #1c2630;
             height: 200px;
+            width: 100%;
             display: grid;
             place-items: center;
         }
