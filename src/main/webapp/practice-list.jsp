@@ -16,7 +16,7 @@
 </head>
 <body>
 <header>
-    <c:import url="header.jsp"></c:import>
+    <c:import url="elements/header.jsp"></c:import>
 </header>
 
 <div class="container-fluid" id="page_body">

@@ -26,24 +26,24 @@
     <header>
 
 
-        <c:import url="header.jsp"></c:import>
+        <c:import url="elements/header.jsp"></c:import>
 
     </header>
 
     <content class=" border-bottom-2">
-        <div class="container" style="padding-top: 10px">
-            <div style="text-align: center">
+        <div class="container">
+            <div>
                 <c:choose>
                     <c:when test="${totalScore >7}">
-                        <p style="font-style: italic"><span style="font-size: 40px; font-weight: 300;color: red">Chúc mừng bạn</span></br>
+                        <p><span>Chúc mừng bạn</span></br>
                             Kết quả thật tuyệt vời. Hãy cố gắng phát huy nhé! </p>
                     </c:when>
                     <c:when test="${totalScore <5}">
-                        <p style="font-style: italic"><span style="font-size: 40px; font-weight: 300;color: red">Bạn cần cố gắng hơn</span><br/>
+                        <p><span>Bạn cần cố gắng hơn</span><br/>
                             Ai mới bắt đầu cũng sẽ gặp khó khăn cả. Chúc bạn sẽ có kết quả tốt hơn lần sau! </p>
                     </c:when>
                     <c:otherwise>
-                        <p style="font-style: italic"><span style="font-size: 40px; font-weight: 300;color: red">Bạn đã làm tương đối tốt</span><br/>
+                        <p><span>Bạn đã làm tương đối tốt</span><br/>
                             Cố gắng thử thách bản thân hơn nữa để mình ngày càng tiến bộ. Cố gắng lên nhé!</p>
                     </c:otherwise>
                 </c:choose>
@@ -53,11 +53,10 @@
                 <table class="table" border="1px">
                     <thead>
                     <tr class="table-primary">
-                        <th scope="col" style="width: 10%"></th>
-                        <th scope="col" style="width: 60%; text-align: center">Câu hỏi</th>
-                        <th scope="col" style="width: 15%">Đáp án chọn</th>
-                        <th scope="col" style="width: 15%">Đán án đúng</th>
-
+                        <th scope="col"></th>
+                        <th scope="col">Câu hỏi</th>
+                        <th scope="col">Đáp án chọn</th>
+                        <th scope="col">Đán án đúng</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,7 +70,7 @@
                             </tr>
                         </c:if>
                         <c:if test="${result.score==0}">
-                            <tr style="color: #FF0000">
+                            <tr>
                                 <th scope="row">Câu ${look.count}</th>
                                 <td>${result.question}</td>
                                 <td>${result.selectedAnswer}</td>
@@ -79,19 +78,19 @@
                             </tr>
                         </c:if>
                     </c:forEach>
-                    <tr class="table-primary " style="height: 50px">
+                    <tr class="table-primary">
                         <td colspan="3">
-                            <span style="font-weight: bold" class="large">Tổng điểm</span>
+                            <span>Tổng điểm</span>
                         </td>
                         <c:choose>
                             <c:when test="${totalScore >7}">
-                                <td style="color: green;font-weight: bold ">${totalScore}</td>
+                                <td>${totalScore}</td>
                             </c:when>
                             <c:when test="${totalScore <5}">
-                                <td style="color: red;font-weight: bold ">${totalScore}</td>
+                                <td>${totalScore}</td>
                             </c:when>
                             <c:otherwise>
-                                <td style="color: #FF6600 ;font-weight: bold ">${totalScore}</td>
+                                <td>${totalScore}</td>
                             </c:otherwise>
                         </c:choose>
                     </tr>
@@ -104,7 +103,7 @@
     </content>
 
     <%--footer--%>
-    <c:import url="footer.jsp"></c:import>
+<%--    <c:import url="footer.jsp"></c:import>--%>
 
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
