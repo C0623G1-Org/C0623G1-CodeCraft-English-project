@@ -26,6 +26,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public int validation(String username, String password) {
+        return userRepository.validate(username,password);
+    }
+
+    @Override
     public void editUser(User user) {
         userRepository.editUser(user);
     }
@@ -48,6 +53,11 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> selectAllUser() {
         return userRepository.selectAllUser();
+    }
+
+    @Override
+    public List<User> searchUser(String search) {
+        return userRepository.searchUser(search);
     }
 }
 

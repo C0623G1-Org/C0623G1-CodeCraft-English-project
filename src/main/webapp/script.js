@@ -117,3 +117,59 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 
+
+
+// validate login and password
+// const loginUser = document.getElementById('reg-username');
+// const passwordUser = document.getElementById('reg-password');
+// const btnRegister = document.getElementById('btn-register');
+// const inputEles = document.querySelectorAll('.input-row');
+// btnRegister.addEventListener('click', function () {
+//     Array.from(inputEles).map((ele) =>
+//         ele.classList.remove('success', 'error')
+//     );
+//     let isValid = checkValidate();
+//     if (isValid) {
+//         alert('Đăng ký thành công');
+//     }
+// });
+//
+// function checkValidate() {
+//     let loginUserValue = loginUser.value;
+//     let passwordUserValue = passwordUser.value;
+//     let isCheck = true;
+//
+//
+//     if (!isLogin(loginUserValue)) {
+//         setError(loginUser, 'Tài khoản không đúng định dạng');
+//         isCheck = false;
+//     } else {
+//         setSuccess(loginUser);
+//     }
+//
+//
+//     if (!isPassword(passwordUserValue)) {
+//         setError(passwordUser, 'Mật khẩu không đúng định dạng');
+//         isCheck = false;
+//     } else {
+//         setSuccess(passwordUser);
+//     }
+//     return isCheck;
+// }
+//
+// function setSuccess(ele) {
+//     ele.parentNode.classList.add('success');
+// }
+//
+// function setError(ele, message) {
+//     let parentEle = ele.parentNode;
+//     parentEle.classList.add('error');
+//     parentEle.querySelector('small').innerText = message;
+// }
+//     function isLogin(validateLogin) {
+//         return /^\w([._](?![._-])|\w){3,18}\w$/.test(validateLogin);
+//     }
+//
+//     function isPassword(validatePassword) {
+//         return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(validatePassword);
+//     }

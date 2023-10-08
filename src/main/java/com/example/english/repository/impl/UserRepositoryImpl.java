@@ -1,6 +1,7 @@
 package com.example.english.repository.impl;
 
 import com.example.english.model.User;
+import com.example.english.repository.BaseRepository;
 import com.example.english.repository.IUserRepository;
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,10 +18,14 @@ public class UserRepositoryImpl implements IUserRepository {
 
     private static final String LOGIN_SQL = "SELECT * FROM case_study.users WHERE username = ? AND login_password = ?;";
 
-    private static final String DELETE_USER =  "DELETE FROM `users`\n" + "WHERE user_Id = ?;";
-    private static final String SELECT_USER =  "SELECT * FROM users where role_name = \"SIMPLE_USER\" ORDER BY `display_name`;";
+    private static final String DELETE_USER =  "UPDATE  users SET delete_user = 1 WHERE user_id =?;";
+    private static final String SELECT_USER =  "SELECT * FROM users WHERE role_name = \"SIMPLE_USER\" AND delete_user=0;";
+    private static final String SELECT_SEARCH =  "SELECT * FROM users WHERE role_name = \"SIMPLE_USER\" AND delete_user=0 AND username like concat('%',?,'%') ;";
     protected static final String USERNAME_EXIST = "SELECT username FROM case_study.users WHERE user_id = ?;";
     private static final String FORGET_PASSWORD_SQL = "UPDATE case_study.users SET login_password = ? WHERE email = ? AND username = ?";
+
+    private static final String VALIDATE_PASSWORD ="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
+    private static final String VALIDATE_USERNAME ="^\\w([._](?![._-])|\\w){3,18}\\w$";
     public UserRepositoryImpl() {
     }
 
@@ -87,6 +92,16 @@ public class UserRepositoryImpl implements IUserRepository {
             } else if (user.getEmail().equals(email)) {
                 return 2;
             }
+        }
+        return 0;
+    }
+
+    @Override
+    public int validate(String username, String password) {
+        if (!username.matches(VALIDATE_USERNAME)){
+            return 1;
+        }else if (!password.matches(VALIDATE_PASSWORD)) {
+            return 2;
         }
         return 0;
     }
@@ -218,5 +233,38 @@ public class UserRepositoryImpl implements IUserRepository {
             }
         }
         return userList;
+    }
+
+    @Override
+    public List<User> searchUser(String search) {
+        List<User> searchUser = new ArrayList<>();
+        User user=null;
+        Connection connection = BaseRepository.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SEARCH);
+            preparedStatement.setString(1,search);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("user_id");
+                String userName =resultSet.getString("display_name");
+                String email = resultSet.getString("email");
+                String dob = resultSet.getString("dob");
+                String loginId = resultSet.getString("username");
+                String password = resultSet.getString("login_password");
+                String role = resultSet.getString("role_name");
+                user=new User(id,userName,email,dob,loginId,password,role);
+                searchUser.add(user);
+            }
+//            private int userId;
+//            private String userName;
+//            private String email;
+//            private String dob;
+//            private String loginId; //ko dc edit
+//            private String password; // ko dc hien thi
+//            private String role; // ko dc edit
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return searchUser;
     }
 }
