@@ -10,6 +10,7 @@ public interface IUserService {
     User login(String loginId, String password);
 
     int signupValidation(String username, String email);
+    int validation(String username,String password);
 
     void editUser(User user);
 
@@ -21,5 +22,6 @@ public interface IUserService {
 
     User getByIdUser(int id);
     List<User> selectAllUser();
+    List<User> searchUser(String search);
 
 }

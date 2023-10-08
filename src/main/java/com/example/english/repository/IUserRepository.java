@@ -10,6 +10,7 @@ public interface IUserRepository {
     User login(String loginId, String password);
 
     int signupValidation(String username, String email);
+    int validate(String username, String password);
 
     void editUser(User user);
 
@@ -19,4 +20,5 @@ public interface IUserRepository {
 
     User getByIdUser(int id);
     List<User> selectAllUser();
+    List<User> searchUser(String search);
 }

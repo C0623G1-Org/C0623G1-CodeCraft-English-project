@@ -15,7 +15,7 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-<div class="wrapper ${loginError != null ? "active-popup" : ""}">
+<div class="wrapper ${name != null || loginError != null || signupError != null ? 'active-popup' : ''} ${signupError != null ? 'active' : ''}">
     <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
     <div class="form-box login">
         <h2>Đăng nhập</h2>

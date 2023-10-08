@@ -173,15 +173,18 @@
 /*    padding-left: 0 !important;*/
 /*}*/
 .practice{
-    margin-top: 30px;
-    background-color: #1c2630;
+    margin-top: 10px;
+    /* background-color: #1c2630; */
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px;
-    font-size: 22px;
+    /* padding: 12px; */
+    font-size: 30px;
     font-weight: 600;
+}
+body{
+    overflow-y: auto !important;
 }
 .submit{
     margin: 20px;
@@ -208,17 +211,28 @@
 
 }
 .submit button:hover{
-    letter-spacing: 0.3em;
-    padding: 2em;
+    /* letter-spacing: 0.3em; */
+    /* padding: 2em; */
+    background-color: #1266d8;
 
+}
+header {
+ position: relative  !important;    
 }
 .body-row{
     width: 100%;
     display: flex;
-
+    justify-content: center;
+}
+.question-list{
+     background-color: #15193b;
+     padding: 5px;
+     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     border-radius: 5px;
 }
 #page_body{
-    background-color: rgba(247,243,237,0.51);
+    /* margin-top: 180px; */
+    /* background-color: rgba(247,243,237,0.51); */
 }
 /*.row-question {*/
 /*    background-color: white;*/
