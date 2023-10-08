@@ -79,9 +79,9 @@
 
     <div class="form-box register">
         <h2>Đăng ký</h2>
-        <div style="text-align: center; justify-content: center;"><h2 style="color: red; font-size: 1em;">${error}</h2>
+        <div style="text-align: center; justify-content: center;"><h2 style="color: red; font-size: 1em;">${signupError}</h2>
         </div>
-        <form action="/?action=signup" method="post">
+        <form action="/?action=signup" method="post" >
             <div class="input-box">
                 <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
                 <input type="text" id="reg-username" name="name" required>
@@ -105,7 +105,11 @@
             <div class="remember-forgot">
                 <label for="passord-checkbox"><input type="checkbox" id="passord-checkbox">Đồng ý với điều khoản</label>
             </div>
-            <button type="submit" class="btn">Đăng ký</button>
+
+            <div class="inout-row">
+                <button type="submit" class="btn" id="btn-register">Đăng ký</button>
+            </div>
+
             <div class="login-register">
                 <p>Đã có tài khoản? <a href="#" class="login-link">Đăng nhập</a></p>
             </div>
