@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<c:import url="header.jsp"></c:import>
+<c:import url="elements/header.jsp"></c:import>
 
         <div class="row">
             <div class="col-md-4 mt-0">
