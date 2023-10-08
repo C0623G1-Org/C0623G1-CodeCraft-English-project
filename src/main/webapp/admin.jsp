@@ -18,163 +18,82 @@
 <body>
 <c:import url="elements/header.jsp"></c:import>
 
-<div class="row">
-    <div class="col-md-4 mt-0">
-        <div class="card-left text-center sidebar">
-            <div class="card-body">
-                <img src="img.jpg" class="rounded-circle" width="150" alt="">
-                <div class="mt-3">
-                    <h3 style="color: white">${user.userName}</h3>
-                    <a href="/?action=selectAll">Hiển thị người dùng</a>
-                    <a href="homePage.jsp">Đăng xuất</a>
-                </div>
-            </div>
-        </div>
+<div class="profile-board admin">
+    <div class="profile">
+        <h2>Hồ sơ</h2>
+        <i class="fa-solid fa-user"></i>
+        <h3>${user.userName}</h3>
+        <a href="/?action=selectAll" style="color: #000000;">Admin</a><br>
+        <a href="/?action=selectAll">Danh sách</a><br>
+        <a href="/?action=logOut">Đăng xuất</a><br>
     </div>
-    <div class="card-right col-md-8 mt-0">
-        <div class="card mb-3 content">
+    <div class="admin-panel">
+        <div class="card-right mt-0">
             <form action="/?action=search" method="post">
                 <input type="text" name="userName">
                 <button type="submit">Search</button>
             </form>
-            <%--            <c:choose>--%>
-            <%--                &lt;%&ndash;                Hiển thị User&ndash;%&gt;--%>
-            <%--                <c:when test="${users!=null}">--%>
-            <%--                    <table class="table">--%>
-            <%--                        <thead>--%>
-            <%--                        <tr>--%>
-            <%--                            <th scope="col">STT</th>--%>
-            <%--                            <th scope="col">Họ và tên</th>--%>
-            <%--                            <th scope="col">Email</th>--%>
-            <%--                            <th scope="col">Ngày sinh</th>--%>
-            <%--                            <th scope="col">Tên đăng nhập</th>--%>
-            <%--                            <th scope="col"></th>--%>
-            <%--                        </tr>--%>
-            <%--                        </thead>--%>
-            <%--                        <tbody>--%>
-            <%--                        <c:forEach items="${users}" varStatus="loop" var="u">--%>
-            <%--                            <tr>--%>
-            <%--                                <td>${loop.count}</td>--%>
-            <%--                                <td>${u.userName}</td>--%>
-            <%--                                <td>${u.email}</td>--%>
-            <%--                                <td>${u.dob}</td>--%>
-            <%--                                <td>${u.loginId}</td>--%>
-            <%--                                <td>--%>
-            <%--                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"--%>
-            <%--                                            data-bs-target="#exampleModal"--%>
-            <%--                                            onclick="sendInfoMoDal('${u.userId}','${u.userName}')">--%>
-            <%--                                        <img style="width: 28px;height: 28px" src="Trash-can.png">--%>
-            <%--                                    </button>--%>
-            <%--                                </td>--%>
-            <%--                            </tr>--%>
-            <%--                        </c:forEach>--%>
-            <%--                        </tbody>--%>
-            <%--                    </table>--%>
-            <%--                </c:when>--%>
-            <%--                <c:when test="${users==null}">--%>
-            <%--                </c:when>--%>
+            <div class="table-content">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Ngày sinh</th>
+                        <th scope="col">Tên đăng nhập</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%--                Tìm kiếm User--%>
+                    <c:if test="${search!=null}">
+                        <c:forEach items="${search}" varStatus="loop" var="p">
+                            <tr>
+                                <td>${loop.count}</td>
+                                <td>${p.userName}</td>
+                                <td>${p.email}</td>
+                                <td>${p.dob}</td>
+                                <td>${p.loginId}</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"
+                                            onclick="sendInfoMoDal('${p.userId}','${p.userName}')">
+                                            <%--                                        Xoá--%>
+                                        <img style="width: 28px;height: 28px" src="Trash-can.png">
+                                    </button>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if>
 
+                    <%--Hiển thị User--%>
+                    <c:if test="${users!=null}">
+                        <c:forEach items="${users}" varStatus="loop" var="p">
+                            <tr>
+                                <td>${loop.count}</td>
+                                <td>${p.userName}</td>
+                                <td>${p.email}</td>
+                                <td>${p.dob}</td>
+                                <td>${p.loginId}</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"
+                                            onclick="sendInfoMoDal('${p.userId}','${p.userName}')">
+                                            <%--                                        Xoá--%>
+                                        <img style="width: 28px;height: 28px" src="Trash-can.png">
+                                    </button>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if>
+                    </tbody>
+                </table>
+            </div>
 
-            <%--                <c:when test="${search==null}">--%>
-            <%--                    <p style="color: #FF0000">${errorSearch}</p>--%>
-            <%--                </c:when>--%>
-
-            <%--&lt;%&ndash;                Hiển thị Search&ndash;%&gt;--%>
-            <%--                <c:when test="${search!=null}">--%>
-            <%--                    <table class="table">--%>
-            <%--                        <thead>--%>
-            <%--                        <tr>--%>
-            <%--                            <th scope="col">STT</th>--%>
-            <%--                            <th scope="col">Họ và tên</th>--%>
-            <%--                            <th scope="col">Email</th>--%>
-            <%--                            <th scope="col">Ngày sinh</th>--%>
-            <%--                            <th scope="col">Tên đăng nhập</th>--%>
-            <%--                            <th scope="col"></th>--%>
-            <%--                        </tr>--%>
-            <%--                        </thead>--%>
-            <%--                        <tbody>--%>
-            <%--                        <c:forEach items="${search}" varStatus="loop" var="s">--%>
-            <%--                            <tr>--%>
-            <%--                                <td>${loop.count}</td>--%>
-            <%--                                <td>${s.userName}</td>--%>
-            <%--                                <td>${s.email}</td>--%>
-            <%--                                <td>${s.dob}</td>--%>
-            <%--                                <td>${s.loginId}</td>--%>
-            <%--                                <td>--%>
-            <%--                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"--%>
-            <%--                                            data-bs-target="#exampleModal"--%>
-            <%--                                            onclick="sendInfoMoDal('${s.userId}','${s.userName}')">--%>
-            <%--                                        <img style="width: 28px;height: 28px" src="Trash-can.png">--%>
-            <%--                                    </button>--%>
-            <%--                                </td>--%>
-            <%--                            </tr>--%>
-            <%--                        </c:forEach>--%>
-            <%--                        </tbody>--%>
-            <%--                    </table>--%>
-            <%--                </c:when>--%>
-
-
-            <%--            </c:choose>--%>
-
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col">Họ và tên</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Ngày sinh</th>
-                    <th scope="col">Tên đăng nhập</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <%--                Tìm kiếm User--%>
-                <c:if test="${search!=null}">
-                    <c:forEach items="${search}" varStatus="loop" var="p">
-                        <tr>
-                            <td>${loop.count}</td>
-                            <td>${p.userName}</td>
-                            <td>${p.email}</td>
-                            <td>${p.dob}</td>
-                            <td>${p.loginId}</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                        onclick="sendInfoMoDal('${p.userId}','${p.userName}')">
-                                        <%--                                        Xoá--%>
-                                    <img style="width: 28px;height: 28px" src="Trash-can.png">
-                                </button>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </c:if>
-
-                <%--Hiển thị User--%>
-                <c:if test="${users!=null}">
-                    <c:forEach items="${users}" varStatus="loop" var="p">
-                        <tr>
-                            <td>${loop.count}</td>
-                            <td>${p.userName}</td>
-                            <td>${p.email}</td>
-                            <td>${p.dob}</td>
-                            <td>${p.loginId}</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                        onclick="sendInfoMoDal('${p.userId}','${p.userName}')">
-                                        <%--                                        Xoá--%>
-                                    <img style="width: 28px;height: 28px" src="Trash-can.png">
-                                </button>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </c:if>
-                </tbody>
-            </table>
         </div>
-    </div>
 
+    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -197,7 +116,7 @@
         </div>
     </div>
 </div>
-<c:import url="footer.jsp"></c:import>
+<!-- <c:import url="footer.jsp"></c:import> -->
 
 <script>
     function sendInfoMoDal(id, name) {

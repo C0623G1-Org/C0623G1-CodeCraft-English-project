@@ -502,7 +502,7 @@ text-decoration: underline;
 
 .about-us {
     background: rgba(112, 114, 141, 0.7);
-    padding: 30px;
+    padding: 0 30px;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
     position: relative;
@@ -512,7 +512,7 @@ text-decoration: underline;
 .profile-board {
     position: relative;
     width: 70%;
-    height: 500px;
+    height: 440px;
     background: transparent;
     border: 2px solid rgba(225, 225, 225, 0.5);
     border-radius: 40px;
@@ -527,6 +527,7 @@ text-decoration: underline;
 
 .profile-board h2, h1 {
     margin-bottom: 10%;
+    color: #0b0e2e;
 }
 
 .profile {
@@ -535,17 +536,17 @@ text-decoration: underline;
     left: -130px;
     transform: scale(1.5);
     background: rgba(255,255,255,0.5);
+    padding: 20px;
     border-radius: 20px;
     backdrop-filter: blur(60px);
     text-align: center;
-    /*top: 50px;*/
-    padding: 60px 50px;
 }
 
 .profile a {
     text-decoration: none;
     cursor: pointer;
     color: #0b0e2e;
+    margin: 10px;
 }
 
 .profile-details {
@@ -558,11 +559,151 @@ text-decoration: underline;
     padding: 10px 40px;
     border-radius: 20px;
     backdrop-filter: blur(60px);
-    top: -50px;
+    color: #0b0e2e;
+}
+
+.profile-details table td {
+    height: 0px;
 }
 
 .history {
-    position: absolute;
-    left: 620px;
-    top: 370px;
+    margin-top: 100px;
+    max-height: 600px;
+    overflow-y: auto;
+    position: relative;
+    width: 60%;
+    padding-right: 15px;
+}
+
+.history table {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+    backdrop-filter: blur(20px);
+}
+
+.container {
+    justify-content: center;
+}
+
+.container table {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    border: 2px solid rgba(225, 225, 225, 0.5);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+    backdrop-filter: blur(20px);
+    margin-top: 50px;
+}
+
+.btn.btn-begin {
+    width: 10%;
+    height: 45px;
+    background: #162938;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: rgb(255, 243, 220);
+    font-weight: 500;
+}
+
+.form-box.edit {
+    position: relative;
+        width: 40%;
+        height: 550px;
+        background: transparent;
+        border: 2px solid rgba(225, 225, 225, 0.5);
+        border-radius: 40px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transform: scale(1);
+}
+
+.form-box.edit form {
+    width: 50%;
+}
+
+.form-box.edit h2 {
+    color: rgb(255, 243, 220);
+    font-size: 2em;
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+
+.form-box.edit .inputBox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+    transform: translateY(-10px);
+}
+
+.profile-board.admin {
+    position: relative;
+    width: 80%;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(225, 225, 225, 0.5);
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-board.admin .profile {
+    position: relative;
+    left: -20px;
+}
+
+.profile-board.admin .admin-panel {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    position: relative;
+    right: -50px;
+    border-radius: 20px;
+    height: 65%;
+    width: 55%;
+}
+
+.profile-board.admin table td,th {
+    background: transparent !important;
+    outline: none;
+    border: none;
+    white-space: nowrap;
+}
+
+.profile-board.admin .card-right{
+    padding: 30px;
+}
+
+.profile-board.admin .table-content {
+    max-height: 200px;
+    overflow-y: auto;
 }

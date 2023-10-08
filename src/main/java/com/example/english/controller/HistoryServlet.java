@@ -36,7 +36,7 @@ public class HistoryServlet extends HttpServlet {
     private void displayHistory(HttpServletRequest request, HttpServletResponse response) {
         int userid = Integer.parseInt(request.getParameter("userId"));
         request.setAttribute("historyList",historyService.display(userid));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/my_page.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/history.jsp");
         try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {

@@ -12,38 +12,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="logreg.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<form action="/?action=edit" method="post">
-    <h2>Chỉnh sửa thông tin người dùng</h2>
-    <div class="inputBox">
-        <tr>
-            <td><input type="hidden" name="userId" readonly value="${user.userId}"  required></td>
-        </tr>
-    </div>
-    <div class="inputBox">
-        <tr>
-            <td>Họ và tên</td>
-            <td><input type="text" name="userName" placeholder="Họ và tên" value="${user.userName}" required></td>
-        </tr>
-    </div>
-    <div class="inputBox">
-        <tr>
-            <td>Email của bạn</td>
-            <td><input type="email" name="email" placeholder="email" value="${user.email}" required></td>
-        </tr>
-
-    </div>
-    <div class="inputBox">
-        <tr>
-            <td>Ngày sinh</td>
-            <td><input type="date" name="dob" placeholder="yyyy-mm-dd" value="${user.dob}" required></td>
-        </tr>
-    </div>
-    <div class="inputBox">
-        <input type="submit"  value="Lưu">
-    </div>
-</form>
+<div class="form-box edit">
+    <form action="/?action=edit" method="post">
+        <h2>Chỉnh sửa thông tin người dùng</h2>
+        <div class="inputBox">
+            <tr>
+                <td><input type="hidden" name="userId" readonly value="${user.userId}"  required></td>
+            </tr>
+        </div>
+        <div class="inputBox">
+            <tr>
+                <td>Họ và tên</td>
+                <td><input type="text" name="userName" placeholder="Họ và tên" value="${user.userName}" required></td>
+            </tr>
+        </div>
+        <div class="inputBox">
+            <tr>
+                <td>Email của bạn</td>
+                <td><input type="email" name="email" placeholder="email" value="${user.email}" required></td>
+            </tr>
+        </div>
+        <div class="inputBox">
+            <tr>
+                <td>Ngày sinh</td>
+                <td><input type="date" name="dob" placeholder="yyyy-mm-dd" value="${user.dob}" required></td>
+            </tr>
+        </div>
+        <div class="inputBox">
+            <input type="submit"  value="Lưu">
+        </div>
+    </form>
+</div>
 </body>
 </html>

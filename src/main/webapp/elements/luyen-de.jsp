@@ -88,11 +88,7 @@
                                 <img src="00007.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Đề dễ</h5>
-                                    <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ
-                                        khó
-                                        cơ
-                                        bản
-                                        nhất.</p>
+                                    <p class="card-text">Phù hợp với người mới bắt đầu. Các câu hỏi được tạo ra với độ khó cơ bản nhất.</p>
                                     <input type="hidden" value="1" name="level">
                                     <button class="btn-begin" type="submit">Làm bài</button>
                                 </div>
@@ -105,10 +101,7 @@
                                 <img src="00008.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Đề trung bình</h5>
-                                    <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo
-                                        ra
-                                        với độ khó
-                                        nâng cao.</p>
+                                    <p class="card-text">Phù hợp với người đã biết tiếng Anh. Các câu hỏi được tạo ra với độ khó nâng cao.</p>
                                     <input type="hidden" value="2" name="level">
                                     <button class="btn-begin" type="submit">Làm bài</button>
                                 </div>
@@ -121,10 +114,7 @@
                                 <img src="00013.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Đề khó</h5>
-                                    <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được
-                                        chọn
-                                        từ đề thi Đại
-                                        học.</p>
+                                    <p class="card-text">Phù hợp với người thành thạo tiếng Anh. Các câu hỏi được chọn từ đề thi Đại học.</p>
                                     <input type="hidden" value="3" name="level">
                                     <button class="btn-begin" type="submit">Làm bài</button>
                                 </div>

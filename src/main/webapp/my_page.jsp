@@ -16,14 +16,41 @@
 
 </head>
 <body>
-<c:import url="elements/header.jsp"></c:import>
+<!-- NAVBAR -->
+<header>
+    <h2 class="logo"><img src="../logo5.png" alt=""></h2>
+    <nav class="navigation">
+        <c:choose>
+            <c:when test="${user == null}">
+                <a href="../homePage.jsp">Trang chủ</a>
+            </c:when>
+            <c:otherwise>
+                <a href="../homePage.jsp">Trang chủ</a>
+                <a href="../my_page.jsp" class="user">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                        ${user.userName}</a>
+            </c:otherwise>
+        </c:choose>
+    </nav>
+</header>
 <div class="profile-board">
     <div class="profile">
-        <h2>Hồ sơ</h2>
-        <i class="fa-solid fa-user"></i>
-        <h3>${user.userName}</h3>
-        <a href="/history-servlet?action=displayHistory&userId=${user.userId}">Lịch sử</a><br>
-        <a href="/?action=fill-form&id=${user.userId}">Thay đổi thông tin</a><br>
+        <c:choose>
+            <c:when test="${user.role == 'ADMIN'}">
+                <h2>Hồ sơ</h2>
+                <i class="fa-solid fa-user"></i>
+                <h3>${user.userName}</h3>
+                <a href="/?action=selectAll" style="color: #000000;">Admin</a><br>
+                <a href="/?action=fill-form&id=${user.userId}">Thay đổi thông tin</a><br>
+            </c:when>
+            <c:otherwise>
+                <h2>Hồ sơ</h2>
+                <i class="fa-solid fa-user"></i>
+                <h3>${user.userName}</h3>
+                <a href="/history-servlet?action=displayHistory&userId=${user.userId}">Lịch sử</a><br>
+                <a href="/?action=fill-form&id=${user.userId}">Thay đổi thông tin</a><br>
+            </c:otherwise>
+        </c:choose>
         <a href="/?action=logOut">Đăng xuất</a><br>
     </div>
     <div class="profile-details">
@@ -36,7 +63,6 @@
                     </div>
                     <div class="col-md-9 text-secondary">
                         ${user.userName}
-                        ${user.dob}
                     </div>
                 </div>
                 <hr>
@@ -59,30 +85,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="history">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Stt</th>
-                <th scope="col">Thời gian</th>
-                <th scope="col">Số điểm</th>
-                <th scope="col">Chi tiết</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${historyList}" var="h" varStatus="look">
-                <tr>
-                    <th scope="row">${look.count}</th>
-                    <td>${h.date}</td>
-                    <td>${h.totalScore}</td>
-                    <td>
-                        <a href="/history-servlet?action=displayResult&date=${h.date}">Chi tiết</a>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
     </div>
 </div>
 
