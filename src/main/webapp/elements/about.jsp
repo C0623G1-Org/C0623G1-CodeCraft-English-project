@@ -21,13 +21,9 @@
     <div class="about-us">
         <table>
             <tr>
-                <th><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis distinctio praesentium
-                    excepturi
-                    explicabo vitae aliquid perferendis iusto, consectetur expedita dolorum asperiores illo
-                    nesciunt,
-                    unde voluptates impedit magni, saepe eaque? Ipsa? Lorem ipsum dolor sit amet consectetur
-                    adipisicing
-                    elit. Non corporis dolore, nulla maxime veritatis </p></th>
+                <td>"LDKNow là trang web luyện tập tiếng Anh miễn phí do nhóm CodeCraft (học viên CodeGym) tạo ra nhằm mục đích cung cấp hệ thống các bài tập trắc nghiệm tiếng Anh theo mức độ từ dễ đến khó, giúp người dùng cải thiện trình độ tiếng Anh của mình.
+                    <br>
+                    Hệ thống vẫn đang trong quá trình xây dựng hoàn thiện với mong muốn cung cấp cho người dùng trải nghiệm tốt nhất. Chúng tôi hy vọng LDKNow sẽ là “công cụ” hữu ích trong hành trang chinh phục tiếng Anh của <bạn class="br"></bạn> Chúc các bạn học vui!"</td>
             </tr>
         </table>
     </div>
