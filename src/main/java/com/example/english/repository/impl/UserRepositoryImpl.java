@@ -255,13 +255,7 @@ public class UserRepositoryImpl implements IUserRepository {
                 user=new User(id,userName,email,dob,loginId,password,role);
                 searchUser.add(user);
             }
-//            private int userId;
-//            private String userName;
-//            private String email;
-//            private String dob;
-//            private String loginId; //ko dc edit
-//            private String password; // ko dc hien thi
-//            private String role; // ko dc edit
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
