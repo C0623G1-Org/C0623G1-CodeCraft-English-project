@@ -94,28 +94,29 @@
         </div>
 
     </div>
+</div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="/?action=delete" method="post">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận xoá</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h1><input type="hidden" name="id" id="userId"></h1>
-                        Bạn có chắc chắc xoá <span id="userName" class="text text-danger"></span> ?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-outline-danger">Xoá</button>
-                    </div>
-                </form>
-            </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/?action=delete" method="post">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận xoá</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h1><input type="hidden" name="id" id="userId"></h1>
+                    Bạn có chắc chắc xoá <span id="userName" class="text text-danger"></span> ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-outline-danger">Xoá</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
 <!-- <c:import url="footer.jsp"></c:import> -->
 
 <script>
